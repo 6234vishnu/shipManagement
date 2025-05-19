@@ -1,0 +1,289 @@
+body {
+background-color: #f0f5ff;
+height: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+/* Main Container */
+.adminLogin-container {
+display: flex;
+width: 900px;
+height: 600px;
+background-color: white;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 15px 50px rgba(0, 42, 94, 0.1);
+}
+/* Left Side - Ship Image */
+.adminLogin-left {
+flex: 1;
+background-color: #001F3F;
+position: relative;
+overflow: hidden;
+}
+.adminLogin-ship-image {
+height: 100%;
+width: 100%;
+background-image: url('/images/ray-harrington-Y2V0ph_3_qY-unsplash.jpg');
+background-size: cover;
+background-position: center;
+position: relative;
+}
+.adminLogin-ship-image::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(356deg, rgba(0, 31, 63, 0.7), rgba(0, 118, 189, 0.4));
+}
+/* Right Side - Login Form */
+.adminLogin-right {
+flex: 1;
+padding: 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.adminLogin-form-container {
+max-width: 400px;
+margin: 0 auto;
+width: 100%;
+}
+/* Logo */
+.adminLogin-logo-container {
+display: flex;
+justify-content: center;
+margin-bottom: 30px;
+}
+.adminLogin-logo-placeholder {
+width: 80px;
+height: 80px;
+border-radius: 16px;
+background-color: #0076BD;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.adminLogin-temp-logo {
+font-size: 36px;
+color: white;
+}
+/* Headings */
+.adminLogin-title {
+font-size: 28px;
+color: #002A5E;
+font-weight: 700;
+text-align: center;
+margin-bottom: 5px;
+}
+.adminLogin-subtitle {
+font-size: 16px;
+color: #6B7280;
+text-align: center;
+margin-bottom: 30px;
+}
+/* Form Elements */
+.adminLogin-form {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+.adminLogin-input-group {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.adminLogin-input-group label {
+font-size: 14px;
+color: #4B5563;
+font-weight: 500;
+}
+.adminLogin-input-with-icon {
+position: relative;
+}
+.adminLogin-input-with-icon i {
+position: absolute;
+left: 12px;
+top: 50%;
+transform: translateY(-50%);
+color: #6B7280;
+font-size: 16px;
+}
+.adminLogin-input-with-icon input {
+width: 100%;
+padding: 12px 12px 12px 40px;
+border: 1px solid #D1D5DB;
+border-radius: 8px;
+font-size: 14px;
+transition: all 0.3s ease;
+}
+.adminLogin-input-with-icon input:focus {
+border-color: #0076BD;
+outline: none;
+box-shadow: 0 0 0 3px rgba(0, 118, 189, 0.1);
+}
+.adminLogin-input-with-icon input::placeholder {
+color: #9CA3AF;
+}
+/* Options Row */
+.adminLogin-options {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 14px;
+}
+.adminLogin-remember {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.adminLogin-remember input[type="checkbox"] {
+width: 16px;
+height: 16px;
+accent-color: #0076BD;
+}
+.adminLogin-forgot {
+color: #0076BD;
+text-decoration: none;
+font-weight: 500;
+transition: color 0.2s ease;
+}
+.adminLogin-forgot:hover {
+color: #004E7A;
+text-decoration: underline;
+}
+/* Button */
+.adminLogin-button {
+background-color: #0076BD;
+color: white;
+border: none;
+border-radius: 8px;
+padding: 14px;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+transition: background-color 0.2s ease;
+margin-top: 10px;
+}
+.adminLogin-button:hover {
+background-color: #005C91;
+}
+.adminLogin-button:active {
+transform: translateY(1px);
+}
+/* Footer */
+.adminLogin-footer {
+margin-top: 30px;
+text-align: center;
+}
+.adminLogin-footer p {
+font-size: 12px;
+color: #6B7280;
+}
+
+.adminLogin-form input{
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+/* Responsive Media Queries */
+@media screen and (max-width: 900px) {
+.adminLogin-container {
+width: 95%;
+height: auto;
+min-height: 600px;
+}
+}
+@media screen and (max-width: 768px) {
+.adminLogin-container {
+flex-direction: column;
+height: auto;
+}
+.adminLogin-left {
+display: none; /* Hide ship image on smaller screens */
+}
+.adminLogin-right {
+
+padding: 30px 20px;
+}
+body {
+padding: 20px;
+height: auto;
+min-height: 100vh;
+}
+}
+@media screen and (max-width: 480px) {
+.adminLogin-form-container {
+max-width: 100%;
+}
+.adminLogin-logo-placeholder {
+width: 70px;
+height: 70px;
+}
+.adminLogin-title {
+font-size: 24px;
+}
+.adminLogin-options {
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+.adminLogin-input-with-icon input {
+padding: 10px 10px 10px 36px;
+}
+.adminLogin-button {
+padding: 12px;
+}
+}
+/* Dark Mode Enhancement (Optional) */
+@media (prefers-color-scheme: dark) {
+body {
+background-color: #0F172A;
+}
+.adminLogin-container {
+background-color: #1E293B;
+box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+}
+.adminLogin-title {
+color: #E2E8F0;
+}
+.adminLogin-subtitle {
+color: #94A3B8;
+}
+.adminLogin-input-group label {
+color: #CBD5E1;
+}
+.adminLogin-input-with-icon input {
+background-color: #334155;
+border-color: #475569;
+color: #E2E8F0;
+}
+.adminLogin-input-with-icon input::placeholder {
+color: #64748B;
+}
+.adminLogin-input-with-icon i {
+color: #94A3B8;
+}
+.adminLogin-remember label {
+color: #CBD5E1;
+}
+.adminLogin-forgot {
+color: #60A5FA;
+}
+.adminLogin-forgot:hover {
+color: #93C5FD;
+}
+.adminLogin-footer p {
+color: #94A3B8;
+}
+}
+
+
+
+

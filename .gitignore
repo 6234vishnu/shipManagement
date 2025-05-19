@@ -1,0 +1,19 @@
+# Frontend
+/frontend/node_modules/
+/frontend/dist/
+/frontend/build/
+/frontend/.env*
+
+# Backend
+/backend/node_modules/
+/backend/dist/
+/backend/build/
+/backend/.env*
+
+# Shared
+.DS_Store
+Thumbs.db
+logs/
+*.log
+.vscode/
+.idea/

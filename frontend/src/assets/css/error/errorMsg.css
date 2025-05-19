@@ -1,0 +1,55 @@
+.errorModalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.errorModal {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.errorModal h2 {
+  margin-bottom: 1rem;
+  color: rgb(255, 0, 0);
+}
+.errorModal p{
+  color: rgb(243, 0, 0);
+}
+
+.errorModalLogo {
+    width: 99px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 40px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (max-width:768px) {
+  .errorModalLogo{
+    width: 50px;
+  }
+  .errorModal{
+    width: 200px;
+  }
+}
