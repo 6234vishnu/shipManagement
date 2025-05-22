@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, } from "react";
-import "../assets/css/voyager/signup.css";
-import api from "../services/axiosInstance";
-import ErrorModal from "../components/ErrorModal";
-import SuccessModal from "../components/SuccessModal";
+import "../../assets/css/voyager/signup.css";
+import api from "../../services/axiosInstance";
+import ErrorModal from "../../components/ErrorModal";
+import SuccessModal from "../../components/SuccessModal";
 import { useNavigate } from 'react-router-dom';
 
 

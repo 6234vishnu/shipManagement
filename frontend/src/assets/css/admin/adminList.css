@@ -1,0 +1,536 @@
+.cateringListAdminContainer {
+          max-width: 1473px;
+          margin: 0 auto;
+          padding: 24px;
+          background-color: #0F172A;
+          min-height: 100vh;
+          width:100vw;
+          height: auto;
+        }
+
+     .cateringListAdminHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 32px;
+          flex-wrap: wrap;
+          gap: 16px;
+        }
+
+        .cateringListAdminTitle {
+          font-size: 32px;
+          font-weight: 700;
+          color: white;
+          margin: 0;
+        }
+
+        .cateringListAdminAddButton {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background-color: white;
+          color: #0F172A;
+          border: 2px solid white;
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .cateringListAdminAddButton:hover {
+          background-color: #002B45;
+          color: white;
+          transform: translateY(-1px);
+        }
+
+        .cateringListAdminFilters {
+          display: flex;
+          gap: 16px;
+          margin-bottom: 24px;
+          flex-wrap: wrap;
+        }
+
+        .cateringListAdminSearchContainer {
+          position: relative;
+          flex: 1;
+          min-width: 300px;
+        }
+
+        .cateringListAdminSearchIcon {
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #002B45;
+        }
+
+        .cateringListAdminSearchInput {
+          
+          padding: 12px 12px 12px 44px;
+          border: 2px solid #002B45;
+          border-radius: 8px;
+          font-size: 16px;
+          background-color: white;
+          color: #002B45;
+          transition: border-color 0.2s ease;
+        }
+
+        .cateringListAdminSearchInput:focus {
+          outline: none;
+          border-color: #002B45;
+          box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
+        }
+
+        .cateringListAdminFilterContainer {
+          position: relative;
+          min-width: 200px;
+        }
+
+        .cateringListAdminFilterIcon {
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #002B45;
+          z-index: 1;
+        }
+
+        .cateringListAdminFilterSelect {
+       
+          padding: 12px 12px 12px 44px;
+          border: 2px solid #002B45;
+          border-radius: 8px;
+          font-size: 16px;
+          background-color: white;
+          color: #002B45;
+          cursor: pointer;
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23002B45' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+          background-position: right 8px center;
+          background-repeat: no-repeat;
+          background-size: 16px;
+        }
+
+        .cateringListAdminTableContainer {
+          background-color: white;
+          border-radius: 12px;
+        
+          overflow: hidden;
+          margin-bottom: 24px;
+        }
+
+        .cateringListAdminTableWrapper {
+          overflow-x: auto;
+        }
+
+        .cateringListAdminTable {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        .cateringListAdminTableHead {
+          background-color: #131f3a;
+        }
+
+        .cateringListAdminTableHeader {
+          padding: 16px;
+          text-align: left;
+          font-weight: 600;
+          color: white;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          white-space: nowrap;
+        }
+
+        .cateringListAdminTableBody .cateringListAdminTableRow:hover {
+          background-color: rgba(0, 43, 69, 0.05);
+        }
+
+        .cateringListAdminTableCell {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 43, 69, 0.1);
+    vertical-align: top;
+    color: #002B45;
+    border: 5px solid #cecece;
+    border-radius: 55px;
+}
+        .cateringListAdminUsername {
+          font-weight: 600;
+          color: #002B45;
+        }
+
+        .cateringListAdminItemName {
+          font-weight: 500;
+          color: #002B45;
+        }
+
+        .cateringListAdminQuantity {
+          display: inline-block;
+          background-color: rgba(0, 43, 69, 0.1);
+          color: #002B45;
+          padding: 4px 12px;
+          border-radius: 16px;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .cateringListAdminPrice {
+          font-weight: 600;
+          color: #002B45;
+          font-size: 16px;
+        }
+
+        .cateringListAdminStatusBadge {
+          display: inline-block;
+          padding: 6px 12px;
+          border-radius: 16px;
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: capitalize;
+        }
+
+        .cateringListAdminStatusCompleted {
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #002B45;
+          border: 1px solid #002B45;
+        }
+
+        .cateringListAdminStatusPending {
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #002B45;
+          border: 1px solid #002B45;
+        }
+
+        .cateringListAdminStatusInProgress {
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #002B45;
+          border: 1px solid #002B45;
+        }
+
+        .cateringListAdminStatusCancelled {
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #002B45;
+          border: 1px solid #002B45;
+        }
+
+        .cateringListAdminOrderDate {
+          font-weight: 500;
+          color: #002B45;
+          margin-bottom: 2px;
+        }
+
+        .cateringListAdminOrderTime {
+          font-size: 12px;
+          color: rgba(0, 43, 69, 0.7);
+        }
+
+        .cateringListAdminActionButtons {
+          display: flex;
+          gap: 8px;
+        }
+
+        .cateringListAdminActionButton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .cateringListAdminEditButton {
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #002B45;
+          border: 1px solid #002B45;
+        }
+
+        .cateringListAdminEditButton:hover {
+          background-color: #002B45;
+          color: white;
+        }
+
+        .cateringListAdminDeleteButton {
+          background-color: rgba(255, 255, 255, 0.9);
+          color: #002B45;
+          border: 1px solid #002B45;
+        }
+
+        .cateringListAdminDeleteButton:hover {
+          background-color: #002B45;
+          color: white;
+        }
+
+        .cateringListAdminEmptyCell {
+          text-align: center;
+          padding: 48px 16px;
+        }
+
+        .cateringListAdminEmptyState p {
+          color: rgba(0, 43, 69, 0.7);
+          font-size: 18px;
+          margin: 0;
+        }
+
+        .cateringListAdminPagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 16px 0;
+        }
+
+        .cateringListAdminResultsInfo {
+          color: white;
+          font-size: 14px;
+        }
+
+        .customModal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.customModal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.customModal-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #002B45;
+}
+
+.customModal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
+
+.customModal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.customModal-input {
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.customModal-submit {
+  padding: 12px;
+ 
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.customModal-submit:hover {
+  background-color: #ffffff;
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.paginationButton {
+  margin: 0 4px;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  color: #002B45;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.paginationButton:hover {
+  background-color: #d0d0d0;
+}
+
+.paginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.activePage {
+  background-color: #002B45;
+  color: white;
+}
+
+
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .customModal-content {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .customModal-input {
+    font-size: 14px;
+  }
+
+  .customModal-submit {
+    font-size: 14px;
+  }
+
+  .customModal-title {
+    font-size: 20px;
+  }
+}
+
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+          .cateringListAdminContainer {
+            padding: 16px;
+          }
+
+          .cateringListAdminTitle {
+            font-size: 24px;
+          }
+
+          .cateringListAdminHeader {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .cateringListAdminAddButton {
+            justify-content: center;
+          }
+
+          .cateringListAdminFilters {
+            flex-direction: column;
+          }
+
+          .cateringListAdminSearchContainer {
+            min-width: auto;
+          }
+
+          .cateringListAdminFilterContainer {
+            min-width: auto;
+          }
+
+          .cateringListAdminTableWrapper {
+            border-radius: 8px;
+          }
+
+          .cateringListAdminTable {
+            font-size: 14px;
+          }
+
+          .cateringListAdminTableHeader,
+          .cateringListAdminTableCell {
+            padding: 12px 8px;
+          }
+
+          .cateringListAdminActionButtons {
+            flex-direction: column;
+            gap: 4px;
+          }
+
+          .cateringListAdminActionButton {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        /* Tablet Responsive Styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .cateringListAdminContainer {
+            padding: 20px;
+          }
+
+          .cateringListAdminTitle {
+            font-size: 28px;
+          }
+
+          .cateringListAdminSearchContainer {
+            min-width: 250px;
+          }
+
+          .cateringListAdminFilterContainer {
+            min-width: 180px;
+          }
+        }
+
+        /* Large Screen Optimizations */
+        @media (min-width: 1200px) {
+          .cateringListAdminTableHeader,
+          .cateringListAdminTableCell {
+            padding: 20px;
+          }
+
+          .cateringListAdminTable {
+            font-size: 16px;
+          }
+        }
+
+        /* Print Styles */
+        @media print {
+          .cateringListAdminAddButton,
+          .cateringListAdminFilters,
+          .cateringListAdminActionButtons {
+            display: none;
+          }
+
+          .cateringListAdminContainer {
+            background-color: white;
+            box-shadow: none;
+            padding: 0;
+          }
+
+          .cateringListAdminTitle {
+            color: #002B45;
+          }
+
+          .cateringListAdminTableContainer {
+            box-shadow: none;
+          }
+
+          .cateringListAdminTableHead {
+            background-color: #002B45;
+          }
+        }
