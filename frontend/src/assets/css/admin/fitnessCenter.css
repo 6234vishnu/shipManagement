@@ -1,0 +1,347 @@
+.fitnessCenterContainer {
+  max-width: 1473px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #0F172A;
+  min-height: 100vh;
+  width: 100vw;
+  height: auto;
+}
+
+.fitnessCenterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.fitnessCenterTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.fitnessCenterAddButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: #0F172A;
+  border: 2px solid white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fitnessCenterAddButton:hover {
+  background-color: #002B45;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.fitnessCenterFilters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.fitnessCenterSearchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.fitnessCenterSearchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #002B45;
+}
+
+.fitnessCenterSearchInput {
+  padding: 12px 12px 12px 44px;
+  border: 2px solid #002B45;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  color: #002B45;
+  transition: border-color 0.2s ease;
+}
+
+.fitnessCenterSearchInput:focus {
+  outline: none;
+  border-color: #002B45;
+  box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
+}
+
+.fitnessCenterFilterContainer {
+  position: relative;
+  min-width: 200px;
+}
+
+.fitnessCenterFilterIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #002B45;
+  z-index: 1;
+}
+
+.fitnessCenterFilterSelect {
+  padding: 12px 12px 12px 44px;
+  border: 2px solid #002B45;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  color: #002B45;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23002B45' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.fitnessCenterTableContainer {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.fitnessCenterTableWrapper {
+  overflow-x: auto;
+}
+
+.fitnessCenterTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fitnessCenterTableHead {
+  background-color: #131f3a;
+}
+
+.fitnessCenterTableHeader {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.fitnessCenterTableBody .fitnessCenterTableRow:hover {
+  background-color: rgba(0, 43, 69, 0.05);
+}
+
+.fitnessCenterTableCell {
+  padding: 16px;
+  border-bottom: 1px solid rgba(0, 43, 69, 0.1);
+  vertical-align: top;
+  color: #002B45;
+  border: 5px solid #cecece;
+  border-radius: 55px;
+}
+
+.fitnessCenterUsername {
+  font-weight: 600;
+  color: #002B45;
+}
+
+.fitnessCenterItemName {
+  font-weight: 500;
+  color: #002B45;
+}
+
+.fitnessCenterQuantity {
+  display: inline-block;
+  background-color: rgba(0, 43, 69, 0.1);
+  color: #002B45;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fitnessCenterPrice {
+  font-weight: 600;
+  color: #002B45;
+  font-size: 16px;
+}
+
+.fitnessCenterStatusBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.fitnessCenterStatusCompleted,
+.fitnessCenterStatusPending,
+.fitnessCenterStatusInProgress,
+.fitnessCenterStatusCancelled {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+.fitnessCenterOrderDate {
+  font-weight: 500;
+  color: #002B45;
+  margin-bottom: 2px;
+}
+
+.fitnessCenterOrderTime {
+  font-size: 12px;
+  color: rgba(0, 43, 69, 0.7);
+}
+
+.fitnessCenterActionButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.fitnessCenterActionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fitnessCenterEditButton {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+.fitnessCenterEditButton:hover {
+  background-color: #002B45;
+  color: white;
+}
+
+.fitnessCenterDeleteButton {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+.fitnessCenterDeleteButton:hover {
+  background-color: #002B45;
+  color: white;
+}
+
+.fitnessCenterEmptyCell {
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.fitnessCenterEmptyState p {
+  color: rgba(0, 43, 69, 0.7);
+  font-size: 18px;
+  margin: 0;
+}
+
+.fitnessCenterPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.fitnessCenterResultsInfo {
+  color: white;
+  font-size: 14px;
+}
+
+/* Custom Modal (unchanged) */
+.customModal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.customModal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.customModal-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #002B45;
+}
+
+.customModal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
+
+.customModal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.customModal-input {
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.customModal-submit {
+  padding: 12px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.customModal-submit:hover {
+  background-color: #ffffff;
+  color: #002B45;
+}

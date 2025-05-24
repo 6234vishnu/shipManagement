@@ -1,0 +1,583 @@
+.moviesContainer {
+  max-width: 1473px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #0F172A;
+  min-height: 100vh;
+  width: 100vw;
+  height: auto;
+}
+
+.moviesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.moviesTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.moviesAddButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  color: #0F172A;
+  border: 2px solid white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.moviesAddButton:hover {
+  background-color: #002B45;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.moviesFilters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.moviesSearchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.moviesSearchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #002B45;
+}
+
+.moviesSearchInput {
+  padding: 12px 12px 12px 44px;
+  border: 2px solid #002B45;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  color: #002B45;
+  transition: border-color 0.2s ease;
+}
+
+.moviesSearchInput:focus {
+  outline: none;
+  border-color: #002B45;
+  box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
+}
+
+.moviesFilterContainer {
+  position: relative;
+  min-width: 200px;
+}
+
+.moviesFilterIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #002B45;
+  z-index: 1;
+}
+
+.moviesFilterSelect {
+  padding: 12px 12px 12px 44px;
+  border: 2px solid #002B45;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  color: #002B45;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23002B45' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.moviesTableContainer {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.moviesTableWrapper {
+  overflow-x: auto;
+}
+
+.moviesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.moviesTableHead {
+  background-color: #131f3a;
+}
+
+.moviesTableHeader {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.moviesTableBody .moviesTableRow:hover {
+  background-color: rgba(0, 43, 69, 0.05);
+}
+
+.moviesTableCell {
+  padding: 16px;
+  border-bottom: 1px solid rgba(0, 43, 69, 0.1);
+  vertical-align: top;
+  color: #002B45;
+  border: 5px solid #cecece;
+  border-radius: 55px;
+}
+
+.moviesUsername {
+  font-weight: 600;
+  color: #002B45;
+}
+
+.moviesItemName {
+  font-weight: 500;
+  color: #002B45;
+}
+
+.moviesQuantity {
+  display: inline-block;
+  background-color: rgba(0, 43, 69, 0.1);
+  color: #002B45;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.moviesPrice {
+  font-weight: 600;
+  color: #002B45;
+  font-size: 16px;
+}
+
+.moviesStatusBadge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.moviesStatusCompleted,
+.moviesStatusPending,
+.moviesStatusInProgress,
+.moviesStatusCancelled {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+.moviesOrderDate {
+  font-weight: 500;
+  color: #002B45;
+  margin-bottom: 2px;
+}
+
+.moviesOrderTime {
+  font-size: 12px;
+  color: rgba(0, 43, 69, 0.7);
+}
+
+.moviesActionButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.moviesActionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.moviesEditButton {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+.moviesEditButton:hover {
+  background-color: #002B45;
+  color: white;
+}
+
+.moviesDeleteButton {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #002B45;
+  border: 1px solid #002B45;
+}
+
+.moviesDeleteButton:hover {
+  background-color: #002B45;
+  color: white;
+}
+
+.moviesEmptyCell {
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.moviesEmptyState p {
+  color: rgba(0, 43, 69, 0.7);
+  font-size: 18px;
+  margin: 0;
+}
+
+.moviesPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.moviesResultsInfo {
+  color: white;
+  font-size: 14px;
+}
+
+
+
+/* Backdrop */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Box */
+.modalContent {
+  background-color: #fff;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease;
+  transition: all 0.3s ease;
+}
+.modalContent h2{
+    color: black;
+}
+
+/* Form Inputs */
+.modalContent input,
+.modalContent select {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: white;
+  color: black;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modalContent input:focus,
+.modalContent select:focus {
+  border-color: #002B45;
+}
+
+/* Actions (Buttons) */
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.modalActions button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+.modalActions button[type="submit"] {
+  background-color: #002B45;
+  color: #fff;
+}
+
+.modalActions button[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #002B45;
+  transform: scale(1.05);
+  border :1px solid #002B45
+}
+
+.modalActions button[type="button"] {
+  background-color: #ccc;
+}
+
+.modalActions button[type="button"]:hover {
+  background-color: #999;
+  transform: scale(1.05);
+}
+
+
+.moviesTableHead {
+  background-color: #131f3a;
+}
+
+.moviesTableHeader {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.moviesTableBody .moviesTableRow:hover {
+  background-color: rgba(0, 43, 69, 0.05);
+}
+
+.moviesTableCell {
+  padding: 16px;
+  border-bottom: 1px solid rgba(0, 43, 69, 0.1);
+  vertical-align: top;
+  color: #002B45;
+  border: 5px solid #cecece;
+  border-radius: 55px;
+}
+
+.moviesUsername {
+  font-weight: 600;
+  color: #002B45;
+}
+
+.moviesItemName {
+  font-weight: 500;
+  color: #002B45;
+}
+
+.moviesQuantity {
+  display: inline-block;
+  background-color: rgba(0, 43, 69, 0.1);
+  color: #002B45;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.moviesPrice {
+  font-weight: 600;
+  color: #002B45;
+  font-size: 16px;
+}
+
+.moviesStatusBadge {
+  display: inline-block;
+ 
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Media Queries */
+
+/* Small devices (phones, < 600px) */
+@media (max-width: 600px) {
+  .modalContent {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modalActions button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Medium devices (tablets, 600px - 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .modalContent {
+    width: 90%;
+    padding: 2rem;
+  }
+}
+
+
+
+
+
+/* Original styles ... (no changes here) */
+
+/* Add responsive styles below */
+@media (max-width: 1024px) {
+  .moviesTitle {
+    font-size: 28px;
+  }
+
+  .moviesAddButton {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .moviesTableHeader,
+  .moviesTableCell {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .moviesQuantity,
+  .moviesPrice,
+  .moviesStatusBadge {
+    font-size: 13px;
+  }
+
+  .moviesFilters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .moviesHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .moviesAddButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .moviesSearchContainer,
+  .moviesFilterContainer {
+    width: 100%;
+  }
+
+  .moviesSearchInput,
+  .moviesFilterSelect {
+    font-size: 15px;
+  }
+
+  .moviesTableHeader,
+  .moviesTableCell {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .moviesQuantity,
+  .moviesPrice,
+  .moviesStatusBadge {
+    font-size: 12px;
+  }
+
+  .moviesActionButton {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .moviesTitle {
+    font-size: 24px;
+  }
+
+  .moviesAddButton {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .moviesTableHeader,
+  .moviesTableCell {
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  .moviesEmptyState p {
+    font-size: 16px;
+  }
+
+  .moviesResultsInfo {
+    font-size: 12px;
+  }
+}
+

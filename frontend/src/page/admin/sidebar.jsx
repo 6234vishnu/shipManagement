@@ -68,10 +68,13 @@ const Sidebar = () => {
   };
 
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', path: '/admin/dashboard', icon: <Home /> },
-    { id: 'Create Bunk', label: 'Create Bunk', path: '/admin/EvBunkPage', icon: <Book /> },
-    { id: 'Booking List', label: 'Booking List', path: '/admin/bookingLists', icon: <Ticket /> },
-    { id: 'Edit Bunk', label: 'Edit Bunk', path: '/admin/BunkDetailsAdmin', icon: <CreditCard /> },
+    { id: 'Catering List', label: 'Catering List', path: '/admin-categoryList', icon: <Home /> },
+    { id: 'Movies List', label: 'Movies List', path: '/admin-movies', icon: <Book /> },
+    { id: 'Fitness List', label: 'Fitness List', path: '/admin-fitnessList', icon: <Ticket /> },
+    { id: 'Party Hall List', label: 'Party Hall List', path: '/admin-partyHall', icon: <Ticket /> },
+    { id: 'Resort List', label: 'Resort List', path: '/admin-fitnessList', icon: <Ticket /> },
+    { id: 'Stationary List', label: 'Stationary List', path: '/admin-fitnessList', icon: <Ticket /> },
+  
    
   ];
 
