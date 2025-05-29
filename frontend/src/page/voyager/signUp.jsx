@@ -105,7 +105,9 @@ function SignUp() {
     try {
       const res=await api.post(`/voyager/auth/enterdOtp`,{formData,code})
       if(res.data.success){
-        localStorage.setItem("voyagerId")
+        console.log("voyagerId",res.data);
+        
+        localStorage.setItem("voyagerId",res.data.voyagerId)
         setSuccessMessage(res.data.message)
         setOtpModal(false)
         setSuccessModalOpen(true)

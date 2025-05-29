@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
-import "../../assets/css/admin/partyHallList.css";
+import "../../assets/css/admin/stationaryList.css"; // Updated path
 import Sidebar from "./sidebar";
 import api from "../../services/axiosInstance";
 import SuccessModal from "../../components/SuccessModal";
 import ErrorModal from "../../components/ErrorModal";
 
-function PartyHallList() {
+function StationaryList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [addItemModal, setAddItemModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -22,14 +22,14 @@ function PartyHallList() {
     name: "",
     price: "",
     available: "",
-    totalSlots:""
+    quantity:""
   });
 
   const fetchItems = async () => {
     try {
-      const response = await api.get("/admin/partyHall-getItems");
+      const response = await api.get("/admin/stationary-getItems");
       if (response.data.success) {
-        setItemList(response.data.PartyHallList);
+        setItemList(response.data.StationaryList);
       } else {
         setErrorMessage(response.data.message);
         setErrorModal(true);
@@ -55,12 +55,12 @@ function PartyHallList() {
   const addNewItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/admin/partyHall-additem", formData);
+      const response = await api.post("/admin/stationary-additem", formData);
       if (response.data.success) {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "", available: "" });
+        setFormData({ name: "", price: "", available: "",quantity:"" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -75,7 +75,7 @@ function PartyHallList() {
   const handleDelete = async (_id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
-        const response = await api.delete(`/admin/partyHall-deleteitem/${_id}`);
+        const response = await api.delete(`/admin/stationary-deleteitem/${_id}`);
         if (response.data.success) {
           setSuccessMessage("Item deleted successfully");
           setSuccessModal(true);
@@ -97,7 +97,7 @@ function PartyHallList() {
       setFormData({
         name: itemToEdit.name || "",
         price: itemToEdit.price || "",
-        totalSlots: itemToEdit.totalSlots || "",
+        quantity: itemToEdit.quantity || "",
         available: itemToEdit.available ? "true" : "false",
       });
     }
@@ -106,14 +106,14 @@ function PartyHallList() {
   };
 
   const handleEdit = async () => {
-    if (!formData.name.trim() && !formData.price && !formData.totalSlots && formData.available === "") {
+    if (!formData.name.trim() && !formData.price&& !formData.quantity && formData.available === "") {
       setErrorMessage("Please update at least one field.");
       return setErrorModal(true);
     }
 
     try {
       const response = await api.patch(
-        `/admin/partyHall-edititem?itemId=${selectedId}`,
+        `/admin/stationary-edititem?itemId=${selectedId}`,
         formData
       );
 
@@ -121,7 +121,7 @@ function PartyHallList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "",totalSlots:"" });
+        setFormData({ name: "", price: "", available: "",quantity:"" });
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -133,11 +133,12 @@ function PartyHallList() {
     }
   };
 
- const filteredItems = Array.isArray(itemList)
-  ? itemList.filter((item) =>
-      item.name?.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  : [];
+  const filteredItems = Array.isArray(itemList)
+    ? itemList.filter((item) =>
+        item.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
+
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const paginatedItems = filteredItems.slice(
     (currentPage - 1) * itemsPerPage,
@@ -151,53 +152,53 @@ function PartyHallList() {
   return (
     <>
       <Sidebar />
-      <div className="partyHallListContainer">
-        <div className="partyHallListHeader">
-          <h1 className="partyHallListTitle">Party Hall Items Management</h1>
-          <button className="partyHallListAddButton" onClick={() => setAddItemModal(true)}>
-            <Plus size={20} /> Add New Party Hall
+      <div className="stationaryListContainer">
+        <div className="stationaryListHeader">
+          <h1 className="stationaryListTitle">Stationary Items Management</h1>
+          <button className="stationaryListAddButton" onClick={() => setAddItemModal(true)}>
+            <Plus size={20} /> Add New Item
           </button>
         </div>
 
-        <div className="partyHallListFilters">
+        <div className="stationaryListFilters">
           <input
             type="text"
-            placeholder="Search by party hall name..."
-            className="partyHallListSearchInput"
+            placeholder="Search by item name..."
+            className="stationaryListSearchInput"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        <div className="partyHallListTableContainer">
-          <table className="partyHallListTable">
-            <thead className="partyHallListTableHead">
+        <div className="stationaryListTableContainer">
+          <table className="stationaryListTable">
+            <thead className="stationaryListTableHead">
               <tr>
-                <th className="partyHallListTableHeader">Party Hall Name</th>
-                <th className="partyHallListTableHeader">Status</th>
-                <th className="partyHallListTableHeader">Total Slots</th>
-                <th className="partyHallListTableHeader">Price</th>
-                <th className="partyHallListTableHeader">Actions</th>
+                <th className="stationaryListTableHeader">Item Name</th>
+                <th className="stationaryListTableHeader">Status</th>
+                <th className="stationaryListTableHeader">Quantity</th>
+                <th className="stationaryListTableHeader">Price</th>
+                <th className="stationaryListTableHeader">Actions</th>
               </tr>
             </thead>
-            <tbody className="partyHallListTableBody">
+            <tbody className="stationaryListTableBody">
               {paginatedItems.length > 0 ? (
                 paginatedItems.map((item) => (
                   <tr key={item._id}>
-                    <td className="partyHallListTableCell">{item.name}</td>
-                    <td className="partyHallListTableCell">{item.available ? "Available" : "Unavailable"}</td>
-                    <td className="partyHallListTableCell">{item.totalSlots}</td>
-                    <td className="partyHallListTableCell">₹{item.price}</td>
-                    <td className="partyHallListTableCell">
+                    <td className="stationaryListTableCell">{item.name}</td>
+                    <td className="stationaryListTableCell">{item.available ? "Available" : "Unavailable"}</td>
+                    <td className="stationaryListTableCell">{item.quantity}</td>
+                    <td className="stationaryListTableCell">₹{item.price}</td>
+                    <td className="stationaryListTableCell">
                       <button
-                        className="partyHallListEditButton"
+                        className="stationaryListEditButton"
                         onClick={() => settleSelectedId(item._id)}
                         title="Edit"
                       >
                         <Edit size={16} />
                       </button>
                       <button
-                        className="partyHallListDeleteButton"
+                        className="stationaryListDeleteButton"
                         onClick={() => handleDelete(item._id)}
                         title="Delete"
                       >
@@ -208,14 +209,14 @@ function PartyHallList() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4">No party hall items found</td>
+                  <td colSpan="4">No stationary items found</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
 
-        <div className="partyHallListPagination">
+        <div className="stationaryListPagination">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
@@ -240,21 +241,22 @@ function PartyHallList() {
         </div>
       </div>
 
+      {/* Add Modal */}
       {addItemModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
-            <h2>Add Party Hall Item</h2>
+            <h2>Add Stationary</h2>
             <form onSubmit={addNewItem}>
               <input
                 name="name"
-                placeholder="Party Hall Name"
+                placeholder="Item Name"
                 value={formData.name}
                 onChange={handleItemFormChange}
               />
-              <input
-                name="totalSlots"
-                placeholder="Total Slots"
-                value={formData.totalSlots}
+               <input
+                name="quantity"
+                placeholder="quantity"
+                value={formData.quantity}
                 onChange={handleItemFormChange}
               />
               <input
@@ -283,20 +285,21 @@ function PartyHallList() {
         </div>
       )}
 
+      {/* Edit Modal */}
       {editModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
-            <h2>Edit Party Hall Item</h2>
+            <h2>Edit Stationary</h2>
             <input
               name="name"
-              placeholder="Party Hall Name"
+              placeholder="Item Name"
               value={formData.name}
               onChange={handleItemFormChange}
             />
             <input
-                name="totalSlots"
-                placeholder="Total Slots"
-                value={formData.totalSlots}
+                name="quantity"
+                placeholder="quantity"
+                value={formData.quantity}
                 onChange={handleItemFormChange}
               />
             <input
@@ -341,4 +344,4 @@ function PartyHallList() {
   );
 }
 
-export default PartyHallList;
+export default StationaryList;

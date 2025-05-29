@@ -1,4 +1,4 @@
-.partyHallListContainer {
+.stationaryListContainer {
   max-width: 1473px;
   margin: 0 auto;
   padding: 24px;
@@ -8,7 +8,7 @@
   height: auto;
 }
 
-.partyHallListHeader {
+.stationaryListHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,14 +17,14 @@
   gap: 16px;
 }
 
-.partyHallListTitle {
+.stationaryListTitle {
   font-size: 32px;
   font-weight: 700;
   color: white;
   margin: 0;
 }
 
-.partyHallListAddButton {
+.stationaryListAddButton {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -39,26 +39,26 @@
   transition: all 0.2s ease;
 }
 
-.partyHallListAddButton:hover {
+.stationaryListAddButton:hover {
   background-color: #002B45;
   color: white;
   transform: translateY(-1px);
 }
 
-.partyHallListFilters {
+.stationaryListFilters {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
-.partyHallListSearchContainer {
+.stationaryListSearchContainer {
   position: relative;
   flex: 1;
   min-width: 300px;
 }
 
-.partyHallListSearchIcon {
+.stationaryListSearchIcon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -66,7 +66,7 @@
   color: #002B45;
 }
 
-.partyHallListSearchInput {
+.stationaryListSearchInput {
   padding: 12px 12px 12px 44px;
   border: 2px solid #002B45;
   border-radius: 8px;
@@ -76,18 +76,18 @@
   transition: border-color 0.2s ease;
 }
 
-.partyHallListSearchInput:focus {
+.stationaryListSearchInput:focus {
   outline: none;
   border-color: #002B45;
   box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
 }
 
-.partyHallListFilterContainer {
+.stationaryListFilterContainer {
   position: relative;
   min-width: 200px;
 }
 
-.partyHallListFilterIcon {
+.stationaryListFilterIcon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -96,7 +96,7 @@
   z-index: 1;
 }
 
-.partyHallListFilterSelect {
+.stationaryListFilterSelect {
   padding: 12px 12px 12px 44px;
   border: 2px solid #002B45;
   border-radius: 8px;
@@ -111,27 +111,27 @@
   background-size: 16px;
 }
 
-.partyHallListTableContainer {
+.stationaryListTableContainer {
   background-color: white;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 24px;
 }
 
-.partyHallListTableWrapper {
+.stationaryListTableWrapper {
   overflow-x: auto;
 }
 
-.partyHallListTable {
+.stationaryListTable {
   width: 100%;
   border-collapse: collapse;
 }
 
-.partyHallListTableHead {
+.stationaryListTableHead {
   background-color: #131f3a;
 }
 
-.partyHallListTableHeader {
+.stationaryListTableHeader {
   padding: 16px;
   text-align: left;
   font-weight: 600;
@@ -143,11 +143,11 @@
   white-space: nowrap;
 }
 
-.partyHallListTableBody .partyHallListTableRow:hover {
+.stationaryListTableBody .stationaryListTableRow:hover {
   background-color: rgba(0, 43, 69, 0.05);
 }
 
-.partyHallListTableCell {
+.stationaryListTableCell {
   padding: 16px;
   border-bottom: 1px solid rgba(0, 43, 69, 0.1);
   vertical-align: top;
@@ -156,17 +156,17 @@
   border-radius: 55px;
 }
 
-.partyHallListUsername {
+.stationaryListUsername {
   font-weight: 600;
   color: #002B45;
 }
 
-.partyHallListItemName {
+.stationaryListItemName {
   font-weight: 500;
   color: #002B45;
 }
 
-.partyHallListQuantity {
+.stationaryListQuantity {
   display: inline-block;
   background-color: rgba(0, 43, 69, 0.1);
   color: #002B45;
@@ -176,13 +176,13 @@
   font-weight: 500;
 }
 
-.partyHallListPrice {
+.stationaryListPrice {
   font-weight: 600;
   color: #002B45;
   font-size: 16px;
 }
 
-.partyHallListStatusBadge {
+.stationaryListStatusBadge {
   display: inline-block;
   padding: 6px 12px;
   border-radius: 16px;
@@ -191,32 +191,32 @@
   text-transform: capitalize;
 }
 
-.partyHallListStatusCompleted,
-.partyHallListStatusPending,
-.partyHallListStatusInProgress,
-.partyHallListStatusCancelled {
+.stationaryListStatusCompleted,
+.stationaryListStatusPending,
+.stationaryListStatusInProgress,
+.stationaryListStatusCancelled {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002B45;
   border: 1px solid #002B45;
 }
 
-.partyHallListOrderDate {
+.stationaryListOrderDate {
   font-weight: 500;
   color: #002B45;
   margin-bottom: 2px;
 }
 
-.partyHallListOrderTime {
+.stationaryListOrderTime {
   font-size: 12px;
   color: rgba(0, 43, 69, 0.7);
 }
 
-.partyHallListActionButtons {
+.stationaryListActionButtons {
   display: flex;
   gap: 8px;
 }
 
-.partyHallListActionButton {
+.stationaryListActionButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,222 +228,92 @@
   transition: all 0.2s ease;
 }
 
-.partyHallListEditButton {
+.stationaryListEditButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002B45;
   border: 1px solid #002B45;
 }
 
-.partyHallListEditButton:hover {
+.stationaryListEditButton:hover {
   background-color: #002B45;
   color: white;
 }
 
-.partyHallListDeleteButton {
+.stationaryListDeleteButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002B45;
   border: 1px solid #002B45;
 }
 
-.partyHallListDeleteButton:hover {
+.stationaryListDeleteButton:hover {
   background-color: #002B45;
   color: white;
 }
 
-.partyHallListEmptyCell {
+.stationaryListEmptyCell {
   text-align: center;
   padding: 48px 16px;
 }
 
-.partyHallListEmptyState p {
+.stationaryListEmptyState p {
   color: rgba(0, 43, 69, 0.7);
   font-size: 18px;
   margin: 0;
 }
 
-.partyHallListPagination {
+.stationaryListPagination {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px 0;
 }
 
-.partyHallListResultsInfo {
+.stationaryListResultsInfo {
   color: white;
   font-size: 14px;
 }
 
-/* Modal */
-
-.modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-.modalContent {
-  background-color: #fff;
-  padding: 2rem;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  animation: scaleIn 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.modalContent h2 {
-  color: black;
-}
-
-.modalContent input,
-.modalContent select {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: white;
-  color: black;
-  margin-top: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.modalContent input:focus,
-.modalContent select:focus {
-  border-color: #002B45;
-}
-
-.modalActions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.modalActions button {
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
-  flex: 1 1 auto;
-  min-width: 120px;
-}
-
-.modalActions button[type="submit"] {
-  background-color: #002B45;
-  color: #fff;
-}
-
-.modalActions button[type="submit"]:hover {
-  background-color: #ffffff;
-  color: #002B45;
-  transform: scale(1.05);
-  border: 1px solid #002B45;
-}
-
-.modalActions button[type="button"] {
-  background-color: #ccc;
-}
-
-.modalActions button[type="button"]:hover {
-  background-color: #999;
-  transform: scale(1.05);
-}
-
-
-/* Small devices (phones, 600px and down) */
-@media (max-width: 600px) {
-  .partyHallListTitle {
-    font-size: 24px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .partyHallListAddButton {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .partyHallListFilters {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .partyHallListSearchContainer,
-  .partyHallListFilterContainer {
-    min-width: 100%;
-  }
-
-  .modalContent {
-    padding: 1.5rem;
-    width: 95%;
-  }
-
-  .modalActions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .modalActions button {
-    width: 100%;
-  }
-
-  .partyHallListTableHeader,
-  .partyHallListTableCell {
-    font-size: 12px;
-    padding: 12px;
-  }
-
-  .partyHallListTable {
-    font-size: 14px;
-  }
-}
-
-/* Medium devices (tablets, 768px and down) */
-@media (max-width: 768px) {
-  .partyHallListHeader {
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .stationaryListHeader {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .partyHallListAddButton {
+  .stationaryListFilters {
+    flex-direction: column;
+  }
+
+  .stationaryListTableCell {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .modalContent {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .stationaryListTitle {
+    font-size: 24px;
+  }
+
+  .stationaryListAddButton {
     padding: 10px 20px;
     font-size: 14px;
   }
 
-  .partyHallListTableCell {
-    padding: 12px;
+  .stationaryListTableHeader,
+  .stationaryListTableCell {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .stationaryListSearchInput,
+  .stationaryListFilterSelect {
     font-size: 14px;
-  }
-
-  .modalContent {
-    padding: 1.8rem;
-  }
-}
-
-/* Large devices (1024px and down) */
-@media (max-width: 1024px) {
-  .partyHallListFilters {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .partyHallListSearchContainer,
-  .partyHallListFilterContainer {
-    flex: 1 1 45%;
+    padding: 10px 10px 10px 40px;
   }
 }

@@ -10,6 +10,7 @@ import {
   Menu,
   ClipboardCheck,
   Book,
+  
 } from 'lucide-react';
 import '../../assets/css/admin/sidebar.css';
 import { useNavigate } from 'react-router-dom';
@@ -68,12 +69,12 @@ const Sidebar = () => {
   };
 
   const navItems = [
-    { id: 'Catering List', label: 'Catering List', path: '/admin-categoryList', icon: <Home /> },
-    { id: 'Movies List', label: 'Movies List', path: '/admin-movies', icon: <Book /> },
+    { id: 'Catering List', label: 'Catering List', path: '/admin-cateringList', icon: <Menu /> },
+    { id: 'Movies List', label: 'Movies List', path: '/admin-moviesList', icon: <Book /> },
     { id: 'Fitness List', label: 'Fitness List', path: '/admin-fitnessList', icon: <Ticket /> },
     { id: 'Party Hall List', label: 'Party Hall List', path: '/admin-partyHall', icon: <Ticket /> },
-    { id: 'Resort List', label: 'Resort List', path: '/admin-fitnessList', icon: <Ticket /> },
-    { id: 'Stationary List', label: 'Stationary List', path: '/admin-fitnessList', icon: <Ticket /> },
+    { id: 'Resort List', label: 'Resort List', path: '/admin-resortList', icon: <Home /> },
+    { id: 'Stationary List', label: 'Stationary List', path: '/admin-stationaryList', icon: <Ticket /> },
   
    
   ];

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
-import "../../assets/css/admin/partyHallList.css";
+import "../../assets/css/admin/resortList.css";
 import Sidebar from "./sidebar";
 import api from "../../services/axiosInstance";
 import SuccessModal from "../../components/SuccessModal";
 import ErrorModal from "../../components/ErrorModal";
 
-function PartyHallList() {
+function ResortList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [addItemModal, setAddItemModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -22,14 +22,14 @@ function PartyHallList() {
     name: "",
     price: "",
     available: "",
-    totalSlots:""
+    totalRooms:""
   });
 
   const fetchItems = async () => {
     try {
-      const response = await api.get("/admin/partyHall-getItems");
+      const response = await api.get("/admin/resort-getItems");
       if (response.data.success) {
-        setItemList(response.data.PartyHallList);
+        setItemList(response.data.ResortList);
       } else {
         setErrorMessage(response.data.message);
         setErrorModal(true);
@@ -55,12 +55,12 @@ function PartyHallList() {
   const addNewItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/admin/partyHall-additem", formData);
+      const response = await api.post("/admin/resort-additem", formData);
       if (response.data.success) {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "", available: "" });
+        setFormData({ name: "", price: "", available: "",totalRooms:""});
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -75,7 +75,7 @@ function PartyHallList() {
   const handleDelete = async (_id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
-        const response = await api.delete(`/admin/partyHall-deleteitem/${_id}`);
+        const response = await api.delete(`/admin/resort-deleteitem/${_id}`);
         if (response.data.success) {
           setSuccessMessage("Item deleted successfully");
           setSuccessModal(true);
@@ -97,7 +97,7 @@ function PartyHallList() {
       setFormData({
         name: itemToEdit.name || "",
         price: itemToEdit.price || "",
-        totalSlots: itemToEdit.totalSlots || "",
+        totalRooms: itemToEdit.totalRooms || "",
         available: itemToEdit.available ? "true" : "false",
       });
     }
@@ -106,14 +106,14 @@ function PartyHallList() {
   };
 
   const handleEdit = async () => {
-    if (!formData.name.trim() && !formData.price && !formData.totalSlots && formData.available === "") {
+    if (!formData.name.trim() && !formData.price && !formData.totalRooms&& formData.available === "") {
       setErrorMessage("Please update at least one field.");
       return setErrorModal(true);
     }
 
     try {
       const response = await api.patch(
-        `/admin/partyHall-edititem?itemId=${selectedId}`,
+        `/admin/resort-edititem?itemId=${selectedId}`,
         formData
       );
 
@@ -121,7 +121,7 @@ function PartyHallList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "",totalSlots:"" });
+        setFormData({ name: "", price: "", available: "" ,totalRooms:""});
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -133,11 +133,12 @@ function PartyHallList() {
     }
   };
 
- const filteredItems = Array.isArray(itemList)
-  ? itemList.filter((item) =>
-      item.name?.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  : [];
+  const filteredItems = Array.isArray(itemList)
+    ? itemList.filter((item) =>
+        item.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
+
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const paginatedItems = filteredItems.slice(
     (currentPage - 1) * itemsPerPage,
@@ -151,53 +152,53 @@ function PartyHallList() {
   return (
     <>
       <Sidebar />
-      <div className="partyHallListContainer">
-        <div className="partyHallListHeader">
-          <h1 className="partyHallListTitle">Party Hall Items Management</h1>
-          <button className="partyHallListAddButton" onClick={() => setAddItemModal(true)}>
-            <Plus size={20} /> Add New Party Hall
+      <div className="resortListContainer">
+        <div className="resortListHeader">
+          <h1 className="resortListTitle">Resort Items Management</h1>
+          <button className="resortListAddButton" onClick={() => setAddItemModal(true)}>
+            <Plus size={20} /> Add New Resort
           </button>
         </div>
 
-        <div className="partyHallListFilters">
+        <div className="resortListFilters">
           <input
             type="text"
-            placeholder="Search by party hall name..."
-            className="partyHallListSearchInput"
+            placeholder="Search by resort name..."
+            className="resortListSearchInput"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        <div className="partyHallListTableContainer">
-          <table className="partyHallListTable">
-            <thead className="partyHallListTableHead">
+        <div className="resortListTableContainer">
+          <table className="resortListTable">
+            <thead className="resortListTableHead">
               <tr>
-                <th className="partyHallListTableHeader">Party Hall Name</th>
-                <th className="partyHallListTableHeader">Status</th>
-                <th className="partyHallListTableHeader">Total Slots</th>
-                <th className="partyHallListTableHeader">Price</th>
-                <th className="partyHallListTableHeader">Actions</th>
+                <th className="resortListTableHeader">Resort Name</th>
+                <th className="resortListTableHeader">Status</th>
+                <th className="resortListTableHeader">Total Rooms</th>
+                <th className="resortListTableHeader">Price</th>
+                <th className="resortListTableHeader">Actions</th>
               </tr>
             </thead>
-            <tbody className="partyHallListTableBody">
+            <tbody className="resortListTableBody">
               {paginatedItems.length > 0 ? (
                 paginatedItems.map((item) => (
                   <tr key={item._id}>
-                    <td className="partyHallListTableCell">{item.name}</td>
-                    <td className="partyHallListTableCell">{item.available ? "Available" : "Unavailable"}</td>
-                    <td className="partyHallListTableCell">{item.totalSlots}</td>
-                    <td className="partyHallListTableCell">₹{item.price}</td>
-                    <td className="partyHallListTableCell">
+                    <td className="resortListTableCell">{item.name}</td>
+                    <td className="resortListTableCell">{item.available ? "Available" : "Unavailable"}</td>
+                    <td className="resortListTableCell">{item.totalSlots}</td>
+                    <td className="resortListTableCell">₹{item.price}</td>
+                    <td className="resortListTableCell">
                       <button
-                        className="partyHallListEditButton"
+                        className="resortListEditButton"
                         onClick={() => settleSelectedId(item._id)}
                         title="Edit"
                       >
                         <Edit size={16} />
                       </button>
                       <button
-                        className="partyHallListDeleteButton"
+                        className="resortListDeleteButton"
                         onClick={() => handleDelete(item._id)}
                         title="Delete"
                       >
@@ -208,14 +209,14 @@ function PartyHallList() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4">No party hall items found</td>
+                  <td colSpan="4">No resort items found</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
 
-        <div className="partyHallListPagination">
+        <div className="resortListPagination">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
@@ -243,18 +244,18 @@ function PartyHallList() {
       {addItemModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
-            <h2>Add Party Hall Item</h2>
+            <h2>Add Resort</h2>
             <form onSubmit={addNewItem}>
               <input
                 name="name"
-                placeholder="Party Hall Name"
+                placeholder="Resort Name"
                 value={formData.name}
                 onChange={handleItemFormChange}
               />
               <input
-                name="totalSlots"
-                placeholder="Total Slots"
-                value={formData.totalSlots}
+                name="totalRooms"
+                placeholder="Total Rooms"
+                value={formData.totalRooms}
                 onChange={handleItemFormChange}
               />
               <input
@@ -286,17 +287,17 @@ function PartyHallList() {
       {editModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
-            <h2>Edit Party Hall Item</h2>
+            <h2>Edit Resort</h2>
             <input
               name="name"
-              placeholder="Party Hall Name"
+              placeholder="Resort Name"
               value={formData.name}
               onChange={handleItemFormChange}
             />
-            <input
-                name="totalSlots"
-                placeholder="Total Slots"
-                value={formData.totalSlots}
+             <input
+                name="totalRooms"
+                placeholder="Total Rooms"
+                value={formData.totalRooms}
                 onChange={handleItemFormChange}
               />
             <input
@@ -341,4 +342,4 @@ function PartyHallList() {
   );
 }
 
-export default PartyHallList;
+export default ResortList;

@@ -3,7 +3,7 @@ import Item from "../../models/item.js";
 
 export const createCateringItem = async (req, res) => {
   try {
-    const { name, price } = req.body;
+    const { name, price,quantity } = req.body;
     if (!name || !price)
       return res.status(400).json({
         success: false,
@@ -14,6 +14,7 @@ export const createCateringItem = async (req, res) => {
       name,
       category: "Food",
       type: "catering",
+      quantity,
       price,
     });
 
@@ -62,7 +63,7 @@ export const editCateringItem = async (req, res) => {
   try {
 
     const { itemId } = req.query;
-    const { name, price, available } = req.body;
+    const { name, price, available,quantity } = req.body;
     if (!itemId || !name || !price || available === undefined)
       return res.status(400).json({
         success: false,
@@ -71,7 +72,7 @@ export const editCateringItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available } },
+      { $set: { name, price, available,quantity } },
       { new: true }
     );
     if (!findItem)

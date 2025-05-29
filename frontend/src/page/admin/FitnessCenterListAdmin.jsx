@@ -23,6 +23,7 @@ const FitnessCenterListAdmin = () => {
     name: "",
     price: "",
     available: "",
+    totalSlots:"",
   });
 
   const fetchItems = async () => {
@@ -62,7 +63,7 @@ const FitnessCenterListAdmin = () => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "" });
+        setFormData({ name: "", price: "",totalSlots:"" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -101,6 +102,7 @@ const FitnessCenterListAdmin = () => {
       setFormData({
         name: itemToEdit.name || "",
         price: itemToEdit.price || "",
+        totalSlots: itemToEdit.totalSlots || "",
         available: itemToEdit.available ? "true" : "false",
       });
     }
@@ -124,7 +126,7 @@ const FitnessCenterListAdmin = () => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "" });
+        setFormData({ name: "", price: "", available: "",totalSlots:"" });
         setTimeout(() => {
           fetchItems();
         }, 3500);
@@ -180,8 +182,9 @@ const FitnessCenterListAdmin = () => {
           <table className="fitnessCenterTable">
             <thead className="fitnessCenterTableHead">
               <tr className="fitnessCenterTableRow">
-                <th className="fitnessCenterTableHeader">Item Name</th>
+                <th className="fitnessCenterTableHeader">Center Name</th>
                 <th className="fitnessCenterTableHeader">Status</th>
+                <th className="fitnessCenterTableHeader">Total Slot</th>
                 <th className="fitnessCenterTableHeader">Price</th>
                 <th className="fitnessCenterTableHeader">Actions</th>
               </tr>
@@ -194,7 +197,9 @@ const FitnessCenterListAdmin = () => {
                     <td className="fitnessCenterTableCell">
                       {item.available ? "Available" : "Unavailable"}
                     </td>
+                    <td className="fitnessCenterTableCell">{item.totalSlots}</td>
                     <td className="fitnessCenterTableCell">₹{item.price}</td>
+                    
                     <td className="fitnessCenterTableCell">
                       <button
                         onClick={() => settleSelectedId(item._id)}
@@ -279,6 +284,14 @@ const FitnessCenterListAdmin = () => {
                 className="customModal-input"
               />
               <input
+                type="text"
+                name="totalSlots"
+                placeholder="Total Slots"
+                value={formData.totalSlots}
+                onChange={handleItemFormChange}
+                className="customModal-input"
+              />
+              <input
                 type="number"
                 name="price"
                 placeholder="Price"
@@ -323,6 +336,14 @@ const FitnessCenterListAdmin = () => {
                 name="name"
                 placeholder="Item Name"
                 value={formData.name}
+                onChange={handleItemFormChange}
+                className="customModal-input"
+              />
+              <input
+                type="text"
+                name="totalSlots"
+                placeholder="Total Slots"
+                value={formData.totalSlots}
                 onChange={handleItemFormChange}
                 className="customModal-input"
               />

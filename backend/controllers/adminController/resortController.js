@@ -1,9 +1,11 @@
 import Item from "../../models/item.js";
 
-export const createfitnessCenterItem = async (req, res) => {
+export const createResortListItem = async (req, res) => {
+
+  
   try {
-    const { name, price,totalSlots } = req.body;
-    if (!name || !price ||!totalSlots)
+    const { name, price,totalRooms } = req.body;
+    if (!name || !price ||!totalRooms)
       return res.status(400).json({
         success: false,
         message: "fill all the feilds before submission",
@@ -11,9 +13,9 @@ export const createfitnessCenterItem = async (req, res) => {
 
     const newItem = new Item({
       name,
-      category: "Fitness",
-      type: "Gym",
-      totalSlots,
+      category: "Stays",
+      type: "resort",
+      totalSlots:totalRooms,
       price,
     });
 
@@ -28,7 +30,7 @@ export const createfitnessCenterItem = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Item saved successFully" });
   } catch (error) {
-    console.log("error in admin createfitnessCenterItem", error);
+    console.log("error in admin createResortListItem", error);
 
     return res
       .status(500)
@@ -36,20 +38,19 @@ export const createfitnessCenterItem = async (req, res) => {
   }
 };
 
-export const getfitnessCenterItem = async (req, res) => {
+export const getResortListItem = async (req, res) => {
   try {
-    const findItem = await Item.find({ type: "Gym" });
+    const findItem = await Item.find({ type: "resort" });
     if (!findItem)
       return res
         .status(500)
-        .json({ success: true, message: "No gym's exists" });
+        .json({ success: true, message: "No resort items exists" });
     return res.status(200).json({
       success: true,
-      message: "Item saved successFully",
-      fitnessCenters: findItem,
+      ResortList: findItem,
     });
   } catch (error) {
-    console.log("error in admin getCateringItem", error);
+    console.log("error in admin getResortListItem", error);
 
     return res
       .status(500)
@@ -57,13 +58,13 @@ export const getfitnessCenterItem = async (req, res) => {
   }
 };
 
-export const editfitnessCenterItem = async (req, res) => {
+export const editResortListItem = async (req, res) => {
   
   try {
 
     const { itemId } = req.query;
-    const { name, price, available,totalSlots } = req.body;
-    if (!itemId || !name || !price||!totalSlots || available === undefined)
+    const { name, price, available,totalRooms } = req.body;
+    if (!itemId || !name || !price||!totalRooms || available === undefined)
       return res.status(400).json({
         success: false,
         message: "Fill all the fields before submission",
@@ -71,7 +72,7 @@ export const editfitnessCenterItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available,totalSlots } },
+      { $set: { name, price, available,totalSlots:totalRooms } },
       { new: true }
     );
     if (!findItem)
@@ -86,7 +87,7 @@ export const editfitnessCenterItem = async (req, res) => {
       message: "Item Edited SuccessFully",
     });
   } catch (error) {
-    console.log("error in admin editCateringItem", error);
+    console.log("error in admin editResortListItem", error);
 
     return res
       .status(500)
@@ -94,7 +95,7 @@ export const editfitnessCenterItem = async (req, res) => {
   }
 };
 
-export const deletefitnessCenterItem = async (req, res) => {
+export const deleteResortListItem = async (req, res) => {
   try {
     const id = req.params.id;
     if (!id)
@@ -113,7 +114,7 @@ export const deletefitnessCenterItem = async (req, res) => {
       message: "item Deleted successfully",
     });
   } catch (error) {
-    console.log("error in admin deleteCateringItem", error);
+    console.log("error in admin deleteResortListItem", error);
 
     return res
       .status(500)

@@ -21,6 +21,7 @@ function MoviesList() {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
+    totalSlots:"",
     available: "",
   });
 
@@ -59,7 +60,7 @@ function MoviesList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "", available: "" });
+        setFormData({ name: "", price: "", available: "",totalSlots:"" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -96,6 +97,7 @@ function MoviesList() {
       setFormData({
         name: itemToEdit.name || "",
         price: itemToEdit.price || "",
+        totalSlots: itemToEdit.totalSlots || "",
         available: itemToEdit.available ? "true" : "false",
       });
     }
@@ -119,7 +121,7 @@ function MoviesList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "" });
+        setFormData({ name: "", price: "", available: "" ,totalSlots:""});
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -153,14 +155,14 @@ function MoviesList() {
         <div className="moviesHeader">
           <h1 className="moviesTitle">Movies Center Items Management</h1>
           <button className="moviesAddButton" onClick={()=>setAddItemModal(true)}>
-            <Plus size={20} /> Add New Theater
+            <Plus size={20} /> Add New Movie
           </button>
         </div>
 
         <div className="moviesFilters">
           <input
             type="text"
-            placeholder="Search by theater name..."
+            placeholder="Search by Movie name..."
             className="moviesSearchInput"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -171,8 +173,9 @@ function MoviesList() {
           <table className="moviesTable">
             <thead className="moviesTableHead">
               <tr>
-                <th className="moviesTableHeader">Theater Name</th>
+                <th className="moviesTableHeader">Movie Name</th>
                 <th className="moviesTableHeader">Status</th>
+                <th className="moviesTableHeader">Total Slots</th>
                 <th className="moviesTableHeader">Price</th>
                 <th className="moviesTableHeader">Actions</th>
               </tr>
@@ -183,6 +186,7 @@ function MoviesList() {
                   <tr key={item._id}>
                     <td className="moviesTableCell">{item.name}</td>
                     <td className="moviesTableCell" >{item.available ? "Available" : "Unavailable"}</td>
+                    <td className="moviesTableCell">{item.totalSlots}</td>
                     <td className="moviesTableCell">₹{item.price}</td>
                     <td className="moviesTableCell">
                       <button className="moviesEditButton" onClick={() => settleSelectedId(item._id)} title="Edit">
@@ -236,8 +240,14 @@ function MoviesList() {
             <form onSubmit={addNewItem}>
               <input
                 name="name"
-                placeholder="Theater Name"
+                placeholder="Movie Name"
                 value={formData.name}
+                onChange={handleItemFormChange}
+              />
+              <input
+                name="totalSlots"
+                placeholder="Total Seats"
+                value={formData.totalSlots}
                 onChange={handleItemFormChange}
               />
               <input
@@ -273,6 +283,12 @@ function MoviesList() {
               name="name"
               placeholder="Theater Name"
               value={formData.name}
+              onChange={handleItemFormChange}
+            />
+            <input
+              name="totalSlots"
+              placeholder="Total Seats"
+              value={formData.totalSlots}
               onChange={handleItemFormChange}
             />
             <input

@@ -1,4 +1,4 @@
-.partyHallListContainer {
+.resortListContainer {
   max-width: 1473px;
   margin: 0 auto;
   padding: 24px;
@@ -8,7 +8,7 @@
   height: auto;
 }
 
-.partyHallListHeader {
+.resortListHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,14 +17,14 @@
   gap: 16px;
 }
 
-.partyHallListTitle {
+.resortListTitle {
   font-size: 32px;
   font-weight: 700;
   color: white;
   margin: 0;
 }
 
-.partyHallListAddButton {
+.resortListAddButton {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -39,26 +39,26 @@
   transition: all 0.2s ease;
 }
 
-.partyHallListAddButton:hover {
+.resortListAddButton:hover {
   background-color: #002B45;
   color: white;
   transform: translateY(-1px);
 }
 
-.partyHallListFilters {
+.resortListFilters {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
-.partyHallListSearchContainer {
+.resortListSearchContainer {
   position: relative;
   flex: 1;
   min-width: 300px;
 }
 
-.partyHallListSearchIcon {
+.resortListSearchIcon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -66,7 +66,7 @@
   color: #002B45;
 }
 
-.partyHallListSearchInput {
+.resortListSearchInput {
   padding: 12px 12px 12px 44px;
   border: 2px solid #002B45;
   border-radius: 8px;
@@ -76,18 +76,18 @@
   transition: border-color 0.2s ease;
 }
 
-.partyHallListSearchInput:focus {
+.resortListSearchInput:focus {
   outline: none;
   border-color: #002B45;
   box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
 }
 
-.partyHallListFilterContainer {
+.resortListFilterContainer {
   position: relative;
   min-width: 200px;
 }
 
-.partyHallListFilterIcon {
+.resortListFilterIcon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -96,7 +96,7 @@
   z-index: 1;
 }
 
-.partyHallListFilterSelect {
+.resortListFilterSelect {
   padding: 12px 12px 12px 44px;
   border: 2px solid #002B45;
   border-radius: 8px;
@@ -111,27 +111,27 @@
   background-size: 16px;
 }
 
-.partyHallListTableContainer {
+.resortListTableContainer {
   background-color: white;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 24px;
 }
 
-.partyHallListTableWrapper {
+.resortListTableWrapper {
   overflow-x: auto;
 }
 
-.partyHallListTable {
+.resortListTable {
   width: 100%;
   border-collapse: collapse;
 }
 
-.partyHallListTableHead {
+.resortListTableHead {
   background-color: #131f3a;
 }
 
-.partyHallListTableHeader {
+.resortListTableHeader {
   padding: 16px;
   text-align: left;
   font-weight: 600;
@@ -143,11 +143,11 @@
   white-space: nowrap;
 }
 
-.partyHallListTableBody .partyHallListTableRow:hover {
+.resortListTableBody .resortListTableRow:hover {
   background-color: rgba(0, 43, 69, 0.05);
 }
 
-.partyHallListTableCell {
+.resortListTableCell {
   padding: 16px;
   border-bottom: 1px solid rgba(0, 43, 69, 0.1);
   vertical-align: top;
@@ -156,17 +156,17 @@
   border-radius: 55px;
 }
 
-.partyHallListUsername {
+.resortListUsername {
   font-weight: 600;
   color: #002B45;
 }
 
-.partyHallListItemName {
+.resortListItemName {
   font-weight: 500;
   color: #002B45;
 }
 
-.partyHallListQuantity {
+.resortListQuantity {
   display: inline-block;
   background-color: rgba(0, 43, 69, 0.1);
   color: #002B45;
@@ -176,13 +176,13 @@
   font-weight: 500;
 }
 
-.partyHallListPrice {
+.resortListPrice {
   font-weight: 600;
   color: #002B45;
   font-size: 16px;
 }
 
-.partyHallListStatusBadge {
+.resortListStatusBadge {
   display: inline-block;
   padding: 6px 12px;
   border-radius: 16px;
@@ -191,32 +191,32 @@
   text-transform: capitalize;
 }
 
-.partyHallListStatusCompleted,
-.partyHallListStatusPending,
-.partyHallListStatusInProgress,
-.partyHallListStatusCancelled {
+.resortListStatusCompleted,
+.resortListStatusPending,
+.resortListStatusInProgress,
+.resortListStatusCancelled {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002B45;
   border: 1px solid #002B45;
 }
 
-.partyHallListOrderDate {
+.resortListOrderDate {
   font-weight: 500;
   color: #002B45;
   margin-bottom: 2px;
 }
 
-.partyHallListOrderTime {
+.resortListOrderTime {
   font-size: 12px;
   color: rgba(0, 43, 69, 0.7);
 }
 
-.partyHallListActionButtons {
+.resortListActionButtons {
   display: flex;
   gap: 8px;
 }
 
-.partyHallListActionButton {
+.resortListActionButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,47 +228,47 @@
   transition: all 0.2s ease;
 }
 
-.partyHallListEditButton {
+.resortListEditButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002B45;
   border: 1px solid #002B45;
 }
 
-.partyHallListEditButton:hover {
+.resortListEditButton:hover {
   background-color: #002B45;
   color: white;
 }
 
-.partyHallListDeleteButton {
+.resortListDeleteButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002B45;
   border: 1px solid #002B45;
 }
 
-.partyHallListDeleteButton:hover {
+.resortListDeleteButton:hover {
   background-color: #002B45;
   color: white;
 }
 
-.partyHallListEmptyCell {
+.resortListEmptyCell {
   text-align: center;
   padding: 48px 16px;
 }
 
-.partyHallListEmptyState p {
+.resortListEmptyState p {
   color: rgba(0, 43, 69, 0.7);
   font-size: 18px;
   margin: 0;
 }
 
-.partyHallListPagination {
+.resortListPagination {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px 0;
 }
 
-.partyHallListResultsInfo {
+.resortListResultsInfo {
   color: white;
   font-size: 14px;
 }
@@ -365,85 +365,111 @@
 }
 
 
-/* Small devices (phones, 600px and down) */
-@media (max-width: 600px) {
-  .partyHallListTitle {
-    font-size: 24px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .partyHallListAddButton {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .partyHallListFilters {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .partyHallListSearchContainer,
-  .partyHallListFilterContainer {
-    min-width: 100%;
-  }
-
-  .modalContent {
-    padding: 1.5rem;
-    width: 95%;
-  }
-
-  .modalActions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .modalActions button {
-    width: 100%;
-  }
-
-  .partyHallListTableHeader,
-  .partyHallListTableCell {
-    font-size: 12px;
-    padding: 12px;
-  }
-
-  .partyHallListTable {
-    font-size: 14px;
-  }
-}
-
-/* Medium devices (tablets, 768px and down) */
-@media (max-width: 768px) {
-  .partyHallListHeader {
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .resortListHeader {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .partyHallListAddButton {
+  .resortListFilters {
+    flex-direction: column;
+  }
+
+  .resortListTableCell {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .modalContent {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .resortListTitle {
+    font-size: 24px;
+  }
+
+  .resortListAddButton {
     padding: 10px 20px;
     font-size: 14px;
   }
 
-  .partyHallListTableCell {
-    padding: 12px;
-    font-size: 14px;
+  .resortListFilters {
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .modalContent {
-    padding: 1.8rem;
+  .resortListSearchInput,
+  .resortListFilterSelect {
+    font-size: 14px;
+    padding: 10px 10px 10px 40px;
+  }
+
+  .resortListTableHeader,
+  .resortListTableCell {
+    font-size: 13px;
+  }
+
+  .resortListActionButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modalContent input,
+  .modalContent select {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+
+  .modalActions button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 }
 
-/* Large devices (1024px and down) */
-@media (max-width: 1024px) {
-  .partyHallListFilters {
-    flex-direction: row;
-    flex-wrap: wrap;
+@media (max-width: 480px) {
+  .resortListContainer {
+    padding: 16px;
   }
 
-  .partyHallListSearchContainer,
-  .partyHallListFilterContainer {
-    flex: 1 1 45%;
+  .resortListTitle {
+    font-size: 20px;
+  }
+
+  .resortListAddButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resortListSearchContainer,
+  .resortListFilterContainer {
+    min-width: 100%;
+  }
+
+  .resortListSearchInput,
+  .resortListFilterSelect {
+    font-size: 13px;
+  }
+
+  .resortListTableHeader,
+  .resortListTableCell {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .modalContent {
+    padding: 1rem;
+    max-width: 95%;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+
+  .modalActions button {
+    width: 100%;
   }
 }

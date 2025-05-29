@@ -23,6 +23,7 @@ const CateringListAdmin = () => {
     name: "",
     price: "",
     available: "",
+    quantity:"",
   });
 
   const fetchItems = async () => {
@@ -101,6 +102,7 @@ const CateringListAdmin = () => {
       setFormData({
         name: itemToEdit.name || "",
         price: itemToEdit.price || "",
+        quantity: itemToEdit.quantity || "",
         available: itemToEdit.available ? "true" : "false",
       });
     }
@@ -124,7 +126,7 @@ const CateringListAdmin = () => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "" });
+        setFormData({ name: "", price: "", available: "" ,quantity:""});
         setTimeout(() => {
           fetchItems();
         }, 3500);
@@ -181,6 +183,7 @@ const CateringListAdmin = () => {
             <thead className="cateringListAdminTableHead ">
               <tr className="cateringListAdminTableRow">
                 <th className="cateringListAdminTableHeader">Item Name</th>
+                <th className="cateringListAdminTableHeader">Quantity</th>
                 <th className="cateringListAdminTableHeader">Status</th>
                 <th className="cateringListAdminTableHeader">Price</th>
                 <th className="cateringListAdminTableHeader">Actions</th>
@@ -191,6 +194,7 @@ const CateringListAdmin = () => {
                 paginatedItems.map((item) => (
                   <tr key={item._id} className="cateringListAdminTableRow">
                     <td className="cateringListAdminTableCell">{item.name}</td>
+                    <td className="cateringListAdminTableCell">{item.quantity}</td>
                     <td className="cateringListAdminTableCell">
                       {item.available ? "Available" : "Unavailable"}
                     </td>
@@ -284,6 +288,14 @@ const CateringListAdmin = () => {
                 className="customModal-input"
               />
               <input
+                type="text"
+                name="quantity"
+                placeholder="quantity"
+                value={formData.quantity}
+                onChange={handleItemFormChange}
+                className="customModal-input"
+              />
+              <input
                 type="number"
                 name="price"
                 placeholder="Price"
@@ -291,6 +303,7 @@ const CateringListAdmin = () => {
                 onChange={handleItemFormChange}
                 className="customModal-input"
               />
+              
               <button type="submit" className="customModal-submit">
                 Submit
               </button>
@@ -328,6 +341,14 @@ const CateringListAdmin = () => {
                 name="name"
                 placeholder="Item Name"
                 value={formData.name}
+                onChange={handleItemFormChange}
+                className="customModal-input"
+              />
+              <input
+                type="text"
+                name="quantity"
+                placeholder="quantity"
+                value={formData.quantity}
                 onChange={handleItemFormChange}
                 className="customModal-input"
               />

@@ -4,8 +4,8 @@ export const createPartyHallItem = async (req, res) => {
 
   
   try {
-    const { name, price } = req.body;
-    if (!name || !price)
+    const { name, price,totalSlots } = req.body;
+    if (!name || !price||!totalSlots)
       return res.status(400).json({
         success: false,
         message: "fill all the feilds before submission",
@@ -15,6 +15,7 @@ export const createPartyHallItem = async (req, res) => {
       name,
       category: "EVents",
       type: "partyHall",
+      totalSlots,
       price,
     });
 
@@ -63,8 +64,8 @@ export const editPartyHallItem = async (req, res) => {
   try {
 
     const { itemId } = req.query;
-    const { name, price, available } = req.body;
-    if (!itemId || !name || !price || available === undefined)
+    const { name, price, available,totalSlots } = req.body;
+    if (!itemId || !name || !price ||!totalSlots|| available === undefined)
       return res.status(400).json({
         success: false,
         message: "Fill all the fields before submission",
@@ -72,7 +73,7 @@ export const editPartyHallItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available } },
+      { $set: { name, price, available,totalSlots } },
       { new: true }
     );
     if (!findItem)

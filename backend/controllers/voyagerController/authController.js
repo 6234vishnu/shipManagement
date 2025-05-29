@@ -84,7 +84,7 @@ export const enterdOtp = async (req, res) => {
       password: hashedPassword,
     });
 
-    const save = newVoyager.save();
+    const save =await newVoyager.save();
 
     if (!save)
       return res
@@ -104,7 +104,10 @@ export const enterdOtp = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    res.status(200).json({ success: true, message: "sign up successful", token ,id:save._id});
+    console.log('savedId',save);
+    
+
+    res.status(200).json({ success: true, message: "sign up successful", token ,voyagerId:save?._id});
   } catch (error) {
     console.log("error in enterdOtp voyager", error);
 
