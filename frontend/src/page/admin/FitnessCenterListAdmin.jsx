@@ -17,14 +17,15 @@ const FitnessCenterListAdmin = () => {
   const [selectedId, setSelectedId] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-
   const [itemList, setItemList] = useState([]);
   const [formData, setFormData] = useState({
-    name: "",
-    price: "",
-    available: "",
-    totalSlots:"",
-  });
+  name: "",
+  price: "",
+  available: "",
+  totalSlots: "",
+  equipment: [],   
+});
+const [equipmentInput, setEquipmentInput] = useState("");
 
   const fetchItems = async () => {
     try {
@@ -46,6 +47,25 @@ const FitnessCenterListAdmin = () => {
   useEffect(() => {
     fetchItems();
   }, []);
+
+  const handleAddEquipment = () => {
+  const trimmed = equipmentInput.trim();
+  if (trimmed && !formData.equipment.includes(trimmed)) {
+    setFormData((prev) => ({
+      ...prev,
+      equipment: [...prev.equipment, trimmed],
+    }));
+    setEquipmentInput("");
+  }
+};
+
+const handleRemoveEquipment = (itemToRemove) => {
+  setFormData((prev) => ({
+    ...prev,
+    equipment: prev.equipment.filter((item) => item !== itemToRemove),
+  }));
+};
+
 
   const handleItemFormChange = (e) => {
     const { name, value } = e.target;
@@ -299,6 +319,34 @@ const FitnessCenterListAdmin = () => {
                 onChange={handleItemFormChange}
                 className="customModal-input"
               />
+
+              <div className="customModal-equipment">
+  <input
+    type="text"
+    placeholder="Add Equipment"
+    value={equipmentInput}
+    onChange={(e) => setEquipmentInput(e.target.value)}
+    className="customModal-input"
+/>
+  <button type="button" onClick={handleAddEquipment} className="customModal-addEqpBtn">
+    Add Equipment
+  </button>
+
+  <ul className="equipment-list">
+    {formData.equipment.map((eqp, index) => (
+      <li key={index} className="equipment-item" style={{color:"black"}}>
+        {eqp}
+        <button style={{marginLeft:'5px',marginTop:"5px"}}
+          type="button"
+          onClick={() => handleRemoveEquipment(eqp)}
+          className="equipment-remove-btn"
+        >
+          ×
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
               <button type="submit" className="customModal-submit">
                 Submit
               </button>

@@ -2,9 +2,10 @@ import mongoose from "mongoose";
 
 const FitnessBookingSchema = new mongoose.Schema({
   voyager: { type: mongoose.Schema.Types.ObjectId, ref: 'Voyager', required: true },
-  equipment: String,
+  GymName:String,
   timeSlot: String,
   date: Date,
+  price:Number,
   createdAt: { type: Date, default: Date.now }
 });
 

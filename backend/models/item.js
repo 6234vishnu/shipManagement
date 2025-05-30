@@ -4,9 +4,10 @@ const ItemSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String }, 
   type: { type: String, required: true },
+  equipment:[{ type: String }], 
   price: Number,
-  totalSlots:{ type: String },
-  quantity:{ type: String },
+  totalSlots:{ type: Number },
+  quantity:{ type: Number },
   available: { type: Boolean, default: true }
 });
 

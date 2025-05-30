@@ -15,7 +15,7 @@ export const createResortListItem = async (req, res) => {
       name,
       category: "Stays",
       type: "resort",
-      totalSlots:totalRooms,
+      totalSlots:Number(totalRooms),
       price,
     });
 

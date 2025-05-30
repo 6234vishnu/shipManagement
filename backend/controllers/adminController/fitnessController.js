@@ -2,8 +2,8 @@ import Item from "../../models/item.js";
 
 export const createfitnessCenterItem = async (req, res) => {
   try {
-    const { name, price,totalSlots } = req.body;
-    if (!name || !price ||!totalSlots)
+    const { name, price,totalSlots,equipment } = req.body;
+    if (!name || !price ||!totalSlots||!equipment)
       return res.status(400).json({
         success: false,
         message: "fill all the feilds before submission",
@@ -14,6 +14,7 @@ export const createfitnessCenterItem = async (req, res) => {
       category: "Fitness",
       type: "Gym",
       totalSlots,
+      equipment,
       price,
     });
 

@@ -10,6 +10,7 @@ const StationeryOrderSchema = new mongoose.Schema({
     }
   ],
   status: { type: String, default: 'Pending' },
+  totalAmount:{type:Number,required:true},
   inspectedBySupervisor: { type: Boolean, default: false },
   orderedAt: { type: Date, default: Date.now }
 });

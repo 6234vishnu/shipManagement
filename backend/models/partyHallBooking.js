@@ -7,9 +7,10 @@ const PartyHallBookingSchema = new mongoose.Schema({
     enum: ['Birthday', 'Wedding', 'Engagement', 'Business', 'GetTogether'],
     required: true
   },
+  partyHallName:String,
   date: Date,
   time: String,
-  specialRequests: String,
+  price:String,
   createdAt: { type: Date, default: Date.now }
 });
 
