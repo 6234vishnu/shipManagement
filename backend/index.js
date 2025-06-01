@@ -5,6 +5,9 @@ import { connectDB } from './config/db.js'
 import cookieparser from 'cookie-parser'
 import voyagerRouter from './routes/voyagerRouter.js'
 import adminRouter from './routes/adminRouter.js'
+import managerRouter from './routes/managerRouter.js'
+import headCookRouter from './routes/headCookRouter.js'
+import supervisorRouter from './routes/supervisorRouter.js'
 
 dotenv.config()
 
@@ -32,6 +35,9 @@ app.get("/", (req, res) => {
 
 app.use('/voyager', voyagerRouter)
 app.use('/admin',adminRouter)
+app.use('/manager',managerRouter)
+app.use('/headcook',headCookRouter)
+app.use('/supervisor',supervisorRouter)
 
 connectDB()
   .then(() => {

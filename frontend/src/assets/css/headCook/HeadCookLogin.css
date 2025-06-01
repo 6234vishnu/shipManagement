@@ -1,0 +1,402 @@
+/* Head Cook Login Page Styles */
+
+/* Base Styles */
+.headCookLoginPageContainer {
+  min-height: 100vh;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.headCookLoginPageBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.headCookLoginPageBackgroundImage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.headCookLoginPageBackgroundImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  filter: blur(2px);
+}
+
+.headCookLoginPageContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  width: 50vw;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.headCookLoginPageCard {
+  background: rgba(0, 123, 167, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Logo Section */
+.headCookLoginPageLogo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.headCookLoginPageLogoContainer {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headCookLoginPageLogoContainer img {
+  max-width: 120px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  border-radius: 25px;
+}
+
+.headCookLoginPageTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.headCookLoginPageSubtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Form Styles */
+.headCookLoginPageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.headCookLoginPageInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headCookLoginPageLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.headCookLoginPageInput {
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.headCookLoginPageInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.headCookLoginPageInput::placeholder {
+  color: #9ca3af;
+}
+
+.headCookLoginPageOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.headCookLoginPageCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.headCookLoginPageCheckbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3b82f6;
+}
+
+.headCookLoginPageForgotPassword {
+  font-size: 14px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.headCookLoginPageForgotPassword:hover {
+  color: #082e46;
+  text-decoration: underline;
+}
+
+.headCookLoginPageSubmitBtn {
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #002B45 0%, #0d2f44 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.headCookLoginPageSubmitBtn:hover {
+  background: linear-gradient(135deg, #0d2f44 0%, #002B45 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.headCookLoginPageSubmitBtn:active {
+  transform: translateY(0);
+}
+
+.headCookLoginPageSubmitBtn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.headCookLoginPageError {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.headCookLoginPageFooter {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.headCookLoginPageFooter p {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and Small Laptops */
+@media (max-width: 768px) {
+  .headCookLoginPageContainer {
+    padding: 16px;
+  }
+
+  .headCookLoginPageContent {
+    max-width: 400px;
+    padding: 16px;
+  }
+
+  .headCookLoginPageCard {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+
+  .headCookLoginPageTitle {
+    font-size: 24px;
+  }
+
+  .headCookLoginPageSubtitle {
+    font-size: 15px;
+  }
+
+  .headCookLoginPageLogoContainer img {
+    max-width: 100px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .headCookLoginPageContainer {
+    padding: 12px;
+    min-height: 100vh;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .headCookLoginPageContent {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .headCookLoginPageCard {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  .headCookLoginPageLogo {
+    margin-bottom: 32px;
+  }
+
+  .headCookLoginPageTitle {
+    font-size: 22px;
+  }
+
+  .headCookLoginPageSubtitle {
+    font-size: 14px;
+  }
+
+  .headCookLoginPageLogoContainer img {
+    max-width: 90px;
+  }
+
+  .headCookLoginPageInput {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .headCookLoginPageSubmitBtn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .headCookLoginPageOptions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .headCookLoginPageForgotPassword {
+    align-self: flex-end;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 320px) {
+  .headCookLoginPageCard {
+    padding: 20px 16px;
+  }
+
+  .headCookLoginPageTitle {
+    font-size: 20px;
+  }
+
+  .headCookLoginPageInput {
+    padding: 12px;
+  }
+
+  .headCookLoginPageSubmitBtn {
+    padding: 12px 16px;
+  }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .headCookLoginPageContainer {
+    padding-top: 20px;
+  }
+
+  .headCookLoginPageCard {
+    padding: 20px;
+  }
+
+  .headCookLoginPageLogo {
+    margin-bottom: 20px;
+  }
+
+  .headCookLoginPageLogoContainer img {
+    max-width: 80px;
+  }
+
+  .headCookLoginPageTitle {
+    font-size: 20px;
+  }
+
+  .headCookLoginPageSubtitle {
+    font-size: 13px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .headCookLoginPageContainer {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+
+  .headCookLoginPageCard {
+    border: 1px solid rgba(71, 85, 105, 0.3);
+  }
+
+  .headCookLoginPageTitle {
+    color: #f1f5f9;
+  }
+
+  .headCookLoginPageSubtitle {
+    color: #94a3b8;
+  }
+
+  .headCookLoginPageLabel {
+    color: #e2e8f0;
+  }
+
+  .headCookLoginPageInput {
+    background: #ffffff;
+    border-color: #475569;
+    color: #000000;
+  }
+
+  .headCookLoginPageInput::placeholder {
+    color: #000000;
+  }
+
+  .headCookLoginPageInput:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+  }
+
+  .headCookLoginPageCheckbox {
+    color: #94a3b8;
+  }
+
+  .headCookLoginPageFooter {
+    border-top-color: #475569;
+  }
+
+  .headCookLoginPageFooter p {
+    color: #94a3b8;
+  }
+}

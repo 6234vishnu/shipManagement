@@ -18,6 +18,10 @@ import ResortBookingPage from "./page/voyager/ResortBookingPage";
 import FitnessBookingPage from "./page/voyager/FitnessBookingPage";
 import PartyHallBookingPage from "./page/voyager/PartyHallBookingPage";
 import VoyagerSidebar from "./page/voyager/voyagerSideBar";
+import ManagerLoginPage from "./page/manager/ManagerLogin";
+import HeadCookLoginPage from "./page/headCook/HeadCookLoginPage";
+import SupervisorLoginPage from "./page/supervisor/SupervisorLoginPage";
+import ManagerDashboard from "./page/manager/ManagerDashboard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,29 +36,36 @@ function App() {
           <Route path="/sideBar" element={<VoyagerSidebar />} />
           <Route path="/moviesList" element={<MoviesListUser />} />
           <Route path="/cateringOrderPage" element={<CateringOrderPage />} />
-          <Route
-            path="/stationaryOrderPage"
-            element={<StationaryOrderPage />}
-          />
+          <Route path="/stationaryOrderPage" element={<StationaryOrderPage />} />
           <Route path="/resortBookingPage" element={<ResortBookingPage />} />
           <Route path="/fitnessBookingPage" element={<FitnessBookingPage />} />
-          <Route
-            path="/partyHallBookingPage"
-            element={<PartyHallBookingPage />}
-          />
+          <Route path="/partyHallBookingPage" element={<PartyHallBookingPage />} />
+
 
           {/*admin side */}
           <Route path="/admin-login" element={<AdminLoginPage />} />
           <Route path="/sidebar" element={<Sidebar />} />
           <Route path="/admin-cateringList" element={<CateringListAdmin />} />
           <Route path="/admin-moviesList" element={<MoviesList />} />
-          <Route
-            path="/admin-fitnessList"
-            element={<FitnessCenterListAdmin />}
-          />
+          <Route path="/admin-fitnessList" element={<FitnessCenterListAdmin />} />
           <Route path="/admin-partyHall" element={<PartyHallList />} />
           <Route path="/admin-resortList" element={<ResortList />} />
           <Route path="/admin-stationaryList" element={<StationaryList />} />
+
+
+          {/*manager side */}
+
+          <Route path="/manager-Login" element={<ManagerLoginPage/>}/>
+          <Route path="/manager-dashboard" element={<ManagerDashboard/>}/>
+
+          {/*head cook side */}
+
+          <Route path="/headCook-Login" element={<HeadCookLoginPage/>}/>
+
+          {/* supervisor side */}
+
+          <Route path="/supervisor-Login" element={<SupervisorLoginPage/>}/>
+
         </Routes>
       </BrowserRouter>
     </>

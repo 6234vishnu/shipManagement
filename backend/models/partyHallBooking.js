@@ -10,6 +10,8 @@ const PartyHallBookingSchema = new mongoose.Schema({
   partyHallName:String,
   date: Date,
   time: String,
+  status:{type:String, default:"Pending"},
+  isApproved:{type:Boolean, default:false},
   price:String,
   createdAt: { type: Date, default: Date.now }
 });

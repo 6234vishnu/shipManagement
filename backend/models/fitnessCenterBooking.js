@@ -6,6 +6,8 @@ const FitnessBookingSchema = new mongoose.Schema({
   timeSlot: String,
   date: Date,
   price:Number,
+  status:{type:String, default:"Pending"},
+  isApproved:{type:Boolean, default:false},
   createdAt: { type: Date, default: Date.now }
 });
 
