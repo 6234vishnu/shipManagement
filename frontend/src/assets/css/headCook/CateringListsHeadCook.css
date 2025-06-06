@@ -1,0 +1,503 @@
+/* Catering Orders Page Styles */
+.cateringOrderPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cateringOrderPage__container {
+  width: 96.1vw;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.cateringOrderPage__header {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cateringOrderPage__headerContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cateringOrderPage__headerIcon {
+  width: 40px;
+  height: 40px;
+  color: #002B45;
+}
+
+.cateringOrderPage__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.cateringOrderPage__stats {
+  display: flex;
+  gap: 30px;
+}
+
+.cateringOrderPage__stat {
+  text-align: center;
+  padding: 15px 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+}
+
+.cateringOrderPage__statNumber {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #002B45;
+}
+
+.cateringOrderPage__statLabel {
+  display: block;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+/* Filter Styles */
+.cateringOrderPage__filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.cateringOrderPage__filterBtn {
+  background: white;
+  border: 2px solid #e2e8f0;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cateringOrderPage__filterBtn:hover {
+  border-color: #4f46e5;
+  color: #002B45;
+  background-color: white;
+  transform: translateY(-2px);
+}
+
+.cateringOrderPage__filterBtn--active {
+  background: #002B45;
+  border-color: #4f46e5;
+  color: white;
+}
+
+/* Order Card Styles */
+.cateringOrderPage__ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cateringOrderPage__orderCard {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.cateringOrderPage__orderCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cateringOrderPage__orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.cateringOrderPage__orderInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cateringOrderPage__orderId {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.cateringOrderPage__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.cateringOrderPage__status--pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.cateringOrderPage__status--delivered {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.cateringOrderPage__statusIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.cateringOrderPage__statusIcon--pending {
+  color: #d97706;
+}
+
+.cateringOrderPage__statusIcon--delivered {
+  color: #059669;
+}
+
+.cateringOrderPage__orderAmount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #002B45;
+}
+
+/* Order Details */
+.cateringOrderPage__orderDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cateringOrderPage__voyagerInfo,
+.cateringOrderPage__orderMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cateringOrderPage__detailIcon {
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+}
+
+.cateringOrderPage__voyagerName,
+.cateringOrderPage__roomNumber,
+.cateringOrderPage__orderDate,
+.cateringOrderPage__orderTime {
+  font-size: 0.95rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.cateringOrderPage__itemsList {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #044975;
+}
+
+.cateringOrderPage__itemsTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 10px 0;
+}
+
+.cateringOrderPage__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cateringOrderPage__item {
+  background: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: #002B45;
+  border: 1px solid #e2e8f0;
+}
+
+.cateringOrderPage__instructions {
+  background: #fef7ff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #002B45;
+  border-left: 3px solid #002B45;
+}
+
+/* Actions */
+.cateringOrderPage__actions {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cateringOrderPage__deliveredBtn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.cateringOrderPage__deliveredBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.cateringOrderPage__btnIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Empty State */
+.cateringOrderPage__emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cateringOrderPage__emptyIcon {
+  width: 80px;
+  height: 80px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.cateringOrderPage__emptyTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 10px 0;
+}
+
+.cateringOrderPage__emptyText {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+
+.cateringOrderPage__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 20px 0;
+}
+
+.cateringOrderPage__pagination button {
+  padding: 8px 16px;
+  background-color: #334155;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cateringOrderPage__pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+  .cateringOrderPage {
+    padding: 15px;
+  }
+  
+  .cateringOrderPage__header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .cateringOrderPage__title {
+    font-size: 2rem;
+  }
+  
+  .cateringOrderPage__stats {
+    gap: 20px;
+  }
+  
+  .cateringOrderPage__stat {
+    padding: 12px 16px;
+  }
+  
+  .cateringOrderPage__statNumber {
+    font-size: 1.5rem;
+  }
+  
+  .cateringOrderPage__orderCard {
+    padding: 20px;
+  }
+  
+  .cateringOrderPage__orderHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .cateringOrderPage__orderInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .cateringOrderPage__voyagerInfo,
+  .cateringOrderPage__orderMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+  .cateringOrderPage {
+    padding: 10px;
+  }
+  
+  .cateringOrderPage__header {
+    padding: 15px;
+  }
+  
+  .cateringOrderPage__title {
+    font-size: 1.5rem;
+  }
+  
+  .cateringOrderPage__headerIcon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .cateringOrderPage__stats {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .cateringOrderPage__stat {
+    padding: 10px;
+  }
+  
+  .cateringOrderPage__filters {
+    gap: 10px;
+  }
+  
+  .cateringOrderPage__filterBtn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .cateringOrderPage__orderCard {
+    padding: 15px;
+  }
+  
+  .cateringOrderPage__orderId {
+    font-size: 1.2rem;
+  }
+  
+  .cateringOrderPage__orderAmount {
+    font-size: 1.2rem;
+  }
+  
+  .cateringOrderPage__items {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .cateringOrderPage__item {
+    padding: 8px 12px;
+  }
+  
+  .cateringOrderPage__deliveredBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+  
+  .cateringOrderPage__emptyState {
+    padding: 40px 15px;
+  }
+  
+  .cateringOrderPage__emptyIcon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .cateringOrderPage__emptyTitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 360px) {
+  .cateringOrderPage__title {
+    font-size: 1.3rem;
+  }
+  
+  .cateringOrderPage__headerContent {
+    gap: 10px;
+  }
+  
+  .cateringOrderPage__filterBtn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .cateringOrderPage__orderCard {
+    padding: 12px;
+  }
+  
+  .cateringOrderPage__status {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .cateringOrderPage__statusIcon {
+    width: 14px;
+    height: 14px;
+  }
+}

@@ -50,3 +50,4 @@ export const supervisorLogin=async(req,res)=>{
          .json({ success: true, message: "server error try later" });
      }
 }
+

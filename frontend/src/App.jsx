@@ -22,6 +22,8 @@ import ManagerLoginPage from "./page/manager/ManagerLogin";
 import HeadCookLoginPage from "./page/headCook/HeadCookLoginPage";
 import SupervisorLoginPage from "./page/supervisor/SupervisorLoginPage";
 import ManagerDashboard from "./page/manager/ManagerDashboard";
+import CateringListsHeadCook from "./page/headCook/CateringListsHeadCook";
+import StationaryOrdersSupervisor from "./page/supervisor/StationaryOrdersSupervisor";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -61,10 +63,12 @@ function App() {
           {/*head cook side */}
 
           <Route path="/headCook-Login" element={<HeadCookLoginPage/>}/>
+          <Route path="/headCook-CateringLists" element={<CateringListsHeadCook/>}/>
 
           {/* supervisor side */}
 
           <Route path="/supervisor-Login" element={<SupervisorLoginPage/>}/>
+          <Route path="/supervisor-StationaryLists" element={<StationaryOrdersSupervisor/>}/>
 
         </Routes>
       </BrowserRouter>
