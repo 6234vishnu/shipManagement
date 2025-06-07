@@ -11,7 +11,7 @@ export const headCookLogin=async(req,res)=>{
            message: "fill all the feilds before submission",
          });
    
-       const findUser = await HeadCook.findOne({ email,role:'head-cook' });
+       const findUser = await HeadCook.findOne({ email,role:'head-cook',isSignUpAccepted:true });
        if (!findUser)
          return res.status(400).json({
            success: false,

@@ -12,7 +12,6 @@ const StationaryOrdersSupervisor = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
   const [filter, setFilter] = useState("all");
-
   const [currentPage, setCurrentPage] = useState(1);
   const ordersPerPage = 5;
 
@@ -26,7 +25,9 @@ const StationaryOrdersSupervisor = () => {
         setErrorModal(true);
       }
     } catch (error) {
-      setErrorMessage(error?.response?.data?.message || "Something went wrong.");
+      setErrorMessage(
+        error?.response?.data?.message || "Something went wrong."
+      );
       setErrorModal(true);
     }
   };
@@ -37,7 +38,9 @@ const StationaryOrdersSupervisor = () => {
 
   const markAsDelivered = async (orderId) => {
     try {
-      const res = await api.patch(`/supervisor/stationary-orders/${orderId}/deliver`);
+      const res = await api.patch(
+        `/supervisor/stationary-orders/${orderId}/deliver`
+      );
       if (res.data.success) {
         setSuccessMessages(res.data.message);
         setSuccessModal(true);
@@ -94,15 +97,23 @@ const StationaryOrdersSupervisor = () => {
             <div className="stationaryOrderPage__stats">
               <div className="stationaryOrderPage__stat">
                 <span className="stationaryOrderPage__statNumber">
-                  {orders.filter((o) => o.status.toLowerCase() === "pending").length}
+                  {
+                    orders.filter((o) => o.status.toLowerCase() === "pending")
+                      .length
+                  }
                 </span>
                 <span className="stationaryOrderPage__statLabel">Pending</span>
               </div>
               <div className="stationaryOrderPage__stat">
                 <span className="stationaryOrderPage__statNumber">
-                  {orders.filter((o) => o.status.toLowerCase() === "delivered").length}
+                  {
+                    orders.filter((o) => o.status.toLowerCase() === "delivered")
+                      .length
+                  }
                 </span>
-                <span className="stationaryOrderPage__statLabel">Delivered</span>
+                <span className="stationaryOrderPage__statLabel">
+                  Delivered
+                </span>
               </div>
             </div>
           </header>
@@ -112,7 +123,9 @@ const StationaryOrdersSupervisor = () => {
               <button
                 key={status}
                 className={`stationaryOrderPage__filterBtn ${
-                  filter === status ? "stationaryOrderPage__filterBtn--active" : ""
+                  filter === status
+                    ? "stationaryOrderPage__filterBtn--active"
+                    : ""
                 }`}
                 onClick={() => {
                   setFilter(status);
@@ -132,9 +145,15 @@ const StationaryOrdersSupervisor = () => {
                     <h3 className="stationaryOrderPage__orderId">
                       Order #{order._id.slice(-5)}
                     </h3>
-                    <div className={`stationaryOrderPage__status ${getStatusClass(order.status)}`}>
+                    <div
+                      className={`stationaryOrderPage__status ${getStatusClass(
+                        order.status
+                      )}`}
+                    >
                       {getStatusIcon(order.status)}
-                      <span className="stationaryOrderPage__statusText">{order.status}</span>
+                      <span className="stationaryOrderPage__statusText">
+                        {order.status}
+                      </span>
                     </div>
                   </div>
                   <div className="stationaryOrderPage__orderAmount">
@@ -152,13 +171,19 @@ const StationaryOrdersSupervisor = () => {
 
                   <div className="stationaryOrderPage__orderMeta">
                     <Calendar className="stationaryOrderPage__detailIcon" />
-                    <span className="stationaryOrderPage__orderDate">{formatDate(order.orderedAt)}</span>
+                    <span className="stationaryOrderPage__orderDate">
+                      {formatDate(order.orderedAt)}
+                    </span>
                     <Clock className="stationaryOrderPage__detailIcon" />
-                    <span className="stationaryOrderPage__orderTime">{formatTime(order.orderedAt)}</span>
+                    <span className="stationaryOrderPage__orderTime">
+                      {formatTime(order.orderedAt)}
+                    </span>
                   </div>
 
                   <div className="stationaryOrderPage__itemsList">
-                    <h4 className="stationaryOrderPage__itemsTitle">Ordered Items:</h4>
+                    <h4 className="stationaryOrderPage__itemsTitle">
+                      Ordered Items:
+                    </h4>
                     <ul className="stationaryOrderPage__items">
                       {order.items.map((item, index) => (
                         <li key={index} className="stationaryOrderPage__item">
@@ -187,7 +212,9 @@ const StationaryOrdersSupervisor = () => {
           {filteredOrders.length === 0 && (
             <div className="stationaryOrderPage__emptyState">
               <Package className="stationaryOrderPage__emptyIcon" />
-              <h3 className="stationaryOrderPage__emptyTitle">No orders found</h3>
+              <h3 className="stationaryOrderPage__emptyTitle">
+                No orders found
+              </h3>
               <p className="stationaryOrderPage__emptyText">
                 {filter === "all"
                   ? "No stationary orders available."
@@ -199,13 +226,19 @@ const StationaryOrdersSupervisor = () => {
           {/* Pagination Controls */}
           {totalPages > 1 && (
             <div className="stationaryOrderPage__pagination">
-              <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
+              <button
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
                 Prev
               </button>
               <span>
                 Page {currentPage} of {totalPages}
               </span>
-              <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)}>
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
                 Next
               </button>
             </div>
@@ -213,8 +246,18 @@ const StationaryOrdersSupervisor = () => {
         </div>
       </div>
 
-      {errorModal && <ErrorModal message={errorMessage} onClose={() => setErrorModal(false)} />}
-      {successModal && <SuccessModal message={successMessages} onClose={() => setSuccessModal(false)} />}
+      {errorModal && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={() => setErrorModal(false)}
+        />
+      )}
+      {successModal && (
+        <SuccessModal
+          message={successMessages}
+          onClose={() => setSuccessModal(false)}
+        />
+      )}
     </>
   );
 };

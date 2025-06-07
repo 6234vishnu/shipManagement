@@ -8,6 +8,7 @@ import adminRouter from './routes/adminRouter.js'
 import managerRouter from './routes/managerRouter.js'
 import headCookRouter from './routes/headCookRouter.js'
 import supervisorRouter from './routes/supervisorRouter.js'
+import staffRouter from './routes/staffsRouter.js'
 
 dotenv.config()
 
@@ -38,6 +39,7 @@ app.use('/admin',adminRouter)
 app.use('/manager',managerRouter)
 app.use('/headcook',headCookRouter)
 app.use('/supervisor',supervisorRouter)
+app.use('/staff',staffRouter)
 
 connectDB()
   .then(() => {

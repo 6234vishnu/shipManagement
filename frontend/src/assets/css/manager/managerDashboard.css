@@ -13,6 +13,7 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+
 /* Header Styles */
 .dashboard-header {
   background: rgba(255, 255, 255, 0.95);
@@ -119,6 +120,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+
 }
 
 .stat-label {
@@ -557,6 +559,35 @@
   color: white;
 }
 
+.logOutModal-Container{
+  background-color: white;
+  color: black;
+  width: 300px;
+  border-radius: 10px;
+  padding: 30px;
+  position: fixed;
+  top: 50%;
+  left: 40%;
+  z-index: 10;
+
+}
+.logOutModal-subContainer{
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+gap: 1.5rem;
+}
+.logOutModal-logOutButton{
+background-color:#374151 ;
+color: white;
+}
+.logOutModal-cancelButton{
+  background-color: rgb(229, 17, 17);
+  color: white;
+
+}
+
 /* Responsive Design */
 
 /* Large Desktop */
@@ -606,6 +637,7 @@
   .dashboard-container {
     padding: 1rem;
   }
+  
   
   .dashboard-header {
     padding: 1.5rem;
@@ -664,6 +696,10 @@
     gap: 1rem;
     text-align: center;
   }
+  .logOutModal-Container{
+left: 40%;
+}
+
 }
 
 /* Mobile Large */
@@ -671,6 +707,9 @@
   .dashboard-container {
     padding: 0.75rem;
   }
+.logOutModal-Container{
+left: 30%;
+}
   
   .dashboard-header {
     padding: 1.25rem;
@@ -821,6 +860,9 @@
   .dashboard-container {
     padding: 0.5rem;
   }
+  .logOutModal-Container{
+left: 10%;
+}
   
   .dashboard-header {
     padding: 1rem;
@@ -967,7 +1009,9 @@
   .dashboard-container {
     padding: 0.25rem;
   }
-  
+  .logOutModal-Container{
+left: 15%;
+}
   .dashboard-header {
     padding: 0.875rem;
     border-radius: 12px;
@@ -979,6 +1023,7 @@
   
   .title-icon {
     font-size: 1.5rem;
+    cursor: pointer;
   }
   
   .dashboard-subtitle {

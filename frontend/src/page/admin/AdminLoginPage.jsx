@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Anchor, User, Lock } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { User, Lock } from 'lucide-react';
 import '../../assets/css/admin/adminLogin.css';
 import api from '../../services/axiosInstance';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import ErrorModal from '../../components/ErrorModal';
 
 const AdminLoginPage = () => {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -15,22 +16,49 @@ const AdminLoginPage = () => {
   const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
 
+
+  useEffect(() => {
+    const adminId = localStorage.getItem('adminId');
+    if (adminId) {
+      navigate('/admin/home');
+    }
+  }, [navigate]);
+
+  
+  useEffect(() => {
+    if (successModal) {
+      const timer = setTimeout(() => setSuccessModal(false), 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [successModal]);
+
+
+  useEffect(() => {
+    if (errorModal) {
+      const timer = setTimeout(() => setErrorModal(false), 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [errorModal]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password });
 
     try {
-      const response = await api.post('/admin/auth/login', { data: { email, password } });
+      const response = await api.post('/admin/auth/login', {
+        data: { email, password },
+      });
+
       if (response.data.success) {
         localStorage.setItem('adminId', response.data.id);
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
-        return setTimeout(() => {
+        setTimeout(() => {
           navigate('/admin/home');
-        }, 1500); 
+        }, 1500);
+      } else {
+        setErrorMessage(response.data.message || 'Login failed');
+        setErrorModal(true);
       }
-      setErrorMessage(response.data.message);
-      setErrorModal(true);
     } catch (error) {
       setErrorMessage(error?.response?.data?.message || 'Something went wrong');
       setErrorModal(true);
@@ -52,9 +80,9 @@ const AdminLoginPage = () => {
               <div className="adminLogin-logo">
                 <div className="adminLogin-logo-box">
                   <img
-                    style={{ width: "50px", height: "50px", borderRadius: "40px" }}
                     src="/images/1000_F_292453112_9QwoJWym05uAhpcULP0VziW5Mw1wDrPD.jpg"
                     alt="logo"
+                    style={{ width: '50px', height: '50px', borderRadius: '40px' }}
                   />
                 </div>
               </div>
@@ -94,10 +122,14 @@ const AdminLoginPage = () => {
                 </div>
 
                 <div className="adminLogin-options">
-                  <a href="#" className="adminLogin-forgot">Forgot password?</a>
+                  <a href="#" className="adminLogin-forgot">
+                    Forgot password?
+                  </a>
                 </div>
 
-                <button type="submit" className="adminLogin-button">Login</button>
+                <button type="submit" className="adminLogin-button">
+                  Login
+                </button>
               </form>
 
               <p className="adminLogin-footer">© 2025 Ship Management System</p>

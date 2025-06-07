@@ -1,17 +1,14 @@
-import Voyager from "../../models/voyager.js";
-import { sendOtp } from "../../utils/nodeMailer.js";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import Staff from '../../models/staff.js'
+import { sendOtp } from '../../utils/nodeMailer.js';
+import bcrypt from 'bcrypt'
 
-export const signUp = async (req, res) => {
-  const generateOTP = () => {
+export const staffsSignUp = async (req, res) => {
+      const generateOTP = () => {
     return Math.floor(100000 + Math.random() * 900000).toString();
   };
-
-
   try {
-    const { name, email, phone, password, confirmPassword } = req.body;
-    if (!name || !email || !phone || !password || !confirmPassword) {
+    const { name, email, phone, password, confirmPassword, role } = req.body;
+ if (!name || !email || !phone || !password || !confirmPassword  || !role) {
       return res.status(400).json({
         success: false,
         message: "Fill all the feilds before submission",
@@ -22,11 +19,11 @@ export const signUp = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Passwords are not matched" });
 
-    const userExists = await Voyager.findOne({ email });
-    if (userExists)
+    const staffExists = await Staff.findOne({ email, });
+    if (staffExists)
       return res
         .status(400)
-        .json({ success: false, message: "User already exists" });
+        .json({ success: false, message: "Staff already exists" });
     const otp = generateOTP();
     console.log("otp is: ", otp);
 
@@ -42,7 +39,7 @@ export const signUp = async (req, res) => {
       otp,
     });
   } catch (error) {
-    console.log("error in signup voyager", error);
+    console.log("error in signup Staff", error);
 
     return res
       .status(500)
@@ -50,15 +47,16 @@ export const signUp = async (req, res) => {
   }
 };
 
-export const enterdOtp = async (req, res) => {
+
+export const enterdOtpStaffSignUp = async (req, res) => {
   try {
     const { formData, code } = req.body;
-    const { name, email, phone, password, confirmPassword } = formData;
+    const { name, role, email, phone, password, confirmPassword } = formData;
     if(!code) return res.status(400).json({
         success: false,
         message: "please Enter the Otp",
       });
-    if (!name || !email || !phone || !password || !confirmPassword) {
+    if (!name || !role || !email || !phone || !password || !confirmPassword) {
       return res.status(400).json({
         success: false,
         message: "Fill all the feilds before submission",
@@ -68,47 +66,44 @@ export const enterdOtp = async (req, res) => {
       return res
         .status(400)
         .json({ success: false, message: "Passwords are not matched" });
-
-    const userExists = await Voyager.findOne({ email });
-    if (userExists)
-      return res
-        .status(400)
-        .json({ success: false, message: "User already exists" });
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newVoyager = new Voyager({
-      name,
+    const staffExists = await Staff.findOne({ email, });
+
+    if (staffExists) {
+      if (staffExists.isSignUpAccepted === false) {
+        return res.status(400).json({
+          success: false,
+          message: "Please wait until admin approves your sign-up",
+        });
+      }
+
+      return res.status(400).json({
+        success: false,
+        message: "Staff already exists",
+      });
+    }
+
+    const newStaff = new Staff({
+     username: name,
       email,
+      role,
       phone,
       password: hashedPassword,
+      isSignUpAccepted:false,
     });
 
-    const save =await newVoyager.save();
+    const save =await newStaff.save();
 
     if (!save)
       return res
         .status(500)
         .json({ success: false, message: "Server error try later" });
 
-    const token = jwt.sign(
-      { id: save._id, email: save.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
 
-    res.cookie("voyagerToken", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
-
-    
-
-    res.status(200).json({ success: true, message: "sign up successful", token ,voyagerId:save?._id});
+    res.status(200).json({ success: true,});
   } catch (error) {
-    console.log("error in enterdOtp voyager", error);
+    console.log("error in enterdOtpStaffSignUp staff", error);
 
     return res
       .status(500)

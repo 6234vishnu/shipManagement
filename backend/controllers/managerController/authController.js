@@ -1,9 +1,6 @@
 import Manager from "../../models/staff.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Movies from "../../models/movieBooking.js";
-import Fitness from "../../models/fitnessCenterBooking.js";
-import PartyHall from "../../models/partyHallBooking.js";
 
 
 export const managerLogin = async (req, res) => {
@@ -15,7 +12,7 @@ export const managerLogin = async (req, res) => {
         message: "fill all the feilds before submission",
       });
 
-    const findUser = await Manager.findOne({ email, role: "manager" });
+    const findUser = await Manager.findOne({ email, role: "manager",isSignUpAccepted:true });
     if (!findUser)
       return res.status(400).json({
         success: false,
@@ -51,6 +48,39 @@ export const managerLogin = async (req, res) => {
 
     return res
       .status(500)
-      .json({ success: true, message: "server error try later" });
+      .json({ success: false, message: "server error try later" });
   }
 };
+
+
+export const managerLogout = async (req, res) => {
+try {
+    const {managerId}=req.query
+
+    const findManager=await Manager.findById(managerId)
+    if(!findManager)
+      return res
+      .status(400)
+      .json({ success: false, message: "Couldint Logout try later" });
+      
+   res.clearCookie("managerToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Logout successful",
+    });      
+
+} catch (error) {
+  console.log('error in manager logout',error);
+  
+    return res.status(500).json({
+      success: false,
+      message: "Logout successful",
+    });      
+
+}
+}

@@ -1,6 +1,6 @@
 import express from 'express'
 const adminRouter=express.Router()
-import { adminLogin, } from '../controllers/adminController/authController.js'
+import { adminLogin,getstaffsUnApproved,getadminDetails,adminLogout } from '../controllers/adminController/authController.js'
 import { createCateringItem,getCateringItem,editCateringItem,deleteCateringItem } from '../controllers/adminController/cateringController.js'
 import { createfitnessCenterItem,getfitnessCenterItem,editfitnessCenterItem,deletefitnessCenterItem } from '../controllers/adminController/fitnessController.js'
 import { createMoviesCenterItem,getMoviesCenterItem,editMoviesCenterItem,deleteMoviesCenterItem } from '../controllers/adminController/moviesController.js'
@@ -9,6 +9,9 @@ import { createResortListItem,getResortListItem,editResortListItem,deleteResortL
 import { createStationaryListItem,getStationaryListItem,editStationaryListItem,deleteStationaryListItem } from '../controllers/adminController/stationaryController.js'
 
 adminRouter.post("/auth/login",adminLogin)
+adminRouter.post("/auth/logout",adminLogout)
+adminRouter.post("/role/getDetails",getadminDetails)
+adminRouter.get("/get-Staffs-SignUpRequest",getstaffsUnApproved)
 
 
 adminRouter.post("/catering-additem",createCateringItem)

@@ -24,6 +24,8 @@ import SupervisorLoginPage from "./page/supervisor/SupervisorLoginPage";
 import ManagerDashboard from "./page/manager/ManagerDashboard";
 import CateringListsHeadCook from "./page/headCook/CateringListsHeadCook";
 import StationaryOrdersSupervisor from "./page/supervisor/StationaryOrdersSupervisor";
+import StaffSignUp from "./page/staff/StaffSignUp";
+import AdminStaffApproval from "./page/admin/AdminStaffApproval";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -53,6 +55,7 @@ function App() {
           <Route path="/admin-partyHall" element={<PartyHallList />} />
           <Route path="/admin-resortList" element={<ResortList />} />
           <Route path="/admin-stationaryList" element={<StationaryList />} />
+          <Route path="/admin-StaffsApproval" element={<AdminStaffApproval />} />
 
 
           {/*manager side */}
@@ -69,6 +72,10 @@ function App() {
 
           <Route path="/supervisor-Login" element={<SupervisorLoginPage/>}/>
           <Route path="/supervisor-StationaryLists" element={<StationaryOrdersSupervisor/>}/>
+
+          {/* staffs signUp */}
+
+          <Route path="/staffs-signUp" element={<StaffSignUp/>}/>
 
         </Routes>
       </BrowserRouter>

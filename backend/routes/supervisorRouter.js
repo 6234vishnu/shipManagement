@@ -11,5 +11,4 @@ supervisorRouter.patch('/stationary-orders/:orderId/deliver',updateDeliveryStatu
 
 
 
-
 export default supervisorRouter

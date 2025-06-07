@@ -133,6 +133,8 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 1.5rem;
+  background-color: white;
+  color: black;
 }
 
 .otpModal-input {
@@ -143,6 +145,8 @@
   border: 2px solid #ccc;
   border-radius: 8px;
   transition: border-color 0.3s;
+    background-color: white;
+  color: black;
 }
 
 .otpModal-input:focus {

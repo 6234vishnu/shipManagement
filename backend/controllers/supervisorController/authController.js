@@ -11,7 +11,7 @@ export const supervisorLogin=async(req,res)=>{
            message: "fill all the feilds before submission",
          });
    
-       const findUser = await SuperVisor.findOne({ email,role:'head-cook' });
+       const findUser = await SuperVisor.findOne({ email,role:'supervisor',isSignUpAccepted:true });
        if (!findUser)
          return res.status(400).json({
            success: false,

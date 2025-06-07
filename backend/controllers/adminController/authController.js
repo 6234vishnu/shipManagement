@@ -1,6 +1,7 @@
-import Admin from "../../models/staff.js";
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Admin from "../../models/staff.js";
 
 
 export const adminLogin = async (req, res) => {
@@ -12,7 +13,7 @@ export const adminLogin = async (req, res) => {
         message: "fill all the feilds before submission",
       });
 
-    const findUser = await Admin.findOne({ email,role:'admin' });
+    const findUser = await Admin.findOne({ email, role: "admin" });
     if (!findUser)
       return res.status(400).json({
         success: false,
@@ -41,24 +42,86 @@ export const adminLogin = async (req, res) => {
       success: true,
       message: "Login successful",
       token,
-      id: save._id,
+      id: findUser._id,
     });
   } catch (error) {
     console.log("error in admin login", error);
 
     return res
       .status(500)
-      .json({ success: true, message: "server error try later" });
+      .json({ success: false, message: "server error try later" });
+  }
+};
+
+export const getstaffsUnApproved = async (req, res) => {
+  try {
+    const getUnApprovedRequests = await Admin.find({ isSignUpAccepted: false });
+    if (!getUnApprovedRequests)
+      return res
+        .status(400)
+        .json({ success: false, message: "No new Request to Approve" });
+    return res
+      .status(200)
+      .json({ success: true, requests: getUnApprovedRequests });
+  } catch (error) {
+    console.log("error in getstaffsUnApproved", error);
+
+    return res
+      .status(500)
+      .json({ success: false, message: "server error try later" });
+  }
+};
+
+export const getadminDetails = async (req, res) => {
+  try {
+    const { adminId } = req.query;
+
+    const findAdminDeatails = await Admin.findById(adminId);
+    if (!findAdminDeatails) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Admin not found" });
+    }
+
+    return res.status(200).json({
+      success: true,
+      admin: findAdminDeatails,
+    });
+  } catch (error) {
+    console.log("error in getadminDetails", error);
+
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error, try later" });
   }
 };
 
 
+export const adminLogout = async (req, res) => {
+try {
+  const {adminId}=req.query
+  const findAdmin=await Admin.findById(adminId)
+  if(!findAdmin)
+     return res
+        .status(400)
+        .json({ success: false, message: "Couldint logout please try leter" });
 
+   res.clearCookie("adminToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
 
+    return res.status(200).json({
+      success: true,
+      message: "Logout successful",
+    });      
 
+} catch (error) {
+     console.log("error in adminLogout", error);
 
-
-
-
-
-
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error, try later" });
+}
+}
