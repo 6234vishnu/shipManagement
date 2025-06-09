@@ -9,10 +9,8 @@ import {
   Eye,
   Search,
   Download,
-  LogOut
+  LogOut,
 } from "lucide-react";
-
-
 import "../../assets/css/manager/managerDashboard.css";
 import api from "../../services/axiosInstance";
 import SuccessModal from "../../components/SuccessModal";
@@ -34,15 +32,15 @@ const ManagerDashboard = () => {
   const [errorModal, setErrorModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [successModal, setSuccessModal] = useState(false);
-  const [logOutModal,setLogOutModal]=useState(false)
+  const [logOutModal, setLogOutModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const itemsPerPage = 5;
-  const managerId=localStorage.getItem("managerId")
+  const managerId = localStorage.getItem("managerId");
 
-  useEffect(()=>{
-     if(!managerId) return navigate('/manager-Login')
-  },[])
+  useEffect(() => {
+    if (!managerId) return navigate("/manager-Login");
+  }, []);
 
   useEffect(() => {
     if (!successModal) return;
@@ -87,24 +85,25 @@ const ManagerDashboard = () => {
     }
   };
 
-
-  const handleLogout=async(e)=>{ 
-    e.preventDefault()
+  const handleLogout = async (e) => {
+    e.preventDefault();
     try {
-      const response=await api.post(`/manager/Manager-Logout?managerId=${managerId}`)
-      if(response.data.success){
-        localStorage.removeItem('managerId')
-        return navigate('/manager-Login')
+      const response = await api.post(
+        `/manager/Manager-Logout?managerId=${managerId}`
+      );
+      if (response.data.success) {
+        localStorage.removeItem("managerId");
+        return navigate("/manager-Login");
       }
-      setErrorMessage(response.data.message)
-      return setErrorModal(true)
+      setErrorMessage(response.data.message);
+      return setErrorModal(true);
     } catch (error) {
-      console.log('error in manager logout');
-      
-       setErrorMessage(error?.response?.data?.message)
-      setErrorModal(true)
+      console.log("error in manager logout");
+
+      setErrorMessage(error?.response?.data?.message);
+      setErrorModal(true);
     }
-  }
+  };
 
   useEffect(() => {
     const getDatas = async () => {
@@ -239,34 +238,35 @@ const ManagerDashboard = () => {
   return (
     <>
       <div className="dashboard-container">
-       
         {/* Header */}
         <div className="dashboard-header">
           <div className="header-content">
-            <h1 className="dashboard-title">
-              Manager Dashboard
-            </h1>
+            <h1 className="dashboard-title">Manager Dashboard</h1>
             <p className="dashboard-subtitle">
               Manage all booking requests efficiently
             </p>
-              <span onClick={()=>setLogOutModal(true)} className="title-icon">Logout <LogOut size={18} /></span>
+            <span onClick={() => setLogOutModal(true)} className="title-icon">
+              Logout <LogOut size={18} />
+            </span>
           </div>
 
           <div className="header-stats">
             <div className="stat-card">
-              <div className="stat-number" >
+              <div className="stat-number">
                 {bookings.filter((b) => b.status === "pending").length}
               </div>
               <div className="stat-label">Pending</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number" style={{color:"white"}}>
+              <div className="stat-number" style={{ color: "white" }}>
                 {bookings.filter((b) => b.status === "approved").length}
               </div>
               <div className="stat-label">Approved</div>
             </div>
             <div className="stat-card">
-              <div className="stat-number"style={{color:"white"}}>{bookings.length}</div>
+              <div className="stat-number" style={{ color: "white" }}>
+                {bookings.length}
+              </div>
               <div className="stat-label">Total</div>
             </div>
           </div>
@@ -549,12 +549,19 @@ const ManagerDashboard = () => {
         />
       )}
 
-      {logOutModal&&(
+      {logOutModal && (
         <div className="logOutModal-Container">
           <p>Are you sure you want to logOut</p>
-          <div className="logOutModal-subContainer" >
-   <button className="logOutModal-logOutButton" onClick={handleLogout}>Logout</button>
-   <button className="logOutModal-cancelButton" onClick={()=>setLogOutModal(false)}>Cancel</button>
+          <div className="logOutModal-subContainer">
+            <button className="logOutModal-logOutButton" onClick={handleLogout}>
+              Logout
+            </button>
+            <button
+              className="logOutModal-cancelButton"
+              onClick={() => setLogOutModal(false)}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       )}

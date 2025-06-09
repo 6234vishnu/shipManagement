@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Calendar, MapPin, Eye } from "lucide-react";
+import { Calendar, Eye } from "lucide-react";
 import "../../assets/css/voyager/ResortBookingPage.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
 import SuccessModal from "../../components/SuccessModal";
+import VoyagerSidebar from "./voyagerSideBar";
 
 const ResortBookingPage = () => {
   const [resorts, setResorts] = useState([]);
@@ -15,9 +16,11 @@ const ResortBookingPage = () => {
   const [successModal, setSuccessModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
   const userId = localStorage.getItem("voyagerId");
-  const viewTypes = ['Oceanview', 'Balcony', 'Corridor', 'Lounge'];
+  const viewTypes = ["Oceanview", "Balcony", "Corridor", "Lounge"];
 
   useEffect(() => {
     const fetchResorts = async () => {
@@ -30,7 +33,9 @@ const ResortBookingPage = () => {
           setErrorModal(true);
         }
       } catch (error) {
-        setErrorMessage(error?.response?.data?.message || "Something went wrong");
+        setErrorMessage(
+          error?.response?.data?.message || "Something went wrong"
+        );
         setErrorModal(true);
       }
     };
@@ -45,20 +50,8 @@ const ResortBookingPage = () => {
   };
 
   const handleBooking = async () => {
-    if (!selectedResort) {
-      setErrorMessage("Please select a resort");
-      setErrorModal(true);
-      return;
-    }
-    
-    if (!selectedViewType) {
-      setErrorMessage("Please select a view type");
-      setErrorModal(true);
-      return;
-    }
-    
-    if (!selectedDate) {
-      setErrorMessage("Please select a date");
+    if (!selectedResort || !selectedViewType || !selectedDate) {
+      setErrorMessage("All fields are required");
       setErrorModal(true);
       return;
     }
@@ -66,7 +59,7 @@ const ResortBookingPage = () => {
     const bookingDate = new Date(selectedDate);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    
+
     if (bookingDate < today) {
       setErrorMessage("Please select a future date");
       setErrorModal(true);
@@ -74,25 +67,28 @@ const ResortBookingPage = () => {
     }
 
     setLoading(true);
-    
+
     const payload = {
-     resortName:selectedResort.name,
+      resortName: selectedResort.name,
       viewType: selectedViewType,
       date: selectedDate,
-      totalAmount: selectedResort.price
+      totalAmount: selectedResort.price,
     };
 
     try {
-      const response = await api.post(`/voyager/resort-booking/${userId}`, payload);
+      const response = await api.post(
+        `/voyager/resort-booking/${userId}`,
+        payload
+      );
       if (response.data.success) {
         setSuccessMessage("Resort booking placed successfully!");
         setSelectedResort(null);
         setSelectedViewType("");
         setSelectedDate("");
-      return  setSuccessModal(true);
+        setSuccessModal(true);
       } else {
         setErrorMessage(response.data.message);
-       return setErrorModal(true);
+        setErrorModal(true);
       }
     } catch (error) {
       setErrorMessage(error?.response?.data?.message || "Something went wrong");
@@ -105,25 +101,33 @@ const ResortBookingPage = () => {
   const getMinDate = () => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow.toISOString().split('T')[0];
+    return tomorrow.toISOString().split("T")[0];
   };
+
+  const totalPages = Math.ceil(resorts.length / itemsPerPage);
+  const paginatedResorts = resorts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <>
+      <VoyagerSidebar />
       <div className="resortBookingPageVoyager-container">
         <div className="resortBookingPageVoyager-header">
           <h1 className="resortBookingPageVoyager-title">Resort Booking</h1>
-          <p className="resortBookingPageVoyager-subtitle">Find your perfect stay</p>
+          <p className="resortBookingPageVoyager-subtitle">
+            Find your perfect stay
+          </p>
         </div>
 
         <div className="resortBookingPageVoyager-main">
-          {/* Resort Selection */}
           <div className="resortBookingPageVoyager-menu-section">
             <h3>Available Resorts</h3>
             <div className="resortBookingPageVoyager-items-grid">
-              {resorts.map((resort, index) => (
+              {paginatedResorts.map((resort, index) => (
                 <div
-                  key={resort.id || resort._id || `${resort.name}-${index}`}
+                  key={resort._id || `${resort.name}-${index}`}
                   className={`resortBookingPageVoyager-item-card ${
                     selectedResort?.name === resort.name ? "selected" : ""
                   }`}
@@ -131,8 +135,12 @@ const ResortBookingPage = () => {
                 >
                   <div className="resortBookingPageVoyager-item-image">🏨</div>
                   <div className="resortBookingPageVoyager-item-info">
-                    <div className="resortBookingPageVoyager-item-name">{resort.name}</div>
-                    <div className="resortBookingPageVoyager-item-price">${resort.price}/night</div>
+                    <div className="resortBookingPageVoyager-item-name">
+                      {resort.name}
+                    </div>
+                    <div className="resortBookingPageVoyager-item-price">
+                      ${resort.price}/night
+                    </div>
                     {resort.description && (
                       <div className="resortBookingPageVoyager-item-description">
                         {resort.description}
@@ -142,9 +150,30 @@ const ResortBookingPage = () => {
                 </div>
               ))}
             </div>
+
+            {/* Pagination Controls */}
+            <div className="resortBookingPageVoyager-pagination">
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </button>
+              <span>
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </button>
+            </div>
           </div>
 
-          {/* Booking Details */}
+          {/* Booking Section */}
           {selectedResort && (
             <div className="resortBookingPageVoyager-booking-section">
               <h3>Booking Details</h3>
@@ -153,11 +182,9 @@ const ResortBookingPage = () => {
                 <p>Price: ${selectedResort.price}/night</p>
               </div>
 
-              {/* View Type Selection */}
               <div className="resortBookingPageVoyager-view-selection">
                 <label>
-                  <Eye size={18} />
-                  Select View Type:
+                  <Eye size={18} /> Select View Type:
                 </label>
                 <div className="resortBookingPageVoyager-view-options">
                   {viewTypes.map((viewType) => (
@@ -174,11 +201,9 @@ const ResortBookingPage = () => {
                 </div>
               </div>
 
-              {/* Date Selection */}
               <div className="resortBookingPageVoyager-date-selection">
                 <label>
-                  <Calendar size={18} />
-                  Select Check-in Date:
+                  <Calendar size={18} /> Select Check-in Date:
                 </label>
                 <input
                   type="date"
@@ -189,7 +214,6 @@ const ResortBookingPage = () => {
                 />
               </div>
 
-              {/* Booking Summary */}
               {selectedViewType && selectedDate && (
                 <div className="resortBookingPageVoyager-booking-summary">
                   <h4>Booking Summary</h4>
@@ -212,7 +236,6 @@ const ResortBookingPage = () => {
                 </div>
               )}
 
-              {/* Book Button */}
               <button
                 className="resortBookingPageVoyager-placeorder-btn"
                 onClick={handleBooking}
@@ -225,8 +248,18 @@ const ResortBookingPage = () => {
         </div>
       </div>
 
-      {errorModal && <ErrorModal message={errorMessage} onClose={() => setErrorModal(false)} />}
-      {successModal && <SuccessModal message={successMessage} onClose={() => setSuccessModal(false)} />}
+      {errorModal && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={() => setErrorModal(false)}
+        />
+      )}
+      {successModal && (
+        <SuccessModal
+          message={successMessage}
+          onClose={() => setSuccessModal(false)}
+        />
+      )}
     </>
   );
 };

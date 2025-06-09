@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../assets/css/headCook/HeadCookLogin.css';
 import api from '../../services/axiosInstance';
 import { useNavigate } from 'react-router-dom';
+import ErrorModal from '../../components/ErrorModal';
 
 const HeadCookLoginPage = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ const HeadCookLoginPage = () => {
   };
 
   return (
+     <>
     <div className="headCookLoginPageContainer">
       <div className="headCookLoginPageBackground">
         <div className="headCookLoginPageBackgroundImage">
@@ -72,6 +74,7 @@ const HeadCookLoginPage = () => {
             </div>
             <h1 className="headCookLoginPageTitle">Head Cook Portal</h1>
             <p className="headCookLoginPageSubtitle">Access your kitchen dashboard</p>
+            <p>{error}</p>
           </div>
 
           {/* Login Form */}
@@ -130,6 +133,13 @@ const HeadCookLoginPage = () => {
         </div>
       </div>
     </div>
+    {errorModal && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+   </>
   );
 };
 

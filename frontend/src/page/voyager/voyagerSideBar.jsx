@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
-  Home,
-  UserPlus,
-  Ticket,
-  CreditCard,
-  Users,
-  Calendar,
   X,
   Menu,
-  ClipboardCheck,
-  Book,
-  
-} from 'lucide-react';
-import '../../assets/css/admin/sidebar.css';
-import { useNavigate } from 'react-router-dom';
-import api from '../../services/axiosInstance';
+  Utensils,
+  Clapperboard,
+  Dumbbell,
+  PartyPopper,
+  Hotel,
+  PenTool,
+  Phone,
+} from "lucide-react";
 
+import "../../assets/css/admin/sidebar.css";
+import { useNavigate } from "react-router-dom";
+import api from "../../services/axiosInstance";
 
 const VoyagerSidebar = () => {
-  const [activeItem, setActiveItem] = useState('Dashboard');
+  const [activeItem, setActiveItem] = useState("Dashboard");
   const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState('');
-  const [voyagerName, setVoyagerName] = useState('');
+  const [message, setMessage] = useState("");
+  const [voyagerName, setVoyagerName] = useState("");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
 
-  const voyagerId = localStorage.getItem('voyagerId');
+  const voyagerId = localStorage.getItem("voyagerId");
 
   useEffect(() => {
     if (!voyagerId) {
@@ -33,73 +31,115 @@ const VoyagerSidebar = () => {
       return;
     }
 
-    const getAdmintData = async () => {
+    const getVoyagerData = async () => {
       try {
-        const response = await api.get(`/voyager/auth/getDetails?voyagerId=${voyagerId}`);
+        const response = await api.post(
+          `/voyager/auth/getDetails?voyagerId=${voyagerId}`
+        );
         if (response.data.success) {
-
-            setVoyagerName(response.data.voyager?.name);
+          setVoyagerName(response.data.voyager?.name);
         } else {
           setMessage(response.data.message);
         }
       } catch (error) {
-        console.log('error in receptionist sidebar', error);
-        setMessage('Server error, try again later');
+        console.log("error in Voyager sidebar", error);
+        setMessage("Server error, try again later");
       }
     };
 
-    getAdmintData();
+    getVoyagerData();
   }, [voyagerId]);
 
   const handleLogout = async () => {
-    const voyagerId = localStorage.getItem('voyagerId');
     try {
-      const response = await api.post(`/admin/auth/logout?adminId=${voyagerId}`);
+      const response = await api.post(
+        `/voyager/auth/logout?voyagerId=${voyagerId}`
+      );
       if (response.data.success) {
-        localStorage.removeItem('voyagerId');
-        navigate('/admin/login', { replace: true });
+        localStorage.removeItem("voyagerId");
+        navigate("/login", { replace: true });
         window.location.reload();
-        setMessage('');
+        setMessage("");
       }
       setMessage(response.data.message);
     } catch (error) {
-      console.log('error in handleLogout adminNav', error);
-      setMessage('server error');
+      console.log("error in handleLogout adminNav", error);
+      setMessage("server error");
     }
   };
 
   const navItems = [
-    { id: 'Food Items', label: 'Food Items', path: '/cateringOrderPage', icon: <Menu /> },
-    { id: 'Movies Booking', label: 'Movies Booking', path: '/moviesList', icon: <Book /> },
-    { id: 'Gym Booking', label: 'Gym Booking', path: '/fitnessBookingPage', icon: <Ticket /> },
-    { id: 'Party Hall Booking', label: 'Party Hall Booking', path: '/partyHallBookingPage', icon: <Ticket /> },
-    { id: 'Resort Booking', label: 'Resort Booking', path: '/resortBookingPage', icon: <Home /> },
-    { id: 'Stationary items', label: 'Stationary Items', path: '//stationaryOrderPage', icon: <Ticket /> },
-  
-   
+    {
+      id: "Food Items Booking",
+      label: "Food Items",
+      path: "/cateringOrderPage",
+      icon: <Utensils />,
+    },
+    {
+      id: "Movies Booking",
+      label: "Movies Booking",
+      path: "/moviesList",
+      icon: <Clapperboard />,
+    },
+    {
+      id: "Gym Booking",
+      label: "Gym Booking",
+      path: "/fitnessBookingPage",
+      icon: <Dumbbell />,
+    },
+    {
+      id: "Party Hall Booking",
+      label: "Party Hall Booking",
+      path: "/partyHallBookingPage",
+      icon: <PartyPopper />,
+    },
+    {
+      id: "Resort Booking",
+      label: "Resort Booking",
+      path: "/resortBookingPage",
+      icon: <Hotel />,
+    },
+    {
+      id: "Stationary items",
+      label: "Stationary Items",
+      path: "/stationaryOrderPage",
+      icon: <PenTool />,
+    },
+    {
+      id: "Contact Us",
+      label: "Contact Us",
+      path: "/contactUs",
+      icon: <Phone />,
+    },
   ];
 
   return (
     <>
-      <button className="adminNavToggleBtn" onClick={() => setIsOpen((prev) => !prev)}>
-  {isOpen ? (
-    <X size={24} />
-  ) : (
-    <img src="\images\1000_F_292453112_9QwoJWym05uAhpcULP0VziW5Mw1wDrPD.jpg" alt="Open Sidebar" className="adminNavImageIcon" />
-  )}
-</button>
-<p style={{color:"white"}}>{message}</p>
-
+      <button
+        className="adminNavToggleBtn"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        {isOpen ? (
+          <X size={24} />
+        ) : (
+          <img
+            src="\images\1000_F_292453112_9QwoJWym05uAhpcULP0VziW5Mw1wDrPD.jpg"
+            alt="Open Sidebar"
+            className="adminNavImageIcon"
+          />
+        )}
+      </button>
+      <p style={{ color: "white" }}>{message}</p>
 
       {isOpen && (
         <nav className="adminNavContainer">
           <div className="adminNavLogo">
             <img
               style={{
-                width: '60px',
-                height: '60px',
-                marginLeft: '83px',
-                borderRadius: '30px',
+                width: "60px",
+                height: "60px",
+                marginLeft: "83px",
+                borderRadius: "30px",
               }}
               src="\images\1000_F_292453112_9QwoJWym05uAhpcULP0VziW5Mw1wDrPD.jpg"
               alt=""
@@ -110,7 +150,9 @@ const VoyagerSidebar = () => {
             {navItems.map((item) => (
               <li
                 key={item.id}
-                className={`adminNavItem ${activeItem === item.label ? 'adminNavItemActive' : ''}`}
+                className={`adminNavItem ${
+                  activeItem === item.label ? "adminNavItemActive" : ""
+                }`}
                 onClick={() => {
                   setActiveItem(item.label);
                   navigate(item.path);
@@ -118,29 +160,31 @@ const VoyagerSidebar = () => {
               >
                 <div className="adminNavIconContainer">{item.icon}</div>
                 <span className="adminNavLabel">{item.label}</span>
-                {activeItem === item.label && <div className="adminNavActiveIndicator" />}
+                {activeItem === item.label && (
+                  <div className="adminNavActiveIndicator" />
+                )}
               </li>
             ))}
           </ul>
 
           <div className="adminNavUserSection">
             <div className="adminNavUserAvatar">
-              <span>{adminName.charAt(0)}</span>
+              <span>{voyagerName.charAt(0)}</span>
             </div>
             <div className="adminNavUserInfo">
-              <span className="adminNavUserName">{adminName }</span>
-              <span className="adminNavUserRole">Admin</span>
+              <span className="adminNavUserName">{voyagerName}</span>
+              <span className="adminNavUserRole">User</span>
             </div>
           </div>
 
           <button
             style={{
-              backgroundColor: 'white',
-              color: 'black',
-              borderRadius: '10px',
-              padding: '10px 20px',
-              border: '1px solid black',
-              margin: '10px',
+              backgroundColor: "white",
+              color: "black",
+              borderRadius: "10px",
+              padding: "10px 20px",
+              border: "1px solid black",
+              margin: "10px",
             }}
             onClick={() => setShowLogoutModal(true)}
           >
@@ -154,7 +198,10 @@ const VoyagerSidebar = () => {
           <div className="logoutModalBox">
             <h5>Are you sure you want to logout?</h5>
             <div className="logoutModalButtons">
-              <button onClick={() => setShowLogoutModal(false)} className="logoutCancelBtn">
+              <button
+                onClick={() => setShowLogoutModal(false)}
+                className="logoutCancelBtn"
+              >
                 Cancel
               </button>
               <button onClick={handleLogout} className="logoutConfirmBtn">

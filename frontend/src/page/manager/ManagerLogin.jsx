@@ -3,7 +3,6 @@ import '../../assets/css/manager/ManagerLogin.css'
 import api from '../../services/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../components/ErrorModal';
-import SuccessModal from '../../components/SuccessModal';
 
 const ManagerLoginPage = () => {
   const [formData, setFormData] = useState({

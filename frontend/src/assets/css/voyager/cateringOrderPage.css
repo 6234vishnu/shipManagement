@@ -1,8 +1,8 @@
 /* Catering Order Page Styles */
 .cateringOrderPageVoyager-container {
-width: 96.1vw;
+width: 99.1vw;
   padding: 20px;
-  background: linear-gradient(135deg, #2c3e50 0%, #2c3e50 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   min-height: 100vh;
 }
 
@@ -14,6 +14,7 @@ width: 96.1vw;
 
 .cateringOrderPageVoyager-title {
   font-size: 3rem;
+  color: black;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   font-weight: bold;
@@ -21,6 +22,7 @@ width: 96.1vw;
 
 .cateringOrderPageVoyager-subtitle {
   font-size: 1.2rem;
+  color: black;
   opacity: 0.9;
 }
 
@@ -35,7 +37,8 @@ width: 96.1vw;
   background: white;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border:1px solid #002B45;
+  box-shadow: 2px 3px 20px 11px rgba(0, 0, 0, 0.15);
 }
 
 .cateringOrderPageVoyager-categories {
@@ -168,6 +171,7 @@ width: 96.1vw;
   background: white;
   border-radius: 20px;
   padding: 25px;
+  border: 1px solid #002B45;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   position: sticky;
   top: 20px;

@@ -20,7 +20,7 @@ const AdminLoginPage = () => {
   useEffect(() => {
     const adminId = localStorage.getItem('adminId');
     if (adminId) {
-      navigate('/admin/home');
+      navigate('/admin-StaffsApproval');
     }
   }, [navigate]);
 
@@ -53,7 +53,7 @@ const AdminLoginPage = () => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setTimeout(() => {
-          navigate('/admin/home');
+          navigate('/admin-StaffsApproval');
         }, 1500);
       } else {
         setErrorMessage(response.data.message || 'Login failed');

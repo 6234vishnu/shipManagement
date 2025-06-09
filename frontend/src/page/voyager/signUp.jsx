@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState, } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../../assets/css/voyager/signup.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
 import SuccessModal from "../../components/SuccessModal";
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -24,7 +22,7 @@ function SignUp() {
   const [otpFromBackend, setOtpFromBackend] = useState(null);
   const inputRefs = useRef([]);
   const [otp, setOtp] = useState(new Array(6).fill(""));
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!successMessage) return;
@@ -71,7 +69,6 @@ function SignUp() {
     newOtp[index] = value;
     setOtp(newOtp);
 
-   
     if (index < 5) {
       inputRefs.current[index + 1].focus();
     }
@@ -91,39 +88,38 @@ function SignUp() {
     }
   };
 
-  const handleotpSubmit =async () => {
+  const handleotpSubmit = async () => {
     const code = otp.join("");
     if (!code.length === 6) {
-      setErrorMessage('Enter correct Otp')
-     return setModalOpen(true)
-    } 
-    if(otpFromBackend!==code){
-      setErrorMessage('Enterd otp is incorrect')
-     return setModalOpen(true)
+      setErrorMessage("Enter correct Otp");
+      return setModalOpen(true);
+    }
+    if (otpFromBackend !== code) {
+      setErrorMessage("Enterd otp is incorrect");
+      return setModalOpen(true);
     }
 
     try {
-      const res=await api.post(`/voyager/auth/enterdOtp`,{formData,code})
-      if(res.data.success){
-        console.log("voyagerId",res.data);
-        
-        localStorage.setItem("voyagerId",res.data.voyagerId)
-        setSuccessMessage(res.data.message)
-        setOtpModal(false)
-        setSuccessModalOpen(true)
-       return setTimeout(() => {
-          navigate('/')
+      const res = await api.post(`/voyager/auth/enterdOtp`, { formData, code });
+      if (res.data.success) {
+        console.log("voyagerId", res.data);
+
+        localStorage.setItem("voyagerId", res.data.voyagerId);
+        setSuccessMessage(res.data.message);
+        setOtpModal(false);
+        setSuccessModalOpen(true);
+        return setTimeout(() => {
+          navigate("/");
         }, 3500);
       }
-      setErrorMessage(res.data.message)
-      setModalOpen(true)
+      setErrorMessage(res.data.message);
+      setModalOpen(true);
     } catch (error) {
       console.log(error);
-      
-      setErrorMessage(error?.res?.data?.message)
-      setModalOpen(true)
+
+      setErrorMessage(error?.res?.data?.message);
+      setModalOpen(true);
     }
-    
   };
 
   return (

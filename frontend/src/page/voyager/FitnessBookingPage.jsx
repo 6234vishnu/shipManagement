@@ -4,6 +4,7 @@ import "../../assets/css/voyager/FitnessBookingPage.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
 import SuccessModal from "../../components/SuccessModal";
+import VoyagerSidebar from "./voyagerSideBar";
 
 const FitnessBookingPage = () => {
   const [items, setItems] = useState([]);
@@ -89,7 +90,7 @@ const FitnessBookingPage = () => {
 
     const payload = {
       GymName: selectedEquipment,
-      price:selectedItem.price,
+      price: selectedItem.price,
       timeSlot: selectedTimeSlot,
       date: selectedDate,
     };
@@ -127,11 +128,11 @@ const FitnessBookingPage = () => {
     maxDate.setDate(maxDate.getDate() + 30); // Allow booking up to 30 days in advance
     return maxDate.toISOString().split("T")[0];
   };
-  const selectedItem = items.find(item => item.name === selectedEquipment);
-
+  const selectedItem = items.find((item) => item.name === selectedEquipment);
 
   return (
     <>
+      <VoyagerSidebar />
       <div className="fitnessBookingPageVoyager-container">
         <div className="fitnessBookingPageVoyager-header">
           <h1 className="fitnessBookingPageVoyager-title">
@@ -243,7 +244,11 @@ const FitnessBookingPage = () => {
                 </div>
                 <div className="fitnessBookingPageVoyager-summary-item">
                   <span>Price:</span>
-                  <span><strong style={{color:"#1e293b"}}>₹{selectedItem.price}</strong></span>
+                  <span>
+                    <strong style={{ color: "#1e293b" }}>
+                      ₹{selectedItem.price}
+                    </strong>
+                  </span>
                 </div>
               </div>
             )}

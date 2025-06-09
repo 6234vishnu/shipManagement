@@ -2,6 +2,8 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Admin from "../../models/staff.js";
+import { sendSignupStatusEmail } from "../../utils/StaffLoginRequestMailer.js";
+import staff from "../../models/staff.js";
 
 
 export const adminLogin = async (req, res) => {
@@ -60,6 +62,8 @@ export const getstaffsUnApproved = async (req, res) => {
       return res
         .status(400)
         .json({ success: false, message: "No new Request to Approve" });
+
+ 
     return res
       .status(200)
       .json({ success: true, requests: getUnApprovedRequests });
@@ -124,4 +128,59 @@ try {
       .status(500)
       .json({ success: false, message: "Server error, try later" });
 }
+}
+
+export const approveStaffRequest=async (req,res)=>{
+  try {
+    const {staffId}=req.query
+
+    const findStaff=await Admin.findByIdAndUpdate(staffId,{$set:{isSignUpAccepted:true}})
+
+    if(!findStaff)
+      return res
+      .status(500)
+      .json({ success: false, message: "Server error, try later" });
+     const status='approved'
+    await sendSignupStatusEmail(findStaff?.email,findStaff?.username,status)
+
+      return res.status(200).json({
+      success: true,
+      message: "Successfully accepted SignUp",
+    });      
+
+  } catch (error) {
+      console.log("error in approveStaffRequest", error);
+
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error, try later" });
+  }
+}
+
+
+export const rejectStaffRequest=async (req,res)=>{
+  try {
+    const {staffId}=req.query
+
+    const findStaffAndReject=await Admin.findByIdAndDelete(staffId)
+
+    if(!findStaffAndReject)
+      return res
+      .status(500)
+      .json({ success: false, message: "Server error, try later" });
+     const status='rejected'
+    await sendSignupStatusEmail(findStaffAndReject?.email,findStaffAndReject?.username,status)
+
+      return res.status(200).json({
+      success: true,
+      message: "Successfully rejected SignUp",
+    });      
+
+  } catch (error) {
+      console.log("error in rejectStaffRequest", error);
+
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error, try later" });
+  }
 }

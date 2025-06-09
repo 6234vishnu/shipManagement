@@ -41,19 +41,44 @@ const AdminStaffApproval = () => {
 
   const handleApprove = async (staffId) => {
     try {
-      // await approveStaff(staffId);
-      setStaffRequests((prev) => prev.filter((staff) => staff._id !== staffId));
+
+   const response=await api.post(`/admin/staffRequest-Approval?staffId=${staffId}`)
+   if(response.data.success){
+    setSuccessMessage('Staff approval SuccessFull')
+    setSuccessModalOpen(true)
+   return setTimeout(()=>{
+    getRequest()
+   },3000)
+   
+   }
+   setErrorMessage(response.data.message)
+   return setErrorModal(true)
+
     } catch (error) {
       console.error('Error approving staff:', error);
+       setErrorMessage(error?.response?.data?.message)
+   return setErrorModal(true)
     }
   };
 
   const handleReject = async (staffId) => {
     try {
-      // await rejectStaff(staffId);
-      setStaffRequests((prev) => prev.filter((staff) => staff._id !== staffId));
+    const response=await api.post(`/admin/staffRequest-Rejection?staffId=${staffId}`)
+   if(response.data.success){
+    setSuccessMessage('Staff Rejection SuccessFull')
+    setSuccessModalOpen(true)
+   return setTimeout(()=>{
+    getRequest()
+   },3000)
+   
+   }
+   setErrorMessage(response.data.message)
+   return setErrorModal(true)
+
     } catch (error) {
       console.error('Error rejecting staff:', error);
+       setErrorMessage(error?.response?.data?.message)
+   return setErrorModal(true)
     }
   };
 

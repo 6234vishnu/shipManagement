@@ -1,8 +1,8 @@
 /* Resort Booking Page Styles */
 .resortBookingPageVoyager-container {
-  width: 96.1vw;
+  width: 99vw;
   padding: 20px;
-  background: linear-gradient(135deg, #2c3e50 0%, #2c3e50 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   min-height: 100vh;
 }
 
@@ -16,12 +16,14 @@
   font-size: 3rem;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: black;
   font-weight: bold;
 }
 
 .resortBookingPageVoyager-subtitle {
   font-size: 1.2rem;
   opacity: 0.9;
+  color: black;
 }
 
 .resortBookingPageVoyager-main {
@@ -35,7 +37,7 @@
   background: white;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0px 8px 20px 14px rgba(0, 0, 0, 0.15);
 }
 
 .resortBookingPageVoyager-categories {
@@ -268,7 +270,7 @@
   border-radius: 12px;
   padding: 24px;
   margin-top: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 20px 14px rgba(0, 0, 0, 0.15);
   border: 1px solid #e5e7eb;
 }
 
@@ -475,10 +477,39 @@
 
 /* Selected Resort Card Styling */
 .resortBookingPageVoyager-item-card.selected {
-  border: 3px solid #3b82f6;
+  border: 3px solid #002B45;
   background: #eff6ff;
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+
+.resortBookingPageVoyager-placeorder-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Pagination */
+.resortBookingPageVoyager-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.resortBookingPageVoyager-pagination button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #002B45;
+  background: #002B45;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+}
+
+.resortBookingPageVoyager-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Media Queries */

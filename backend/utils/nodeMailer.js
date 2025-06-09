@@ -16,7 +16,7 @@ export const sendOtp = async (email, otp) => {
 
    
     const info = await transporter.sendMail({
-      from: `"Tata Motors" <${process.env.EMAIL_USER}>`,
+      from: `"Horizon Cruiser" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Your OTP for Horizon Cruiser Signup',
       html: `<p>Your OTP for Horizon Cruiser signup is: <strong>${otp}</strong>. It is valid for 5 minutes.</p>`,

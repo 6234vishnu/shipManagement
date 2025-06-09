@@ -2,6 +2,11 @@ import express, { Router } from "express";
 import {
   signUp,
   enterdOtp,
+  getVoyagerDetails,
+  voyagerLogout,
+  voyagerLogin,
+  forgotPasswordGetOtp,
+  saveNewPassword,
 } from "../controllers/voyagerController/authController.js";
 import {
   getMoviesUser,
@@ -20,7 +25,12 @@ import {
 const voyagerRouter = express.Router();
 
 voyagerRouter.post("/auth/signup", signUp);
+voyagerRouter.post("/auth/login", voyagerLogin);
 voyagerRouter.post("/auth/enterdOtp", enterdOtp);
+voyagerRouter.post("/auth/getDetails", getVoyagerDetails);
+voyagerRouter.post("/auth/logout", voyagerLogout);
+voyagerRouter.post("/auth/forgotPassword-getOtp", forgotPasswordGetOtp);
+voyagerRouter.post("/auth/forgotPassword-changePassword", saveNewPassword);
 
 voyagerRouter.get("/get-Movies-List", getMoviesUser);
 voyagerRouter.post("/add-New-Booking", newMovieBooking);

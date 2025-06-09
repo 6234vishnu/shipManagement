@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Package, Clock, CheckCircle, User, Calendar } from "lucide-react";
+import { Package, Clock, CheckCircle, User, Calendar,LogOut } from "lucide-react";
 import "../../assets/css/supervisor/StationaryOrdersSupervisor.css";
 import api from "../../services/axiosInstance";
 import SuccessModal from "../../components/SuccessModal";
@@ -12,6 +12,8 @@ const StationaryOrdersSupervisor = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
   const [filter, setFilter] = useState("all");
+  const [logoutMOdal,setLogOutModal]=useState(false)
+  const supervisorId=localStorage.getItem("supervisorId")
   const [currentPage, setCurrentPage] = useState(1);
   const ordersPerPage = 5;
 
@@ -55,6 +57,22 @@ const StationaryOrdersSupervisor = () => {
     }
   };
 
+ 
+  const handleLogout=async()=>{
+    try {
+      const res=await api.post(`/supervisor/auth/logout?supervisorId=${supervisorId}`)
+      if(res.data.success){
+        navigate("/supervisor-Login")
+       return window.location.reload()
+      }
+      setErrorMessage(res.data.message)
+     return setErrorModal(true)
+    } catch (error) {
+      setErrorMessage(error?.res?.data?.message)
+     return setErrorModal(true)
+    }
+  }
+
   const filteredOrders = orders.filter((order) => {
     if (filter === "all") return true;
     return order.status.toLowerCase() === filter.toLowerCase();
@@ -93,6 +111,9 @@ const StationaryOrdersSupervisor = () => {
             <div className="stationaryOrderPage__headerContent">
               <Package className="stationaryOrderPage__headerIcon" />
               <h1 className="stationaryOrderPage__title">Stationary Orders</h1>
+              <span onClick={() => setLogOutModal(true)} className="title-icon">
+                                           <LogOut size={18} />
+                                        </span>
             </div>
             <div className="stationaryOrderPage__stats">
               <div className="stationaryOrderPage__stat">
@@ -257,6 +278,22 @@ const StationaryOrdersSupervisor = () => {
           message={successMessages}
           onClose={() => setSuccessModal(false)}
         />
+      )}
+        {logoutMOdal && (
+        <div className="logOutModal-Container">
+          <p >Are you sure you want to logOut</p>
+          <div className="logOutModal-subContainer">
+            <button className="logOutModal-logOutButton" onClick={handleLogout}>
+              Logout
+            </button>
+            <button
+              className="logOutModal-cancelButton"
+              onClick={() => setLogOutModal(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       )}
     </>
   );

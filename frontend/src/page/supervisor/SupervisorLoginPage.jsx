@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../assets/css/supervisor/SupervisorLogin.css';
 import api from '../../services/axiosInstance';
 import { useNavigate } from 'react-router-dom';
+import ErrorModal from '../../components/ErrorModal';
 
 const SupervisorLoginPage = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ const SupervisorLoginPage = () => {
   };
 
   return (
+    <>
     <div className="supervisorLoginPageContainer">
       <div className="supervisorLoginPageBackground">
         <div className="supervisorLoginPageBackgroundImage">
@@ -72,6 +74,7 @@ const SupervisorLoginPage = () => {
             </div>
             <h1 className="supervisorLoginPageTitle">Supervisor Login</h1>
             <p className="supervisorLoginPageSubtitle">Access your supervisor dashboard</p>
+            <p>{error}</p>
           </div>
 
           {/* Login Form */}
@@ -124,6 +127,13 @@ const SupervisorLoginPage = () => {
         </div>
       </div>
     </div>
+    {errorModal && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={() => setErrorModal(false)}
+        />
+      )}
+    </>
   );
 };
 

@@ -50,3 +50,36 @@ export const headCookLogin=async(req,res)=>{
          .json({ success: true, message: "server error try later" });
      }
 }
+
+
+export const headCookLogout = async (req, res) => {
+try {
+    const {headCookId}=req.query
+
+    const findHeadCook=await HeadCook.findById(headCookId)
+    if(!findHeadCook)
+      return res
+      .status(400)
+      .json({ success: false, message: "Couldint Logout try later" });
+      
+   res.clearCookie("headCookToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Logout successful",
+    });      
+
+} catch (error) {
+  console.log('error in headCook logout',error);
+  
+    return res.status(500).json({
+      success: false,
+      message: "Logout successful",
+    });      
+
+}
+}

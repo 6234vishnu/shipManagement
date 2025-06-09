@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../assets/css/voyager/moviesListUser.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
+import VoyagerSidebar from "./voyagerSideBar";
 
 const MoviesListUser = () => {
   const [movies, setMovies] = useState([]);
@@ -12,10 +13,10 @@ const MoviesListUser = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [bookingModal, setBookingModal] = useState(false);
-  const [selectSeatModal,setSelectSeatModal]=useState(false)
-  const [totalSlots,setTotalSlots]=useState(30)
-  const [bookedSlots,setBookedSlots]=useState(16)
-  const [availableSlots,setAvailableSlots]=useState(0)
+  const [selectSeatModal, setSelectSeatModal] = useState(false);
+  const [totalSlots, setTotalSlots] = useState(30);
+  const [bookedSlots, setBookedSlots] = useState(16);
+  const [availableSlots, setAvailableSlots] = useState(0);
   const [formData, setFormData] = useState({
     movieName: "",
     totalSeats: "",
@@ -30,17 +31,17 @@ const MoviesListUser = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     try {
-      const response=await api.post('/voyager/add-New-Booking',formData)
+      const response = await api.post("/voyager/add-New-Booking", formData);
     } catch (error) {
-      console.log(error,'error in ticket booking voyager side ')
-      setErrorMessage(error?.response?.data?.message)
-    }finally{
+      console.log(error, "error in ticket booking voyager side ");
+      setErrorMessage(error?.response?.data?.message);
+    } finally {
       setFormData({ movieName: "", totalSeats: "", showTime: "" });
-    setBookingModal(false);
+      setBookingModal(false);
     }
   };
 
@@ -151,6 +152,7 @@ const MoviesListUser = () => {
 
   return (
     <>
+      <VoyagerSidebar />
       <div className="moviesListUserContainer">
         <div className="moviesListUserHeader">
           <div className="moviesListUserLogo">
@@ -244,16 +246,16 @@ const MoviesListUser = () => {
             </div>
             <form onSubmit={handleSubmit} className="movieModalForm">
               <div className="movieModalFormGroup">
-          
                 <div className="movieModalStaticText">
                   <h2>{formData.movieName}</h2>
                 </div>
               </div>
 
               <div className="movieModalFormGroup">
-                <button onClick={()=>setSelectSeatModal(true)}>Select Seat </button>
+                <button onClick={() => setSelectSeatModal(true)}>
+                  Select Seat{" "}
+                </button>
                 <label htmlFor="totalSeats">Total Seats</label>
-                
               </div>
 
               <div className="movieModalFormGroup">
@@ -277,9 +279,10 @@ const MoviesListUser = () => {
                 >
                   <option value="">Select a time</option>
                   <option value="10:00">2:30 AM</option>
-
                 </select>
-                <p><strong>Note: </strong>One show in a day</p>
+                <p>
+                  <strong>Note: </strong>One show in a day
+                </p>
               </div>
 
               <div className="movieModalActions">
@@ -299,27 +302,32 @@ const MoviesListUser = () => {
         </div>
       )}
 
-      {selectSeatModal&&(
-         <div className="slotModalOverlay">
-      <div className="slotModal">
-        <h2 className="slotModalTitle">Slot Information</h2>
-        <div className="slotModalContent">
-          <div className="slotItem">
-            <span className="slotLabel">Total Slots:</span>
-            <span className="slotValue">{totalSlots}</span>
-          </div>
-          <div className="slotItem">
-            <span className="slotLabel">Booked Slots:</span>
-            <span className="slotValue">{bookedSlots}</span>
-          </div>
-          <div className="slotItem">
-            <span className="slotLabel">Available Slots:</span>
-            <span className="slotValue">{availableSlots}</span>
+      {selectSeatModal && (
+        <div className="slotModalOverlay">
+          <div className="slotModal">
+            <h2 className="slotModalTitle">Slot Information</h2>
+            <div className="slotModalContent">
+              <div className="slotItem">
+                <span className="slotLabel">Total Slots:</span>
+                <span className="slotValue">{totalSlots}</span>
+              </div>
+              <div className="slotItem">
+                <span className="slotLabel">Booked Slots:</span>
+                <span className="slotValue">{bookedSlots}</span>
+              </div>
+              <div className="slotItem">
+                <span className="slotLabel">Available Slots:</span>
+                <span className="slotValue">{availableSlots}</span>
+              </div>
+            </div>
+            <button
+              className="slotModalCloseBtn"
+              onClick={() => setSelectSeatModal(false)}
+            >
+              Close
+            </button>
           </div>
         </div>
-        <button className="slotModalCloseBtn" onClick={()=>setSelectSeatModal(false)}>Close</button>
-      </div> 
-    </div>
       )}
     </>
   );

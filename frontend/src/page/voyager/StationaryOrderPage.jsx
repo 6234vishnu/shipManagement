@@ -4,6 +4,7 @@ import "../../assets/css/voyager/StationaryOrderPage.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
 import SuccessModal from "../../components/SuccessModal";
+import VoyagerSidebar from "./voyagerSideBar";
 
 const StationaryOrderPage = () => {
   const [cart, setCart] = useState([]);
@@ -13,7 +14,7 @@ const StationaryOrderPage = () => {
   const [errorModal, setErrorModal] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 1;
   const [successMessage, setSuccessMessage] = useState("");
 
   const userId = localStorage.getItem("voyagerId");
@@ -37,7 +38,9 @@ const StationaryOrderPage = () => {
           setErrorModal(true);
         }
       } catch (error) {
-        setErrorMessage(error?.response?.data?.message || "Something went wrong");
+        setErrorMessage(
+          error?.response?.data?.message || "Something went wrong"
+        );
         setErrorModal(true);
       }
     };
@@ -89,9 +92,13 @@ const StationaryOrderPage = () => {
     setCart(cart.filter((i) => (i.id || i._id) !== itemId));
   };
 
-  const getTotalItems = () => cart.reduce((total, item) => total + item.quantity, 0);
+  const getTotalItems = () =>
+    cart.reduce((total, item) => total + item.quantity, 0);
 
-  const getTotalPrice = () => cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  const getTotalPrice = () =>
+    cart
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
 
   const handlePlaceOrder = async () => {
     if (cart.length === 0) return alert("Please add items to cart.");
@@ -106,7 +113,10 @@ const StationaryOrderPage = () => {
     };
 
     try {
-      const response = await api.post(`/voyager/stationary-orderBooking/${userId}`, payload);
+      const response = await api.post(
+        `/voyager/stationary-orderBooking/${userId}`,
+        payload
+      );
       if (response.data.success) {
         setSuccessMessage("Order placed successfully!");
         setCart([]);
@@ -127,14 +137,21 @@ const StationaryOrderPage = () => {
     return list.slice(start, start + itemsPerPage);
   };
 
-  const totalPages = Math.ceil((items[activeCategory]?.length || 0) / itemsPerPage);
+  const totalPages = Math.ceil(
+    (items[activeCategory]?.length || 0) / itemsPerPage
+  );
 
   return (
     <>
+      <VoyagerSidebar />
       <div className="stationaryOrderPageVoyager-container">
         <div className="stationaryOrderPageVoyager-header">
-          <h1 className="stationaryOrderPageVoyager-title">Voyager Stationary</h1>
-          <p className="stationaryOrderPageVoyager-subtitle">Essential supplies at your fingertips</p>
+          <h1 className="stationaryOrderPageVoyager-title">
+            Voyager Stationary
+          </h1>
+          <p className="stationaryOrderPageVoyager-subtitle">
+            Essential supplies at your fingertips
+          </p>
         </div>
 
         <div className="stationaryOrderPageVoyager-main">
@@ -143,7 +160,9 @@ const StationaryOrderPage = () => {
               {Object.keys(items).map((category) => (
                 <button
                   key={category}
-                  className={`stationaryOrderPageVoyager-category-btn ${activeCategory === category ? "active" : ""}`}
+                  className={`stationaryOrderPageVoyager-category-btn ${
+                    activeCategory === category ? "active" : ""
+                  }`}
                   onClick={() => setActiveCategory(category)}
                 >
                   {category}
@@ -157,20 +176,39 @@ const StationaryOrderPage = () => {
                   key={item.id || item._id || `${item.name}-${index}`}
                   className="stationaryOrderPageVoyager-item-card"
                 >
-                  <div className="stationaryOrderPageVoyager-item-image">🖊️</div>
+                  <div className="stationaryOrderPageVoyager-item-image">
+                    🖊️
+                  </div>
                   <div className="stationaryOrderPageVoyager-item-info">
-                    <div className="stationaryOrderPageVoyager-item-name">{item.name}</div>
-                    <div className="stationaryOrderPageVoyager-item-price">${item.price}</div>
+                    <div className="stationaryOrderPageVoyager-item-name">
+                      {item.name}
+                    </div>
+                    <div className="stationaryOrderPageVoyager-item-price">
+                      ${item.price}
+                    </div>
                   </div>
                   <div className="stationaryOrderPageVoyager-item-actions">
-                    <button onClick={() => addToCart(item)} className="stationaryOrderPageVoyager-add-btn">
+                    <button
+                      onClick={() => addToCart(item)}
+                      className="stationaryOrderPageVoyager-add-btn"
+                    >
                       Add to Cart
                     </button>
                     {getItemQuantity(item.id || item._id) > 0 && (
                       <div className="stationaryOrderPageVoyager-quantity-controls">
-                        <button onClick={() => updateQuantity(item, -1)} className="stationaryOrderPageVoyager-qty-btn">−</button>
+                        <button
+                          onClick={() => updateQuantity(item, -1)}
+                          className="stationaryOrderPageVoyager-qty-btn"
+                        >
+                          −
+                        </button>
                         <span>{getItemQuantity(item.id || item._id)}</span>
-                        <button onClick={() => updateQuantity(item, 1)} className="stationaryOrderPageVoyager-qty-btn">+</button>
+                        <button
+                          onClick={() => updateQuantity(item, 1)}
+                          className="stationaryOrderPageVoyager-qty-btn"
+                        >
+                          +
+                        </button>
                       </div>
                     )}
                   </div>
@@ -180,15 +218,28 @@ const StationaryOrderPage = () => {
 
             {totalPages > 1 && (
               <div className="stationaryOrderPageVoyager-pagination">
-                <button onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))} disabled={currentPage === 1}>
+                <button
+                  style={{ marginLeft: "5px" }}
+                  onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                  disabled={currentPage === 1}
+                >
                   Prev
                 </button>
                 {Array.from({ length: totalPages }, (_, i) => (
-                  <button key={i + 1} onClick={() => setCurrentPage(i + 1)} className={currentPage === i + 1 ? "active" : ""}>
+                  <button
+                    key={i + 1}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={currentPage === i + 1 ? "active" : ""}
+                  >
                     {i + 1}
                   </button>
                 ))}
-                <button onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))} disabled={currentPage === totalPages}>
+                <button
+                  onClick={() =>
+                    setCurrentPage((p) => Math.min(p + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                >
                   Next
                 </button>
               </div>
@@ -201,7 +252,9 @@ const StationaryOrderPage = () => {
             </div>
 
             {cart.length === 0 ? (
-              <div className="stationaryOrderPageVoyager-cart-empty">Your cart is empty</div>
+              <div className="stationaryOrderPageVoyager-cart-empty">
+                Your cart is empty
+              </div>
             ) : (
               <>
                 {cart.map((item, index) => (
@@ -210,12 +263,20 @@ const StationaryOrderPage = () => {
                     className="stationaryOrderPageVoyager-cart-item"
                   >
                     <div className="stationaryOrderPageVoyager-cart-item-info">
-                      <div className="stationaryOrderPageVoyager-cart-item-name">{item.name}</div>
+                      <div className="stationaryOrderPageVoyager-cart-item-name">
+                        {item.name}
+                      </div>
                       <div>
-                        Qty: {item.quantity} × ${item.price} = ${(item.quantity * item.price).toFixed(2)}
+                        Qty: {item.quantity} × ${item.price} = $
+                        {(item.quantity * item.price).toFixed(2)}
                       </div>
                     </div>
-                    <button onClick={() => removeFromCart(item.id || item._id)} title="Remove">×</button>
+                    <button
+                      onClick={() => removeFromCart(item.id || item._id)}
+                      title="Remove"
+                    >
+                      ×
+                    </button>
                   </div>
                 ))}
                 <div className="stationaryOrderPageVoyager-cart-summary">
@@ -223,7 +284,10 @@ const StationaryOrderPage = () => {
                   <div>Unique Items: {cart.length}</div>
                   <div>Total: ${getTotalPrice()}</div>
                 </div>
-                <button className="stationaryOrderPageVoyager-placeorder-btn" onClick={handlePlaceOrder}>
+                <button
+                  className="stationaryOrderPageVoyager-placeorder-btn"
+                  onClick={handlePlaceOrder}
+                >
                   Place Order
                 </button>
               </>
@@ -232,8 +296,18 @@ const StationaryOrderPage = () => {
         </div>
       </div>
 
-      {errorModal && <ErrorModal message={errorMessage} onClose={() => setErrorModal(false)} />}
-      {successModal && <SuccessModal message={successMessage} onClose={() => setSuccessModal(false)} />}
+      {errorModal && (
+        <ErrorModal
+          message={errorMessage}
+          onClose={() => setErrorModal(false)}
+        />
+      )}
+      {successModal && (
+        <SuccessModal
+          message={successMessage}
+          onClose={() => setSuccessModal(false)}
+        />
+      )}
     </>
   );
 };

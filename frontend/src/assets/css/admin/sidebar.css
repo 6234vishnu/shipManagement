@@ -239,9 +239,9 @@
     background-color: white;
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px #1e3a8a;
     animation: scaleIn 0.3s ease-out;
-    border: 2px solid #000000;
+    border: 2px solid #1e3a8a;
   }
   
   .logoutModalBox h5 {
@@ -269,8 +269,8 @@
   
   .logoutCancelBtn {
     background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000000;
+    color: #1e3a8a;
+    border: 1px solid #1e3a8a;
   }
   
   .logoutCancelBtn:hover {
@@ -278,13 +278,13 @@
   }
   
   .logoutConfirmBtn {
-    background-color: #000000;
+    background-color: #1e3a8a;
     color: white;
-    border: 1px solid #000000;
+    border: 1px solid #1e3a8a;
   }
   
   .logoutConfirmBtn:hover {
-    background-color: #333333;
+    background-color: #122c71;
   }
   .adminNavImageIcon {
     width: 26px;

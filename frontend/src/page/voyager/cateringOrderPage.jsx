@@ -4,6 +4,7 @@ import "../../assets/css/voyager/CateringOrderPage.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
 import SuccessModal from "../../components/SuccessModal";
+import VoyagerSidebar from "./voyagerSideBar";
 
 const CateringOrderPage = () => {
   const [cart, setCart] = useState([]);
@@ -16,7 +17,7 @@ const CateringOrderPage = () => {
   const itemsPerPage = 3;
 
   const [successMessage, setSuccessMessage] = useState("");
-  const userId = localStorage.getItem('voyagerId');
+  const userId = localStorage.getItem("voyagerId");
 
   useEffect(() => {
     const fetchMenuItems = async () => {
@@ -45,7 +46,9 @@ const CateringOrderPage = () => {
         setErrorModal(true);
       } catch (error) {
         console.error("Failed to fetch menu items:", error);
-        setErrorMessage(error?.response?.data?.message || "Something went wrong");
+        setErrorMessage(
+          error?.response?.data?.message || "Something went wrong"
+        );
         setErrorModal(true);
       }
     };
@@ -87,7 +90,9 @@ const CateringOrderPage = () => {
 
     if (newQuantity <= 0) {
       // Remove item from cart
-      setCart(cart.filter((cartItem) => (cartItem.id || cartItem._id) !== itemId));
+      setCart(
+        cart.filter((cartItem) => (cartItem.id || cartItem._id) !== itemId)
+      );
     } else {
       const existingItemIndex = cart.findIndex(
         (cartItem) => (cartItem.id || cartItem._id) === itemId
@@ -104,7 +109,9 @@ const CateringOrderPage = () => {
   };
 
   const removeFromCart = (itemId) => {
-    setCart(cart.filter((cartItem) => (cartItem.id || cartItem._id) !== itemId));
+    setCart(
+      cart.filter((cartItem) => (cartItem.id || cartItem._id) !== itemId)
+    );
   };
 
   const getTotalItems = () => {
@@ -134,7 +141,10 @@ const CateringOrderPage = () => {
     };
 
     try {
-      const response = await api.post(`/voyager/catering-orderBooking/${userId}`, orderPayload);
+      const response = await api.post(
+        `/voyager/catering-orderBooking/${userId}`,
+        orderPayload
+      );
 
       if (response.data.success) {
         setSuccessMessage("Order placed successfully!");
@@ -146,7 +156,10 @@ const CateringOrderPage = () => {
       }
     } catch (error) {
       console.error("Error placing order:", error);
-      setErrorMessage(error?.response?.data?.message || "Something went wrong while placing the order.");
+      setErrorMessage(
+        error?.response?.data?.message ||
+          "Something went wrong while placing the order."
+      );
       return setErrorModal(true);
     }
   };
@@ -158,10 +171,13 @@ const CateringOrderPage = () => {
     return items.slice(startIndex, endIndex);
   };
 
-  const totalPages = Math.ceil((menuItems[activeCategory]?.length || 0) / itemsPerPage);
+  const totalPages = Math.ceil(
+    (menuItems[activeCategory]?.length || 0) / itemsPerPage
+  );
 
   return (
     <>
+      <VoyagerSidebar />
       <div className="cateringOrderPageVoyager-container">
         <div className="cateringOrderPageVoyager-header">
           <h1 className="cateringOrderPageVoyager-title">Voyager Catering</h1>
@@ -236,7 +252,9 @@ const CateringOrderPage = () => {
               <div className="cateringOrderPageVoyager-pagination">
                 <button
                   className="cateringOrderPageVoyager-page-btn"
-                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
                   disabled={currentPage === 1}
                 >
                   Prev
@@ -257,9 +275,7 @@ const CateringOrderPage = () => {
                 <button
                   className="cateringOrderPageVoyager-page-btn"
                   onClick={() =>
-                    setCurrentPage((prev) =>
-                      Math.min(prev + 1, totalPages)
-                    )
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                   }
                   disabled={currentPage === totalPages}
                 >
@@ -291,7 +307,8 @@ const CateringOrderPage = () => {
                         {item.name}
                       </div>
                       <div className="cateringOrderPageVoyager-cart-item-details">
-                        Quantity: {item.quantity} × ${item.price} = ${(item.quantity * item.price).toFixed(2)}
+                        Quantity: {item.quantity} × ${item.price} = $
+                        {(item.quantity * item.price).toFixed(2)}
                       </div>
                     </div>
                     <button
@@ -303,7 +320,7 @@ const CateringOrderPage = () => {
                     </button>
                   </div>
                 ))}
-                
+
                 <div className="cateringOrderPageVoyager-cart-summary">
                   <div className="cateringOrderPageVoyager-summary-row">
                     <span>Total Items:</span>
