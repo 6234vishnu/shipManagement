@@ -9,6 +9,7 @@ import {
   Hotel,
   PenTool,
   Phone,
+  Home,
 } from "lucide-react";
 
 import "../../assets/css/admin/sidebar.css";
@@ -69,6 +70,12 @@ const VoyagerSidebar = () => {
   };
 
   const navItems = [
+    {
+      id: "Home",
+      label: "Home Page",
+      path: "/",
+      icon: <Home />,
+    },
     {
       id: "Food Items Booking",
       label: "Food Items",
@@ -167,15 +174,19 @@ const VoyagerSidebar = () => {
             ))}
           </ul>
 
-          <div className="adminNavUserSection">
-            <div className="adminNavUserAvatar">
-              <span>{voyagerName.charAt(0)}</span>
+          {voyagerId && (
+            <div className="adminNavUserSection">
+              <div className="adminNavUserAvatar">
+                <span>{voyagerName?.charAt(0).toUpperCase() || "U"}</span>
+              </div>
+              <div className="adminNavUserInfo">
+                <span className="adminNavUserName">
+                  {voyagerName || "User"}
+                </span>
+                <span className="adminNavUserRole">User</span>
+              </div>
             </div>
-            <div className="adminNavUserInfo">
-              <span className="adminNavUserName">{voyagerName}</span>
-              <span className="adminNavUserRole">User</span>
-            </div>
-          </div>
+          )}
 
           <button
             style={{

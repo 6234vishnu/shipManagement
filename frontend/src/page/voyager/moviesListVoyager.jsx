@@ -3,20 +3,20 @@ import "../../assets/css/voyager/moviesListUser.css";
 import api from "../../services/axiosInstance";
 import ErrorModal from "../../components/ErrorModal";
 import VoyagerSidebar from "./voyagerSideBar";
+import SuccessModal from "../../components/SuccessModal";
 
 const MoviesListUser = () => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
+  const [successMessage,setSuccessMessage]=useState("")
+  const [successModal,setSuccessModal]=useState(false)
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [bookingModal, setBookingModal] = useState(false);
-  const [selectSeatModal, setSelectSeatModal] = useState(false);
-  const [totalSlots, setTotalSlots] = useState(30);
-  const [bookedSlots, setBookedSlots] = useState(16);
-  const [availableSlots, setAvailableSlots] = useState(0);
+  const voyagerId=localStorage.getItem("voyagerId")
   const [formData, setFormData] = useState({
     movieName: "",
     totalSeats: "",
@@ -24,7 +24,7 @@ const MoviesListUser = () => {
     showDate: "",
   });
 
-  const seatOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,14 +33,30 @@ const MoviesListUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+  if(formData?.totalSeats>movies?.totalSlots){
+    setErrorMessage(`available seats are only ${movies?.totalSlots}`)
+    return setErrorModal(true)
+  }
     try {
-      const response = await api.post("/voyager/add-New-Booking", formData);
+      const response = await api.post(`/voyager/add-New-Booking?voyagerId=${voyagerId}`,formData );
+      if(response.data.success){
+        setSuccessMessage('Movie booked successfully')
+       return setSuccessModal(true)
+      }
+      setErrorMessage(response.data.message)
+      return setErrorModal(true)
     } catch (error) {
       console.log(error, "error in ticket booking voyager side ");
       setErrorMessage(error?.response?.data?.message);
+      return setErrorModal(true)
     } finally {
-      setFormData({ movieName: "", totalSeats: "", showTime: "" });
+      setFormData({
+        movieName: "",
+        totalSeats: "",
+        showTime: "",
+        showDate: "",
+      });
+
       setBookingModal(false);
     }
   };
@@ -50,11 +66,13 @@ const MoviesListUser = () => {
       try {
         const response = await api.get("/voyager/get-Movies-List");
         if (response.data.success) {
+          console.log(response.data.movies);
+
           setMovies(response.data.movies);
-          setFilteredMovies(response.data.movies);
+          return setFilteredMovies(response.data.movies);
         } else {
           setErrorMessage(response.data.message);
-          setErrorModal(true);
+          return setErrorModal(true);
         }
       } catch (error) {
         setErrorMessage(
@@ -142,13 +160,17 @@ const MoviesListUser = () => {
     return pages;
   };
 
-  const openBookingModal = (movieName) => {
+  const openBookingModal = (movie) => {
     setFormData((prev) => ({
       ...prev,
-      movieName,
+      movieName: movie.name,
+      totalSeats: "",
     }));
     setBookingModal(true);
   };
+
+
+
 
   return (
     <>
@@ -200,7 +222,7 @@ const MoviesListUser = () => {
                 <div className="moviesListUserOverlay">
                   <button
                     className="moviesListUserWatchButton"
-                    onClick={() => openBookingModal(movie.name)}
+                    onClick={() => openBookingModal(movie)}
                   >
                     Book Now
                   </button>
@@ -209,6 +231,10 @@ const MoviesListUser = () => {
               <div className="moviesListUserCardContent">
                 <h3 className="moviesListUserCardTitle">{movie.name}</h3>
                 <p className="moviesListUserPrice">₹{movie.price}</p>
+                <p className="moviesListUserSlots">
+                  Available Slots:{" "}
+                  {movie.totalSlots - movie.bookedSlots || movie.totalSlots}
+                </p>
               </div>
             </div>
           ))}
@@ -252,13 +278,6 @@ const MoviesListUser = () => {
               </div>
 
               <div className="movieModalFormGroup">
-                <button onClick={() => setSelectSeatModal(true)}>
-                  Select Seat{" "}
-                </button>
-                <label htmlFor="totalSeats">Total Seats</label>
-              </div>
-
-              <div className="movieModalFormGroup">
                 <label htmlFor="showDate">Show Date</label>
                 <input
                   type="date"
@@ -278,21 +297,51 @@ const MoviesListUser = () => {
                   required
                 >
                   <option value="">Select a time</option>
-                  <option value="10:00">2:30 AM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="06:00 PM">06:00 PM</option>
+                  <option value="10:00 PM">10:00 PM</option>
                 </select>
-                <p>
-                  <strong>Note: </strong>One show in a day
-                </p>
+              </div>
+
+              <div className="movieModalFormGroup">
+              
+                <label htmlFor="seatCount">Number of Seats</label>
+                <select
+                  id="seatCount"
+                  className="seatSelectionDropdown"
+                  name="totalSeats"
+                  value={formData.totalSeats}
+                  onChange={(e) => {
+                    handleChange(e);
+                    const seatCount = parseInt(e.target.value);
+   
+                  }}
+                >
+                  
+                  <option value="">Select number of seats</option>
+                  {[...Array(10).keys()].map((i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1} {i + 1 === 1 ? "seat" : "seats"}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className="movieModalActions">
-                <button type="submit" className="movieModalSubmit">
+                <button
+                  type="submit"
+                  className="movieModalSubmit"
+                  
+                >
                   Book Tickets
                 </button>
                 <button
                   type="button"
                   className="movieModalClose"
-                  onClick={() => setBookingModal(false)}
+                  onClick={() => {
+                    setBookingModal(false);
+                  }}
                 >
                   Cancel
                 </button>
@@ -301,33 +350,11 @@ const MoviesListUser = () => {
           </div>
         </div>
       )}
-
-      {selectSeatModal && (
-        <div className="slotModalOverlay">
-          <div className="slotModal">
-            <h2 className="slotModalTitle">Slot Information</h2>
-            <div className="slotModalContent">
-              <div className="slotItem">
-                <span className="slotLabel">Total Slots:</span>
-                <span className="slotValue">{totalSlots}</span>
-              </div>
-              <div className="slotItem">
-                <span className="slotLabel">Booked Slots:</span>
-                <span className="slotValue">{bookedSlots}</span>
-              </div>
-              <div className="slotItem">
-                <span className="slotLabel">Available Slots:</span>
-                <span className="slotValue">{availableSlots}</span>
-              </div>
-            </div>
-            <button
-              className="slotModalCloseBtn"
-              onClick={() => setSelectSeatModal(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
+      {successModal && (
+        <SuccessModal
+          message={successMessage}
+          onClose={() => setSuccessModal(false)}
+        />
       )}
     </>
   );

@@ -7,6 +7,8 @@ const ItemSchema = new mongoose.Schema({
   equipment:[{ type: String }], 
   price: Number,
   totalSlots:{ type: Number },
+  availableSlots: [{ type: Number }],  
+  selectedSlots: [{ type: Number }], 
   quantity:{ type: Number },
   available: { type: Boolean, default: true }
 });

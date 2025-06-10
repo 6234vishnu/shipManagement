@@ -7,6 +7,7 @@ import {
   voyagerLogin,
   forgotPasswordGetOtp,
   saveNewPassword,
+  updateProfile,
 } from "../controllers/voyagerController/authController.js";
 import {
   getMoviesUser,
@@ -29,6 +30,7 @@ voyagerRouter.post("/auth/login", voyagerLogin);
 voyagerRouter.post("/auth/enterdOtp", enterdOtp);
 voyagerRouter.post("/auth/getDetails", getVoyagerDetails);
 voyagerRouter.post("/auth/logout", voyagerLogout);
+voyagerRouter.post("/auth/Edit-profile", updateProfile);
 voyagerRouter.post("/auth/forgotPassword-getOtp", forgotPasswordGetOtp);
 voyagerRouter.post("/auth/forgotPassword-changePassword", saveNewPassword);
 

@@ -325,3 +325,28 @@ export const saveNewPassword = async (req, res) => {
       .json({ success: false, message: "Server error, try later" });
   }
 };
+
+export const updateProfile= async (req, res) => {
+  try {
+    const { editData } = req.body;
+
+    if (!editData || !editData._id) {
+      return res.status(400).json({ success: false, message: 'Invalid data or missing ID' });
+    }
+
+    const updatedUser = await Voyager.findByIdAndUpdate(editData._id, {
+      name: editData.name,
+      email: editData.email,
+      phone: editData.phone,
+    }, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ success: false, message: 'Voyager not found' });
+    }
+
+    return res.status(200).json({ success: true, voyager: updatedUser });
+  } catch (error) {
+    console.error('Error updating voyager profile:', error);
+    return res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+}

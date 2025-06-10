@@ -28,6 +28,7 @@ import AuthenticateAdmin from "./page/admin/AuthenticateAdmin";
 import VoyagerLoginPage from "./page/voyager/VoyagerLoginPage";
 import AuthenticateVoyager from "./page/voyager/AuthenticateVoyager";
 import ContactUs from "./page/voyager/ContactUsPage";
+import VoyagerProfile from "./page/voyager/ProfilePage";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/login" element={<VoyagerLoginPage />} />
           <Route path="/contactUs" element={<ContactUs />} />
           <Route element={<AuthenticateVoyager/>}>
+          <Route path="/profilePage" element={<VoyagerProfile />} />
           <Route path="/moviesList" element={<MoviesListUser />} />
           <Route path="/cateringOrderPage" element={<CateringOrderPage />} />
           <Route path="/stationaryOrderPage" element={<StationaryOrderPage />} />

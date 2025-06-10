@@ -42,48 +42,50 @@ const Home = () => {
               <span className="CruiseShipHome-logo-text">Horizon Cruiser</span>
             </div>
 
-            {/* Desktop Navigation */}
-
             {/* Auth Links */}
             <div className="CruiseShipHome-auth-section">
               {voyagerId ? (
+                // Show only Profile if voyager is logged in
                 <a
-                  href="/profile"
+                  href="/profilePage"
                   className="CruiseShipHome-auth-link CruiseShipHome-profile-link"
                 >
                   <User size={18} />
                   Profile
                 </a>
               ) : (
-                <a href="/login" className="CruiseShipHome-auth-link">
-                  <LogIn size={18} />
-                  Voyager Login
-                </a>
+                // Show login/signup options only if voyager is NOT logged in
+                <>
+                  <a href="/login" className="CruiseShipHome-auth-link">
+                    <LogIn size={18} />
+                    Voyager Login
+                  </a>
+                  <a
+                    href="/manager-Login"
+                    className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
+                  >
+                    Manager Login
+                  </a>
+                  <a
+                    href="/headCook-Login"
+                    className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
+                  >
+                    Head-Cook Login
+                  </a>
+                  <a
+                    href="/supervisor-Login"
+                    className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
+                  >
+                    Supervisor Login
+                  </a>
+                  <a
+                    href="/staffs-signUp"
+                    className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
+                  >
+                    Staff Signup
+                  </a>
+                </>
               )}
-              <a
-                href="/manager-Login"
-                className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
-              >
-                Manager Login
-              </a>
-              <a
-                href="/headCook-Login"
-                className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
-              >
-                Head-Cook Login
-              </a>
-              <a
-                href="/supervisor-Login"
-                className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
-              >
-                Supervisor Login
-              </a>
-              <a
-                href="/staffs-signUp"
-                className="CruiseShipHome-auth-link CruiseShipHome-staff-link"
-              >
-                Staff Signup
-              </a>
             </div>
 
             {/* Mobile Menu Toggle */}

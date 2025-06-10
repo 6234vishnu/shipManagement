@@ -27,26 +27,94 @@ export const getMoviesUser = async (req, res) => {
 
 export const newMovieBooking = async (req, res) => {
   try {
+    // Validate required fields
     const { showDate, showTime, totalSeats, movieName } = req.body;
-    if (!showDate || !showTime || !totalSeats || !movieName)
+    const { voyagerId } = req.query;
+    
+    if (!showDate || !showTime || !totalSeats || !movieName || !voyagerId) {
       return res.status(400).json({
         success: false,
-        message: "fill all the feilds to book ticket",
+        message: "All fields are required to book a ticket",
       });
-    const newBoking = new MovieBooking({
+    }
+
+    // Validate totalSeats is a positive number
+    if (isNaN(totalSeats) || parseInt(totalSeats) <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Total seats must be a positive number",
+      });
+    }
+
+    // Check movie availability
+    const movie = await Item.findOne({ type: "Movies", name: movieName });
+    if (!movie) {
+      return res.status(404).json({
+        success: false,
+        message: "Movie not found",
+      });
+    }
+
+    // Check available seats
+    if (movie.totalSlots < parseInt(totalSeats)) {
+      return res.status(400).json({
+        success: false,
+        message: "Not enough available seats",
+        availableSeats: movie.totalSlots
+      });
+    }
+
+    // Create new booking
+    const newBooking = new MovieBooking({
+      voyager: voyagerId,
       movieName,
+      totalSeats: parseInt(totalSeats),
+      status: "Booked",
+      bookedAt: showDate,
+      showTime,
     });
 
-    // it is unfinished
-  } catch (error) {
-    console.log(
-      "error in newMovieBooking activities Controller voyager side",
-      error
-    );
+    // Save booking
+    const savedBooking = await newBooking.save();
+    if (!savedBooking) {
+      return res.status(500).json({
+        success: false,
+        message: "Failed to save booking",
+      });
+    }
 
-    res
-      .status(500)
-      .json({ success: false, message: "server error  try later" });
+    // Update available slots
+    const updatedMovie = await Item.updateOne(
+      { type: "Movies", name: movieName },
+      { $inc: { totalSlots: -parseInt(totalSeats) } }
+    );
+    
+    if (!updatedMovie.modifiedCount) {
+      // Rollback the booking if slot update fails
+      await MovieBooking.deleteOne({ _id: savedBooking._id });
+      return res.status(500).json({
+        success: false,
+        message: "Failed to update movie availability",
+      });
+    }
+
+    return res.status(201).json({
+      success: true,
+      message: "Booking successful",
+      bookingId: savedBooking._id,
+      movieName,
+      totalSeats,
+      showDate,
+      showTime
+    });
+
+  } catch (error) {
+    console.error("Error in newMovieBooking controller:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Internal server error",
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 };
 
