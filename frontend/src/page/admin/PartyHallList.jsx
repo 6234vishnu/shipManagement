@@ -22,7 +22,7 @@ function PartyHallList() {
     name: "",
     price: "",
     available: "",
-    totalSlots:""
+    totalSlots: "",
   });
 
   const fetchItems = async () => {
@@ -35,7 +35,9 @@ function PartyHallList() {
         setErrorModal(true);
       }
     } catch (error) {
-      setErrorMessage(error?.response?.data?.message || "Something went wrong.");
+      setErrorMessage(
+        error?.response?.data?.message || "Something went wrong."
+      );
       setErrorModal(true);
     }
   };
@@ -85,7 +87,9 @@ function PartyHallList() {
           setErrorModal(true);
         }
       } catch (error) {
-        setErrorMessage(error?.response?.data?.message || "Failed to delete item.");
+        setErrorMessage(
+          error?.response?.data?.message || "Failed to delete item."
+        );
         setErrorModal(true);
       }
     }
@@ -106,7 +110,12 @@ function PartyHallList() {
   };
 
   const handleEdit = async () => {
-    if (!formData.name.trim() && !formData.price && !formData.totalSlots && formData.available === "") {
+    if (
+      !formData.name.trim() &&
+      !formData.price &&
+      !formData.totalSlots &&
+      formData.available === ""
+    ) {
       setErrorMessage("Please update at least one field.");
       return setErrorModal(true);
     }
@@ -121,7 +130,7 @@ function PartyHallList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "",totalSlots:"" });
+        setFormData({ name: "", price: "", available: "", totalSlots: "" });
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -133,11 +142,11 @@ function PartyHallList() {
     }
   };
 
- const filteredItems = Array.isArray(itemList)
-  ? itemList.filter((item) =>
-      item.name?.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  : [];
+  const filteredItems = Array.isArray(itemList)
+    ? itemList.filter((item) =>
+        item.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const paginatedItems = filteredItems.slice(
     (currentPage - 1) * itemsPerPage,
@@ -154,7 +163,10 @@ function PartyHallList() {
       <div className="partyHallListContainer">
         <div className="partyHallListHeader">
           <h1 className="partyHallListTitle">Party Hall Items Management</h1>
-          <button className="partyHallListAddButton" onClick={() => setAddItemModal(true)}>
+          <button
+            className="partyHallListAddButton"
+            onClick={() => setAddItemModal(true)}
+          >
             <Plus size={20} /> Add New Party Hall
           </button>
         </div>
@@ -185,8 +197,12 @@ function PartyHallList() {
                 paginatedItems.map((item) => (
                   <tr key={item._id}>
                     <td className="partyHallListTableCell">{item.name}</td>
-                    <td className="partyHallListTableCell">{item.available ? "Available" : "Unavailable"}</td>
-                    <td className="partyHallListTableCell">{item.totalSlots}</td>
+                    <td className="partyHallListTableCell">
+                      {item.available ? "Available" : "Unavailable"}
+                    </td>
+                    <td className="partyHallListTableCell">
+                      {item.totalSlots}
+                    </td>
                     <td className="partyHallListTableCell">₹{item.price}</td>
                     <td className="partyHallListTableCell">
                       <button
@@ -232,7 +248,9 @@ function PartyHallList() {
             </button>
           ))}
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
           >
             Next
@@ -294,11 +312,11 @@ function PartyHallList() {
               onChange={handleItemFormChange}
             />
             <input
-                name="totalSlots"
-                placeholder="Total Slots"
-                value={formData.totalSlots}
-                onChange={handleItemFormChange}
-              />
+              name="totalSlots"
+              placeholder="Total Slots"
+              value={formData.totalSlots}
+              onChange={handleItemFormChange}
+            />
             <input
               name="price"
               placeholder="Price"

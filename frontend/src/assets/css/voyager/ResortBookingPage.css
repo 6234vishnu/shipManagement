@@ -15,7 +15,7 @@
 .resortBookingPageVoyager-title {
   font-size: 3rem;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   color: black;
   font-weight: bold;
 }
@@ -68,7 +68,7 @@
 
 .resortBookingPageVoyager-category-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .resortBookingPageVoyager-items-grid {
@@ -89,7 +89,7 @@
 
 .resortBookingPageVoyager-item-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   border-color: #667eea;
 }
 
@@ -104,7 +104,7 @@
   justify-content: center;
   font-size: 3rem;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .resortBookingPageVoyager-item-info {
@@ -170,7 +170,7 @@
   background: white;
   border-radius: 20px;
   padding: 25px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 20px;
   height: fit-content;
@@ -369,7 +369,6 @@
 }
 
 .resortBookingPageVoyager-date-input {
-
   padding: 12px 16px;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
@@ -477,7 +476,7 @@
 
 /* Selected Resort Card Styling */
 .resortBookingPageVoyager-item-card.selected {
-  border: 3px solid #002B45;
+  border: 3px solid #002b45;
   background: #eff6ff;
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
@@ -500,8 +499,8 @@
 .resortBookingPageVoyager-pagination button {
   padding: 8px 12px;
   border-radius: 6px;
-  border: 1px solid #002B45;
-  background: #002B45;
+  border: 1px solid #002b45;
+  background: #002b45;
   cursor: pointer;
   color: white;
   font-weight: 500;
@@ -520,11 +519,11 @@
     padding: 20px;
     margin-top: 20px;
   }
-  
+
   .resortBookingPageVoyager-booking-section h3 {
     font-size: 22px;
   }
-  
+
   .resortBookingPageVoyager-view-options {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -537,72 +536,72 @@
     margin-top: 16px;
     border-radius: 8px;
   }
-  
+
   .resortBookingPageVoyager-booking-section h3 {
     font-size: 20px;
     margin-bottom: 16px;
   }
-  
+
   .resortBookingPageVoyager-selected-resort {
     padding: 12px;
     margin-bottom: 20px;
   }
-  
+
   .resortBookingPageVoyager-selected-resort h4 {
     font-size: 16px;
   }
-  
+
   .resortBookingPageVoyager-selected-resort p {
     font-size: 14px;
   }
-  
+
   .resortBookingPageVoyager-view-selection,
   .resortBookingPageVoyager-date-selection {
     margin-bottom: 20px;
   }
-  
+
   .resortBookingPageVoyager-view-selection label,
   .resortBookingPageVoyager-date-selection label {
     font-size: 15px;
     margin-bottom: 10px;
   }
-  
+
   .resortBookingPageVoyager-view-options {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-  
+
   .resortBookingPageVoyager-view-btn {
     padding: 10px 12px;
     font-size: 13px;
   }
-  
+
   .resortBookingPageVoyager-date-input {
     padding: 10px 14px;
     font-size: 15px;
   }
-  
+
   .resortBookingPageVoyager-booking-summary {
     padding: 16px;
     margin-bottom: 20px;
   }
-  
+
   .resortBookingPageVoyager-booking-summary h4 {
     font-size: 16px;
     margin-bottom: 12px;
   }
-  
+
   .resortBookingPageVoyager-summary-item {
     padding: 6px 0;
     font-size: 14px;
   }
-  
+
   .resortBookingPageVoyager-summary-item.total {
     font-size: 16px;
     padding-top: 10px;
     margin-top: 6px;
   }
-  
+
   .resortBookingPageVoyager-placeorder-btn {
     padding: 14px 20px;
     font-size: 15px;
@@ -615,73 +614,73 @@
     padding: 12px;
     margin-top: 12px;
   }
-  
+
   .resortBookingPageVoyager-booking-section h3 {
     font-size: 18px;
     margin-bottom: 12px;
   }
-  
+
   .resortBookingPageVoyager-selected-resort {
     padding: 10px;
     margin-bottom: 16px;
   }
-  
+
   .resortBookingPageVoyager-selected-resort h4 {
     font-size: 15px;
     margin-bottom: 6px;
   }
-  
+
   .resortBookingPageVoyager-selected-resort p {
     font-size: 13px;
   }
-  
+
   .resortBookingPageVoyager-view-selection,
   .resortBookingPageVoyager-date-selection {
     margin-bottom: 16px;
   }
-  
+
   .resortBookingPageVoyager-view-selection label,
   .resortBookingPageVoyager-date-selection label {
     font-size: 14px;
     margin-bottom: 8px;
   }
-  
+
   .resortBookingPageVoyager-view-options {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-  
+
   .resortBookingPageVoyager-view-btn {
     padding: 8px 10px;
     font-size: 12px;
   }
-  
+
   .resortBookingPageVoyager-date-input {
     padding: 8px 12px;
     font-size: 14px;
   }
-  
+
   .resortBookingPageVoyager-booking-summary {
     padding: 12px;
     margin-bottom: 16px;
   }
-  
+
   .resortBookingPageVoyager-booking-summary h4 {
     font-size: 15px;
     margin-bottom: 10px;
   }
-  
+
   .resortBookingPageVoyager-summary-item {
     padding: 5px 0;
     font-size: 13px;
   }
-  
+
   .resortBookingPageVoyager-summary-item.total {
     font-size: 15px;
     padding-top: 8px;
     margin-top: 5px;
   }
-  
+
   .resortBookingPageVoyager-placeorder-btn {
     padding: 12px 16px;
     font-size: 14px;
@@ -693,30 +692,29 @@
   .resortBookingPageVoyager-booking-section {
     padding: 8px;
   }
-  
+
   .resortBookingPageVoyager-view-options {
     grid-template-columns: 1fr;
     gap: 6px;
   }
-  
+
   .resortBookingPageVoyager-view-btn {
     padding: 8px;
     font-size: 11px;
   }
-  
+
   .resortBookingPageVoyager-summary-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
-  
+
   .resortBookingPageVoyager-summary-item.total {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 }
-
 
 /* Media Queries */
 

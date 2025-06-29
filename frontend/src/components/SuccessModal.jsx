@@ -1,7 +1,7 @@
-import React from 'react';
-import '../assets/css/success/success.css';
-import { Player } from '@lottiefiles/react-lottie-player';
-import lottieAnimtion from '../assets/animations/Animation - 1747637006233.json';
+import React from "react";
+import "../assets/css/success/success.css";
+import { Player } from "@lottiefiles/react-lottie-player";
+import lottieAnimtion from "../assets/animations/Animation - 1747637006233.json";
 
 function SuccessModal({ message, onClose }) {
   return (
@@ -18,7 +18,7 @@ function SuccessModal({ message, onClose }) {
             autoplay
             loop
             src={lottieAnimtion}
-            style={{ height: '100px', width: '100px' }}
+            style={{ height: "100px", width: "100px" }}
           />
         </div>
 

@@ -1,28 +1,31 @@
 import Movies from "../../models/movieBooking.js";
 import Fitness from "../../models/fitnessCenterBooking.js";
 import PartyHall from "../../models/partyHallBooking.js";
+import BeautySalon from "../../models/beautySalonBooking.js";
 
 export const managerDashboardData = async (req, res) => {
   try {
     const findMovieBookings = Movies.find().populate("voyager");
     const findFitnessBookings = Fitness.find().populate("voyager");
     const findPartyHallBookings = PartyHall.find().populate("voyager");
+    const findBeautySalonBookings = BeautySalon.find().populate("voyager");
 
-    const [movies, fitness, partyHall] = await Promise.all([
+    const [movies, fitness, partyHall, beautySalon] = await Promise.all([
       findMovieBookings,
       findFitnessBookings,
       findPartyHallBookings,
+      findBeautySalonBookings,
     ]);
 
-    return res
-      .status(200)
-      .json({ success: true, items: { movies, fitness, partyHall } });
+    return res.status(200).json({
+      success: true,
+      items: { movies, fitness, partyHall, beautySalon },
+    });
   } catch (error) {
     console.log("error in managerDashboardData", error);
-
     return res
       .status(500)
-      .json({ success: true, message: "server error try later" });
+      .json({ success: false, message: "server error try later" });
   }
 };
 
@@ -38,19 +41,15 @@ export const managerUpdateBookingsStatus = async (req, res) => {
         { new: true }
       );
       if (!updated) {
-        return res
-          .status(500)
-          .json({
-            success: false,
-            message: "Couldn't update movie booking status. Try again later.",
-          });
-      }
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: "Movie booking status updated successfully.",
+        return res.status(500).json({
+          success: false,
+          message: "Couldn't update movie booking status. Try again later.",
         });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Movie booking status updated successfully.",
+      });
     }
 
     const fitness = await Fitness.findById(id);
@@ -61,19 +60,15 @@ export const managerUpdateBookingsStatus = async (req, res) => {
         { new: true }
       );
       if (!updated) {
-        return res
-          .status(500)
-          .json({
-            success: false,
-            message: "Couldn't update fitness booking status. Try again later.",
-          });
-      }
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: "Fitness booking status updated successfully.",
+        return res.status(500).json({
+          success: false,
+          message: "Couldn't update fitness booking status. Try again later.",
         });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Fitness booking status updated successfully.",
+      });
     }
 
     const party = await PartyHall.findById(id);
@@ -84,28 +79,42 @@ export const managerUpdateBookingsStatus = async (req, res) => {
         { new: true }
       );
       if (!updated) {
-        return res
-          .status(500)
-          .json({
-            success: false,
-            message:
-              "Couldn't update party hall booking status. Try again later.",
-          });
-      }
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: "Party hall booking status updated successfully.",
+        return res.status(500).json({
+          success: false,
+          message:
+            "Couldn't update party hall booking status. Try again later.",
         });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Party hall booking status updated successfully.",
+      });
     }
 
-    return res
-      .status(404)
-      .json({
-        success: false,
-        message: "No booking found with the provided ID.",
+    const salon = await BeautySalon.findById(id);
+    if (salon) {
+      const updated = await BeautySalon.findByIdAndUpdate(
+        id,
+        { $set: { status: newStatus } },
+        { new: true }
+      );
+      if (!updated) {
+        return res.status(500).json({
+          success: false,
+          message:
+            "Couldn't update beauty salon booking status. Try again later.",
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Beauty salon booking status updated successfully.",
       });
+    }
+
+    return res.status(404).json({
+      success: false,
+      message: "No booking found with the provided ID.",
+    });
   } catch (error) {
     console.error("Error in managerUpdateBookingsStatus:", error);
     return res

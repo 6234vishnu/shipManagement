@@ -22,7 +22,7 @@ function StationaryList() {
     name: "",
     price: "",
     available: "",
-    quantity:""
+    quantity: "",
   });
 
   const fetchItems = async () => {
@@ -35,7 +35,9 @@ function StationaryList() {
         setErrorModal(true);
       }
     } catch (error) {
-      setErrorMessage(error?.response?.data?.message || "Something went wrong.");
+      setErrorMessage(
+        error?.response?.data?.message || "Something went wrong."
+      );
       setErrorModal(true);
     }
   };
@@ -60,7 +62,7 @@ function StationaryList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "", available: "",quantity:"" });
+        setFormData({ name: "", price: "", available: "", quantity: "" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -75,7 +77,9 @@ function StationaryList() {
   const handleDelete = async (_id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
-        const response = await api.delete(`/admin/stationary-deleteitem/${_id}`);
+        const response = await api.delete(
+          `/admin/stationary-deleteitem/${_id}`
+        );
         if (response.data.success) {
           setSuccessMessage("Item deleted successfully");
           setSuccessModal(true);
@@ -85,7 +89,9 @@ function StationaryList() {
           setErrorModal(true);
         }
       } catch (error) {
-        setErrorMessage(error?.response?.data?.message || "Failed to delete item.");
+        setErrorMessage(
+          error?.response?.data?.message || "Failed to delete item."
+        );
         setErrorModal(true);
       }
     }
@@ -106,7 +112,12 @@ function StationaryList() {
   };
 
   const handleEdit = async () => {
-    if (!formData.name.trim() && !formData.price&& !formData.quantity && formData.available === "") {
+    if (
+      !formData.name.trim() &&
+      !formData.price &&
+      !formData.quantity &&
+      formData.available === ""
+    ) {
       setErrorMessage("Please update at least one field.");
       return setErrorModal(true);
     }
@@ -121,7 +132,7 @@ function StationaryList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "",quantity:"" });
+        setFormData({ name: "", price: "", available: "", quantity: "" });
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -155,7 +166,10 @@ function StationaryList() {
       <div className="stationaryListContainer">
         <div className="stationaryListHeader">
           <h1 className="stationaryListTitle">Stationary Items Management</h1>
-          <button className="stationaryListAddButton" onClick={() => setAddItemModal(true)}>
+          <button
+            className="stationaryListAddButton"
+            onClick={() => setAddItemModal(true)}
+          >
             <Plus size={20} /> Add New Item
           </button>
         </div>
@@ -186,7 +200,9 @@ function StationaryList() {
                 paginatedItems.map((item) => (
                   <tr key={item._id}>
                     <td className="stationaryListTableCell">{item.name}</td>
-                    <td className="stationaryListTableCell">{item.available ? "Available" : "Unavailable"}</td>
+                    <td className="stationaryListTableCell">
+                      {item.available ? "Available" : "Unavailable"}
+                    </td>
                     <td className="stationaryListTableCell">{item.quantity}</td>
                     <td className="stationaryListTableCell">₹{item.price}</td>
                     <td className="stationaryListTableCell">
@@ -233,7 +249,9 @@ function StationaryList() {
             </button>
           ))}
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
           >
             Next
@@ -253,7 +271,7 @@ function StationaryList() {
                 value={formData.name}
                 onChange={handleItemFormChange}
               />
-               <input
+              <input
                 name="quantity"
                 placeholder="quantity"
                 value={formData.quantity}
@@ -297,11 +315,11 @@ function StationaryList() {
               onChange={handleItemFormChange}
             />
             <input
-                name="quantity"
-                placeholder="quantity"
-                value={formData.quantity}
-                onChange={handleItemFormChange}
-              />
+              name="quantity"
+              placeholder="quantity"
+              value={formData.quantity}
+              onChange={handleItemFormChange}
+            />
             <input
               name="price"
               placeholder="Price"

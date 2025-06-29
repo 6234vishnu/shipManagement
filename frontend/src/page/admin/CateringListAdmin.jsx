@@ -23,7 +23,7 @@ const CateringListAdmin = () => {
     name: "",
     price: "",
     available: "",
-    quantity:"",
+    quantity: "",
   });
 
   const fetchItems = async () => {
@@ -126,7 +126,7 @@ const CateringListAdmin = () => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "" ,quantity:""});
+        setFormData({ name: "", price: "", available: "", quantity: "" });
         setTimeout(() => {
           fetchItems();
         }, 3500);
@@ -194,7 +194,9 @@ const CateringListAdmin = () => {
                 paginatedItems.map((item) => (
                   <tr key={item._id} className="cateringListAdminTableRow">
                     <td className="cateringListAdminTableCell">{item.name}</td>
-                    <td className="cateringListAdminTableCell">{item.quantity}</td>
+                    <td className="cateringListAdminTableCell">
+                      {item.quantity}
+                    </td>
                     <td className="cateringListAdminTableCell">
                       {item.available ? "Available" : "Unavailable"}
                     </td>
@@ -303,7 +305,7 @@ const CateringListAdmin = () => {
                 onChange={handleItemFormChange}
                 className="customModal-input"
               />
-              
+
               <button type="submit" className="customModal-submit">
                 Submit
               </button>

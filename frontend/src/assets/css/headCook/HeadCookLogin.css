@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
@@ -166,7 +166,7 @@
 
 .headCookLoginPageSubmitBtn {
   padding: 16px 24px;
-  background: linear-gradient(135deg, #002B45 0%, #0d2f44 100%);
+  background: linear-gradient(135deg, #002b45 0%, #0d2f44 100%);
   color: white;
   border: none;
   border-radius: 12px;
@@ -179,7 +179,7 @@
 }
 
 .headCookLoginPageSubmitBtn:hover {
-  background: linear-gradient(135deg, #0d2f44 0%, #002B45 100%);
+  background: linear-gradient(135deg, #0d2f44 0%, #002b45 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }

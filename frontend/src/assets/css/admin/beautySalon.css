@@ -1,4 +1,4 @@
-.stationaryListContainer {
+.beautySalonListContainer {
   max-width: 1473px;
   margin: 0 auto;
   padding: 24px;
@@ -8,7 +8,7 @@
   height: auto;
 }
 
-.stationaryListHeader {
+.beautySalonListHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,14 +17,14 @@
   gap: 16px;
 }
 
-.stationaryListTitle {
+.beautySalonListTitle {
   font-size: 32px;
   font-weight: 700;
   color: white;
   margin: 0;
 }
 
-.stationaryListAddButton {
+.beautySalonListAddButton {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -39,26 +39,26 @@
   transition: all 0.2s ease;
 }
 
-.stationaryListAddButton:hover {
+.beautySalonListAddButton:hover {
   background-color: #002b45;
   color: white;
   transform: translateY(-1px);
 }
 
-.stationaryListFilters {
+.beautySalonListFilters {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
-.stationaryListSearchContainer {
+.beautySalonListSearchContainer {
   position: relative;
   flex: 1;
   min-width: 300px;
 }
 
-.stationaryListSearchIcon {
+.beautySalonListSearchIcon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -66,7 +66,7 @@
   color: #002b45;
 }
 
-.stationaryListSearchInput {
+.beautySalonListSearchInput {
   padding: 12px 12px 12px 44px;
   border: 2px solid #002b45;
   border-radius: 8px;
@@ -76,18 +76,18 @@
   transition: border-color 0.2s ease;
 }
 
-.stationaryListSearchInput:focus {
+.beautySalonListSearchInput:focus {
   outline: none;
   border-color: #002b45;
   box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
 }
 
-.stationaryListFilterContainer {
+.beautySalonListFilterContainer {
   position: relative;
   min-width: 200px;
 }
 
-.stationaryListFilterIcon {
+.beautySalonListFilterIcon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -96,7 +96,7 @@
   z-index: 1;
 }
 
-.stationaryListFilterSelect {
+.beautySalonListFilterSelect {
   padding: 12px 12px 12px 44px;
   border: 2px solid #002b45;
   border-radius: 8px;
@@ -111,27 +111,27 @@
   background-size: 16px;
 }
 
-.stationaryListTableContainer {
+.beautySalonListTableContainer {
   background-color: white;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 24px;
 }
 
-.stationaryListTableWrapper {
+.beautySalonListTableWrapper {
   overflow-x: auto;
 }
 
-.stationaryListTable {
+.beautySalonListTable {
   width: 100%;
   border-collapse: collapse;
 }
 
-.stationaryListTableHead {
+.beautySalonListTableHead {
   background-color: #131f3a;
 }
 
-.stationaryListTableHeader {
+.beautySalonListTableHeader {
   padding: 16px;
   text-align: left;
   font-weight: 600;
@@ -143,11 +143,11 @@
   white-space: nowrap;
 }
 
-.stationaryListTableBody .stationaryListTableRow:hover {
+.beautySalonListTableBody .beautySalonListTableRow:hover {
   background-color: rgba(0, 43, 69, 0.05);
 }
 
-.stationaryListTableCell {
+.beautySalonListTableCell {
   padding: 16px;
   border-bottom: 1px solid rgba(0, 43, 69, 0.1);
   vertical-align: top;
@@ -156,17 +156,17 @@
   border-radius: 55px;
 }
 
-.stationaryListUsername {
+.beautySalonListUsername {
   font-weight: 600;
   color: #002b45;
 }
 
-.stationaryListItemName {
+.beautySalonListItemName {
   font-weight: 500;
   color: #002b45;
 }
 
-.stationaryListQuantity {
+.beautySalonListQuantity {
   display: inline-block;
   background-color: rgba(0, 43, 69, 0.1);
   color: #002b45;
@@ -176,13 +176,13 @@
   font-weight: 500;
 }
 
-.stationaryListPrice {
+.beautySalonListPrice {
   font-weight: 600;
   color: #002b45;
   font-size: 16px;
 }
 
-.stationaryListStatusBadge {
+.beautySalonListStatusBadge {
   display: inline-block;
   padding: 6px 12px;
   border-radius: 16px;
@@ -191,32 +191,32 @@
   text-transform: capitalize;
 }
 
-.stationaryListStatusCompleted,
-.stationaryListStatusPending,
-.stationaryListStatusInProgress,
-.stationaryListStatusCancelled {
+.beautySalonListStatusCompleted,
+.beautySalonListStatusPending,
+.beautySalonListStatusInProgress,
+.beautySalonListStatusCancelled {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002b45;
   border: 1px solid #002b45;
 }
 
-.stationaryListOrderDate {
+.beautySalonListOrderDate {
   font-weight: 500;
   color: #002b45;
   margin-bottom: 2px;
 }
 
-.stationaryListOrderTime {
+.beautySalonListOrderTime {
   font-size: 12px;
   color: rgba(0, 43, 69, 0.7);
 }
 
-.stationaryListActionButtons {
+.beautySalonListActionButtons {
   display: flex;
   gap: 8px;
 }
 
-.stationaryListActionButton {
+.beautySalonListActionButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,92 +228,221 @@
   transition: all 0.2s ease;
 }
 
-.stationaryListEditButton {
+.beautySalonListEditButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002b45;
   border: 1px solid #002b45;
 }
 
-.stationaryListEditButton:hover {
+.beautySalonListEditButton:hover {
   background-color: #002b45;
   color: white;
 }
 
-.stationaryListDeleteButton {
+.beautySalonListDeleteButton {
   background-color: rgba(255, 255, 255, 0.9);
   color: #002b45;
   border: 1px solid #002b45;
 }
 
-.stationaryListDeleteButton:hover {
+.beautySalonListDeleteButton:hover {
   background-color: #002b45;
   color: white;
 }
 
-.stationaryListEmptyCell {
+.beautySalonListEmptyCell {
   text-align: center;
   padding: 48px 16px;
 }
 
-.stationaryListEmptyState p {
+.beautySalonListEmptyState p {
   color: rgba(0, 43, 69, 0.7);
   font-size: 18px;
   margin: 0;
 }
 
-.stationaryListPagination {
+.beautySalonListPagination {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 16px 0;
 }
 
-.stationaryListResultsInfo {
+.beautySalonListResultsInfo {
   color: white;
   font-size: 14px;
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .stationaryListHeader {
-    flex-direction: column;
-    align-items: flex-start;
+/* Modal */
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.modalContent h2 {
+  color: black;
+}
+
+.modalContent input,
+.modalContent select {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: white;
+  color: black;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modalContent input:focus,
+.modalContent select:focus {
+  border-color: #002b45;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.modalActions button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+.modalActions button[type="submit"] {
+  background-color: #002b45;
+  color: #fff;
+}
+
+.modalActions button[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #002b45;
+  transform: scale(1.05);
+  border: 1px solid #002b45;
+}
+
+.modalActions button[type="button"] {
+  background-color: #ccc;
+}
+
+.modalActions button[type="button"]:hover {
+  background-color: #999;
+  transform: scale(1.05);
+}
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .beautySalonListTitle {
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
   }
 
-  .stationaryListFilters {
-    flex-direction: column;
+  .beautySalonListAddButton {
+    width: 100%;
+    justify-content: center;
   }
 
-  .stationaryListTableCell {
-    font-size: 14px;
-    padding: 12px;
+  .beautySalonListFilters {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .beautySalonListSearchContainer,
+  .beautySalonListFilterContainer {
+    min-width: 100%;
   }
 
   .modalContent {
     padding: 1.5rem;
-    max-width: 90%;
+    width: 95%;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modalActions button {
+    width: 100%;
+  }
+
+  .beautySalonListTableHeader,
+  .beautySalonListTableCell {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .beautySalonListTable {
+    font-size: 14px;
   }
 }
 
+/* Medium devices (tablets, 768px and down) */
 @media (max-width: 768px) {
-  .stationaryListTitle {
-    font-size: 24px;
+  .beautySalonListHeader {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .stationaryListAddButton {
+  .beautySalonListAddButton {
     padding: 10px 20px;
     font-size: 14px;
   }
 
-  .stationaryListTableHeader,
-  .stationaryListTableCell {
-    font-size: 12px;
-    padding: 10px;
+  .beautySalonListTableCell {
+    padding: 12px;
+    font-size: 14px;
   }
 
-  .stationaryListSearchInput,
-  .stationaryListFilterSelect {
-    font-size: 14px;
-    padding: 10px 10px 10px 40px;
+  .modalContent {
+    padding: 1.8rem;
+  }
+}
+
+/* Large devices (1024px and down) */
+@media (max-width: 1024px) {
+  .beautySalonListFilters {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .beautySalonListSearchContainer,
+  .beautySalonListFilterContainer {
+    flex: 1 1 45%;
   }
 }

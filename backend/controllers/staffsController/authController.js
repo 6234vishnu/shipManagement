@@ -1,14 +1,14 @@
-import Staff from '../../models/staff.js'
-import { sendOtp } from '../../utils/nodeMailer.js';
-import bcrypt from 'bcrypt'
+import Staff from "../../models/staff.js";
+import { sendOtp } from "../../utils/nodeMailer.js";
+import bcrypt from "bcrypt";
 
 export const staffsSignUp = async (req, res) => {
-      const generateOTP = () => {
+  const generateOTP = () => {
     return Math.floor(100000 + Math.random() * 900000).toString();
   };
   try {
     const { name, email, phone, password, confirmPassword, role } = req.body;
- if (!name || !email || !phone || !password || !confirmPassword  || !role) {
+    if (!name || !email || !phone || !password || !confirmPassword || !role) {
       return res.status(400).json({
         success: false,
         message: "Fill all the feilds before submission",
@@ -19,7 +19,7 @@ export const staffsSignUp = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Passwords are not matched" });
 
-    const staffExists = await Staff.findOne({ email, });
+    const staffExists = await Staff.findOne({ email });
     if (staffExists)
       return res
         .status(400)
@@ -47,12 +47,12 @@ export const staffsSignUp = async (req, res) => {
   }
 };
 
-
 export const enterdOtpStaffSignUp = async (req, res) => {
   try {
     const { formData, code } = req.body;
     const { name, role, email, phone, password, confirmPassword } = formData;
-    if(!code) return res.status(400).json({
+    if (!code)
+      return res.status(400).json({
         success: false,
         message: "please Enter the Otp",
       });
@@ -68,7 +68,7 @@ export const enterdOtpStaffSignUp = async (req, res) => {
         .json({ success: false, message: "Passwords are not matched" });
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const staffExists = await Staff.findOne({ email, });
+    const staffExists = await Staff.findOne({ email });
 
     if (staffExists) {
       if (staffExists.isSignUpAccepted === false) {
@@ -85,23 +85,22 @@ export const enterdOtpStaffSignUp = async (req, res) => {
     }
 
     const newStaff = new Staff({
-     username: name,
+      username: name,
       email,
       role,
       phone,
       password: hashedPassword,
-      isSignUpAccepted:false,
+      isSignUpAccepted: false,
     });
 
-    const save =await newStaff.save();
+    const save = await newStaff.save();
 
     if (!save)
       return res
         .status(500)
         .json({ success: false, message: "Server error try later" });
 
-
-    res.status(200).json({ success: true,});
+    res.status(200).json({ success: true });
   } catch (error) {
     console.log("error in enterdOtpStaffSignUp staff", error);
 

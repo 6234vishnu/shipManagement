@@ -6,6 +6,7 @@ import Voyager from "../../models/voyager.js";
 import ResortBooking from "../../models/resortBooking.js";
 import FitnessCenter from "../../models/fitnessCenterBooking.js";
 import PartyHall from "../../models/partyHallBooking.js";
+import BeautySalon from "../../models/beautySalonBooking.js";
 
 export const getMoviesUser = async (req, res) => {
   try {
@@ -30,7 +31,7 @@ export const newMovieBooking = async (req, res) => {
     // Validate required fields
     const { showDate, showTime, totalSeats, movieName } = req.body;
     const { voyagerId } = req.query;
-    
+
     if (!showDate || !showTime || !totalSeats || !movieName || !voyagerId) {
       return res.status(400).json({
         success: false,
@@ -60,7 +61,7 @@ export const newMovieBooking = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Not enough available seats",
-        availableSeats: movie.totalSlots
+        availableSeats: movie.totalSlots,
       });
     }
 
@@ -88,7 +89,7 @@ export const newMovieBooking = async (req, res) => {
       { type: "Movies", name: movieName },
       { $inc: { totalSlots: -parseInt(totalSeats) } }
     );
-    
+
     if (!updatedMovie.modifiedCount) {
       // Rollback the booking if slot update fails
       await MovieBooking.deleteOne({ _id: savedBooking._id });
@@ -105,15 +106,14 @@ export const newMovieBooking = async (req, res) => {
       movieName,
       totalSeats,
       showDate,
-      showTime
+      showTime,
     });
-
   } catch (error) {
     console.error("Error in newMovieBooking controller:", error);
-    res.status(500).json({ 
-      success: false, 
+    res.status(500).json({
+      success: false,
       message: "Internal server error",
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: process.env.NODE_ENV === "development" ? error.message : undefined,
     });
   }
 };
@@ -512,5 +512,96 @@ export const BookingPartyHall = async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "server error  try later" });
+  }
+};
+
+// Get Beauty Salon List
+export const getBeautySalonList = async (req, res) => {
+  try {
+    const getBeautySalonItems = await Item.find({ type: "beautySalon" });
+
+    if (!getBeautySalonItems || getBeautySalonItems.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "There are no Beauty Salons available. Please try again later.",
+      });
+    }
+
+    return res.status(200).json({ success: true, items: getBeautySalonItems });
+  } catch (error) {
+    console.log("Error in getBeautySalonList Controller", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Server error. Please try again later.",
+    });
+  }
+};
+
+// Book Beauty Salon
+export const bookBeautySalon = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    console.log(req.body);
+
+    const { date, time, salonName, price, serviceType } = req.body;
+
+    if (!time || !date || !salonName || !price || !serviceType) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing required booking fields.",
+      });
+    }
+
+    const findVoyager = await Voyager.findOne({ _id: userId });
+
+    if (!findVoyager) {
+      return res.status(400).json({
+        success: false,
+        message: "Please login first before making a booking.",
+      });
+    }
+
+    const newBeautySalonBooking = new BeautySalon({
+      voyager: findVoyager._id,
+      beautySalonName: salonName,
+      serviceType,
+      time,
+      price,
+      date,
+    });
+
+    const saveBooking = await newBeautySalonBooking.save();
+
+    if (!saveBooking) {
+      return res.status(500).json({
+        success: false,
+        message: "Booking failed. Please try again later.",
+      });
+    }
+
+    const updateAvailableSalons = await Item.updateOne(
+      { type: "beautySalon", name: salonName },
+      { $inc: { totalSlots: -1 } }
+    );
+
+    if (!updateAvailableSalons) {
+      return res.status(500).json({
+        success: false,
+        message: "Error updating salon slot availability.",
+      });
+    }
+
+    return res
+      .status(200)
+      .json({ success: true, message: "Beauty Salon booked successfully." });
+  } catch (error) {
+    console.log("Error in bookBeautySalon Controller", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Server error. Please try again later.",
+    });
   }
 };

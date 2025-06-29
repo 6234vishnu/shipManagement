@@ -1,8 +1,7 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 dotenv.config();
-
 
 const MONGO_URI = process.env.MONGODB_URL;
 const connectDB = async () => {
@@ -13,15 +12,12 @@ const connectDB = async () => {
   }
 };
 
-
-mongoose.connection.on('error', (err) => {
+mongoose.connection.on("error", (err) => {
   process.exit(1);
 });
 
-
-mongoose.connection.on('disconnected', () => {
+mongoose.connection.on("disconnected", () => {
   process.exit(1);
 });
-
 
 export { connectDB };

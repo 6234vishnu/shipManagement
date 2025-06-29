@@ -1,18 +1,22 @@
 import mongoose from "mongoose";
 
 const StationeryOrderSchema = new mongoose.Schema({
-  voyager: { type: mongoose.Schema.Types.ObjectId, ref: 'Voyager', required: true },
+  voyager: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Voyager",
+    required: true,
+  },
   items: [
     {
       name: String,
       quantity: Number,
-      price: Number
-    }
+      price: Number,
+    },
   ],
-  status: { type: String, default: 'Pending' },
-  totalAmount:{type:Number,required:true},
+  status: { type: String, default: "Pending" },
+  totalAmount: { type: Number, required: true },
   inspectedBySupervisor: { type: Boolean, default: false },
-  orderedAt: { type: Date, default: Date.now }
+  orderedAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.model('StationeryOrder', StationeryOrderSchema);
+export default mongoose.model("StationeryOrder", StationeryOrderSchema);

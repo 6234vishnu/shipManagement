@@ -3,7 +3,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .cateringOrderPage__container {
@@ -32,7 +32,7 @@
 .cateringOrderPage__headerIcon {
   width: 40px;
   height: 40px;
-  color: #002B45;
+  color: #002b45;
 }
 
 .cateringOrderPage__title {
@@ -59,7 +59,7 @@
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  color: #002B45;
+  color: #002b45;
 }
 
 .cateringOrderPage__statLabel {
@@ -91,13 +91,13 @@
 
 .cateringOrderPage__filterBtn:hover {
   border-color: #4f46e5;
-  color: #002B45;
+  color: #002b45;
   background-color: white;
   transform: translateY(-2px);
 }
 
 .cateringOrderPage__filterBtn--active {
-  background: #002B45;
+  background: #002b45;
   border-color: #4f46e5;
   color: white;
 }
@@ -181,7 +181,7 @@
 .cateringOrderPage__orderAmount {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #002B45;
+  color: #002b45;
 }
 
 /* Order Details */
@@ -242,7 +242,7 @@
   padding: 6px 12px;
   border-radius: 15px;
   font-size: 0.9rem;
-  color: #002B45;
+  color: #002b45;
   border: 1px solid #e2e8f0;
 }
 
@@ -251,8 +251,8 @@
   padding: 12px;
   border-radius: 8px;
   font-size: 0.9rem;
-  color: #002B45;
-  border-left: 3px solid #002B45;
+  color: #002b45;
+  border-left: 3px solid #002b45;
 }
 
 /* Actions */
@@ -316,7 +316,6 @@
   margin: 0;
 }
 
-
 .cateringOrderPage__pagination {
   display: flex;
   justify-content: center;
@@ -339,53 +338,51 @@
   cursor: not-allowed;
 }
 
-
-
 /* Responsive Design - Tablet */
 @media (max-width: 768px) {
   .cateringOrderPage {
     padding: 15px;
   }
-  
+
   .cateringOrderPage__header {
     flex-direction: column;
     gap: 20px;
     padding: 20px;
     text-align: center;
   }
-  
+
   .cateringOrderPage__title {
     font-size: 2rem;
   }
-  
+
   .cateringOrderPage__stats {
     gap: 20px;
   }
-  
+
   .cateringOrderPage__stat {
     padding: 12px 16px;
   }
-  
+
   .cateringOrderPage__statNumber {
     font-size: 1.5rem;
   }
-  
+
   .cateringOrderPage__orderCard {
     padding: 20px;
   }
-  
+
   .cateringOrderPage__orderHeader {
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
   }
-  
+
   .cateringOrderPage__orderInfo {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
-  
+
   .cateringOrderPage__voyagerInfo,
   .cateringOrderPage__orderMeta {
     flex-direction: column;
@@ -399,75 +396,75 @@
   .cateringOrderPage {
     padding: 10px;
   }
-  
+
   .cateringOrderPage__header {
     padding: 15px;
   }
-  
+
   .cateringOrderPage__title {
     font-size: 1.5rem;
   }
-  
+
   .cateringOrderPage__headerIcon {
     width: 30px;
     height: 30px;
   }
-  
+
   .cateringOrderPage__stats {
     flex-direction: column;
     gap: 10px;
     width: 100%;
   }
-  
+
   .cateringOrderPage__stat {
     padding: 10px;
   }
-  
+
   .cateringOrderPage__filters {
     gap: 10px;
   }
-  
+
   .cateringOrderPage__filterBtn {
     padding: 10px 16px;
     font-size: 0.9rem;
   }
-  
+
   .cateringOrderPage__orderCard {
     padding: 15px;
   }
-  
+
   .cateringOrderPage__orderId {
     font-size: 1.2rem;
   }
-  
+
   .cateringOrderPage__orderAmount {
     font-size: 1.2rem;
   }
-  
+
   .cateringOrderPage__items {
     flex-direction: column;
     gap: 5px;
   }
-  
+
   .cateringOrderPage__item {
     padding: 8px 12px;
   }
-  
+
   .cateringOrderPage__deliveredBtn {
     width: 100%;
     justify-content: center;
     padding: 14px 20px;
   }
-  
+
   .cateringOrderPage__emptyState {
     padding: 40px 15px;
   }
-  
+
   .cateringOrderPage__emptyIcon {
     width: 60px;
     height: 60px;
   }
-  
+
   .cateringOrderPage__emptyTitle {
     font-size: 1.2rem;
   }
@@ -478,25 +475,25 @@
   .cateringOrderPage__title {
     font-size: 1.3rem;
   }
-  
+
   .cateringOrderPage__headerContent {
     gap: 10px;
   }
-  
+
   .cateringOrderPage__filterBtn {
     padding: 8px 12px;
     font-size: 0.8rem;
   }
-  
+
   .cateringOrderPage__orderCard {
     padding: 12px;
   }
-  
+
   .cateringOrderPage__status {
     padding: 6px 12px;
     font-size: 0.8rem;
   }
-  
+
   .cateringOrderPage__statusIcon {
     width: 14px;
     height: 14px;

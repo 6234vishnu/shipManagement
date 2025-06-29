@@ -1,6 +1,6 @@
 /* Catering Order Page Styles */
 .cateringOrderPageVoyager-container {
-width: 99.1vw;
+  width: 99.1vw;
   padding: 20px;
   background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   min-height: 100vh;
@@ -16,7 +16,7 @@ width: 99.1vw;
   font-size: 3rem;
   color: black;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   font-weight: bold;
 }
 
@@ -37,7 +37,7 @@ width: 99.1vw;
   background: white;
   border-radius: 20px;
   padding: 30px;
-  border:1px solid #002B45;
+  border: 1px solid #002b45;
   box-shadow: 2px 3px 20px 11px rgba(0, 0, 0, 0.15);
 }
 
@@ -69,7 +69,7 @@ width: 99.1vw;
 
 .cateringOrderPageVoyager-category-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .cateringOrderPageVoyager-items-grid {
@@ -90,7 +90,7 @@ width: 99.1vw;
 
 .cateringOrderPageVoyager-item-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   border-color: #667eea;
 }
 
@@ -105,7 +105,7 @@ width: 99.1vw;
   justify-content: center;
   font-size: 3rem;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cateringOrderPageVoyager-item-info {
@@ -171,8 +171,8 @@ width: 99.1vw;
   background: white;
   border-radius: 20px;
   padding: 25px;
-  border: 1px solid #002B45;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border: 1px solid #002b45;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 20px;
   height: fit-content;
@@ -261,8 +261,8 @@ width: 99.1vw;
   cursor: not-allowed;
   transform: none;
 }
-.cateringOrderPageVoyager-pagination{
-    padding: 15px;
+.cateringOrderPageVoyager-pagination {
+  padding: 15px;
 }
 
 /* Media Queries for Responsiveness */

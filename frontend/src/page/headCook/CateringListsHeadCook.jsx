@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Package, Clock, CheckCircle, User, Calendar,LogOut } from "lucide-react";
+import {
+  Package,
+  Clock,
+  CheckCircle,
+  User,
+  Calendar,
+  LogOut,
+} from "lucide-react";
 import "../../assets/css/headCook/CateringListsHeadCook.css";
 import api from "../../services/axiosInstance";
 import SuccessModal from "../../components/SuccessModal";
@@ -12,16 +19,16 @@ const CateringListsHeadCook = () => {
   const [successModal, setSuccessModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
-  const [logoutModal,setLogOutModal]=useState(false)
+  const [logoutModal, setLogOutModal] = useState(false);
   const [filter, setFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const headCookId=localStorage.getItem('headCookId')
-  const navigate=useNavigate()
+  const headCookId = localStorage.getItem("headCookId");
+  const navigate = useNavigate();
   const ordersPerPage = 5;
-  
-  useEffect(()=>{
-    if(!headCookId) return navigate('/headCook-Login')
-  })
+
+  useEffect(() => {
+    if (!headCookId) return navigate("/headCook-Login");
+  });
 
   const getOrders = async () => {
     try {
@@ -63,20 +70,22 @@ const CateringListsHeadCook = () => {
     }
   };
 
-  const handleLogout=async()=>{
+  const handleLogout = async () => {
     try {
-      const res=await api.post(`/headcook/auth/logout?headCookId=${headCookId}`)
-      if(res.data.success){
-        navigate("/headCook-Login")
-       return window.location.reload()
+      const res = await api.post(
+        `/headcook/auth/logout?headCookId=${headCookId}`
+      );
+      if (res.data.success) {
+        navigate("/headCook-Login");
+        return window.location.reload();
       }
-      setErrorMessage(res.data.message)
-     return setErrorModal(true)
+      setErrorMessage(res.data.message);
+      return setErrorModal(true);
     } catch (error) {
-      setErrorMessage(error?.res?.data?.message)
-     return setErrorModal(true)
+      setErrorMessage(error?.res?.data?.message);
+      return setErrorModal(true);
     }
-  }
+  };
 
   const filteredOrders = orders.filter((order) => {
     if (filter === "all") return true;
@@ -119,10 +128,10 @@ const CateringListsHeadCook = () => {
               <Package className="cateringOrderPage__headerIcon" />
               <h1 className="cateringOrderPage__title">Catering Orders</h1>
               <span onClick={() => setLogOutModal(true)} className="title-icon">
-                             <LogOut size={18} />
-                          </span>
+                <LogOut size={18} />
+              </span>
             </div>
-               
+
             <div className="cateringOrderPage__stats">
               <div className="cateringOrderPage__stat">
                 <span className="cateringOrderPage__statNumber">
@@ -283,9 +292,9 @@ const CateringListsHeadCook = () => {
           onClose={() => setSuccessModal(false)}
         />
       )}
-       {logoutModal && (
+      {logoutModal && (
         <div className="logOutModal-Container">
-          <p >Are you sure you want to logOut</p>
+          <p>Are you sure you want to logOut</p>
           <div className="logOutModal-subContainer">
             <button className="logOutModal-logOutButton" onClick={handleLogout}>
               Logout

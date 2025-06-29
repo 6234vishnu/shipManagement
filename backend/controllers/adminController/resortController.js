@@ -1,11 +1,9 @@
 import Item from "../../models/item.js";
 
 export const createResortListItem = async (req, res) => {
-
-  
   try {
-    const { name, price,totalRooms } = req.body;
-    if (!name || !price ||!totalRooms)
+    const { name, price, totalRooms } = req.body;
+    if (!name || !price || !totalRooms)
       return res.status(400).json({
         success: false,
         message: "fill all the feilds before submission",
@@ -15,7 +13,7 @@ export const createResortListItem = async (req, res) => {
       name,
       category: "Stays",
       type: "resort",
-      totalSlots:Number(totalRooms),
+      totalSlots: Number(totalRooms),
       price,
     });
 
@@ -59,12 +57,10 @@ export const getResortListItem = async (req, res) => {
 };
 
 export const editResortListItem = async (req, res) => {
-  
   try {
-
     const { itemId } = req.query;
-    const { name, price, available,totalRooms } = req.body;
-    if (!itemId || !name || !price||!totalRooms || available === undefined)
+    const { name, price, available, totalRooms } = req.body;
+    if (!itemId || !name || !price || !totalRooms || available === undefined)
       return res.status(400).json({
         success: false,
         message: "Fill all the fields before submission",
@@ -72,7 +68,7 @@ export const editResortListItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available,totalSlots:totalRooms } },
+      { $set: { name, price, available, totalSlots: totalRooms } },
       { new: true }
     );
     if (!findItem)
@@ -80,7 +76,6 @@ export const editResortListItem = async (req, res) => {
         success: false,
         message: "Couldint edit item try later",
       });
-    
 
     return res.status(200).json({
       success: true,

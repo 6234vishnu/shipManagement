@@ -1,727 +1,730 @@
 .CruiseShipHome-container {
-          width: 100vw;
-          margin: 0;
-          padding: 0;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          overflow-x: hidden;
-        }
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
 
-        /* Navigation Styles */
-        .CruiseShipHome-navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          background: rgba(15, 23, 42, 0.95);
-          backdrop-filter: blur(10px);
-          z-index: 10;
-          border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
+/* Navigation Styles */
+.CruiseShipHome-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
 
-        .CruiseShipHome-nav-content {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1rem 2rem;
-        }
+.CruiseShipHome-nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
 
-        .CruiseShipHome-logo {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: white;
-          font-weight: bold;
-          font-size: 1.25rem;
-        }
+.CruiseShipHome-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
 
-        .CruiseShipHome-logo-icon {
-         
-          width: 40px;
-          height: 40px;
-          border-radius: 40px;
-        }
+.CruiseShipHome-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
 
-        .CruiseShipHome-nav-links {
-          display: flex;
-          gap: 2rem;
-        }
+.CruiseShipHome-nav-links {
+  display: flex;
+  gap: 2rem;
+}
 
-        .CruiseShipHome-nav-link {
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.3s ease;
-        }
+.CruiseShipHome-nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
 
-        .CruiseShipHome-nav-link:hover {
-          color: #3b82f6;
-        }
+.CruiseShipHome-nav-link:hover {
+  color: #3b82f6;
+}
 
-        .CruiseShipHome-auth-section {
-          display: flex;
-          gap: 1rem;
-          align-items: center;
-        }
+.CruiseShipHome-auth-section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
-        .CruiseShipHome-auth-link {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          font-weight: 500;
-          padding: 0.5rem 1rem;
-          border-radius: 0.5rem;
-          transition: all 0.3s ease;
-        }
+.CruiseShipHome-auth-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
 
-        .CruiseShipHome-auth-link:hover {
-          background: rgba(59, 130, 246, 0.1);
-          color: #3b82f6;
-        }
+.CruiseShipHome-auth-link:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
 
-        .CruiseShipHome-profile-link {
-          background: rgba(59, 130, 246, 0.2);
-          color: #3b82f6;
-        }
+.CruiseShipHome-profile-link {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
 
-        .CruiseShipHome-staff-link {
-          border: 1px solid rgba(148, 163, 184, 0.3);
-        }
+.CruiseShipHome-staff-link {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
 
-        .CruiseShipHome-menu-toggle {
-          display: none;
-          background: none;
-          border: none;
-          color: white;
-          cursor: pointer;
-        }
+.CruiseShipHome-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
-        .CruiseShipHome-mobile-menu {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: rgba(15, 23, 42, 0.98);
-          backdrop-filter: blur(10px);
-          padding: 1rem 2rem;
-          border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
+.CruiseShipHome-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
 
-        .CruiseShipHome-mobile-link {
-          display: block;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          padding: 0.75rem 0;
-          border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
+.CruiseShipHome-mobile-link {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
 
-        .CruiseShipHome-mobile-auth {
-          margin-top: 1rem;
-          padding-top: 1rem;
-          border-top: 1px solid rgba(148, 163, 184, 0.1);
-        }
+.CruiseShipHome-mobile-auth {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
 
-        .CruiseShipHome-mobile-auth-link {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          padding: 0.75rem 0;
-        }
+.CruiseShipHome-mobile-auth-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.75rem 0;
+}
 
-        /* Hero Section */
-        .CruiseShipHome-hero {
-          position: relative;
-          height: 100vh;
-          background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
+/* Hero Section */
+.CruiseShipHome-hero {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
-        .CruiseShipHome-hero-overlay {
-          position: absolute;
-          inset: 0;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/view-large-ship-water_23-2150785292.jpg');
-       
-         background-size: cover;
+.CruiseShipHome-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/view-large-ship-water_23-2150785292.jpg");
 
-        
-        }
+  background-size: cover;
+}
 
-        @keyframes wave {
-          0% { background-position: 0 0; }
-          100% { background-position: 100px 0; }
-        }
+@keyframes wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 0;
+  }
+}
 
-        .CruiseShipHome-hero-content {
-          position: relative;
-          text-align: center;
-          color: white;
-          max-width: 800px;
-          padding: 0 2rem;
-        }
+.CruiseShipHome-hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 2rem;
+}
 
-        .CruiseShipHome-hero-title {
-          font-size: 4rem;
-          font-weight: bold;
-          margin-bottom: 1.5rem;
-          line-height: 1.1;
-        }
+.CruiseShipHome-hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
 
-        .CruiseShipHome-hero-accent {
-          background: linear-gradient(45deg, #fbbf24, #f59e0b);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
+.CruiseShipHome-hero-accent {
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-        .CruiseShipHome-hero-subtitle {
-          font-size: 1.25rem;
-          margin-bottom: 2rem;
-          color: rgb(255, 255, 255);
-          opacity: 0.9;
-          line-height: 1.6;
-        }
+.CruiseShipHome-hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: rgb(255, 255, 255);
+  opacity: 0.9;
+  line-height: 1.6;
+}
 
-        .CruiseShipHome-hero-buttons {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-        }
+.CruiseShipHome-hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
 
-        .CruiseShipHome-btn {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 1rem 2rem;
-          border-radius: 0.75rem;
-          font-weight: 600;
-          font-size: 1.1rem;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-decoration: none;
-        }
+.CruiseShipHome-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
 
-        .CruiseShipHome-btn-primary {
-          background: linear-gradient(45deg, #f59e0b, #fbbf24);
-          color: white;
-          box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-        }
+.CruiseShipHome-btn-primary {
+  background: linear-gradient(45deg, #f59e0b, #fbbf24);
+  color: white;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+}
 
-        .CruiseShipHome-btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
-        }
+.CruiseShipHome-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+}
 
-        .CruiseShipHome-btn-secondary {
-          background: rgba(255, 255, 255, 0.1);
-          color: black;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          backdrop-filter: blur(10px);
-        }
+.CruiseShipHome-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: black;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
 
-        .CruiseShipHome-btn-secondary:hover {
-          background: rgba(255, 255, 255, 0.2);
-          transform: translateY(-2px);
-        }
+.CruiseShipHome-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
 
-        .CruiseShipHome-btn-icon {
-          width: 20px;
-          height: 20px;
-        }
+.CruiseShipHome-btn-icon {
+  width: 20px;
+  height: 20px;
+}
 
-        /* Search Section */
-        .CruiseShipHome-search {
-          background: white;
-          padding: 2rem 0;
-       
-          position: relative;
-         
-        }
+/* Search Section */
+.CruiseShipHome-search {
+  background: white;
+  padding: 2rem 0;
 
-        .CruiseShipHome-search-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-        }
+  position: relative;
+}
 
-        .CruiseShipHome-search-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-          background: white;
-          padding: 2rem;
-          border-radius: 1rem;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
+.CruiseShipHome-search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-        .CruiseShipHome-search-field {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 1rem;
-          border: 2px solid #e5e7eb;
-          border-radius: 0.5rem;
-          transition: border-color 0.3s ease;
-        }
+.CruiseShipHome-search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
 
-        .CruiseShipHome-search-field:focus-within {
-          border-color: #3b82f6;
-        }
+.CruiseShipHome-search-field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease;
+}
 
-        .CruiseShipHome-search-icon {
-          color: #6b7280;
-          flex-shrink: 0;
-        }
+.CruiseShipHome-search-field:focus-within {
+  border-color: #3b82f6;
+}
 
-        .CruiseShipHome-search-select,
-        .CruiseShipHome-search-input {
-          border: none;
-          outline: none;
-          background: none;
-          flex: 1;
-          font-size: 1rem;
-        }
+.CruiseShipHome-search-icon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
 
-        .CruiseShipHome-search-btn {
-          background: linear-gradient(45deg, #1e3a8a, #3b82f6);
-          color: white;
-          border: none;
-          padding: 1rem 2rem;
-          border-radius: 0.5rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
+.CruiseShipHome-search-select,
+.CruiseShipHome-search-input {
+  border: none;
+  outline: none;
+  background: none;
+  flex: 1;
+  font-size: 1rem;
+}
 
-        .CruiseShipHome-search-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
+.CruiseShipHome-search-btn {
+  background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-        /* Section Styles */
-        .CruiseShipHome-section-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-        }
+.CruiseShipHome-search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+}
 
-        .CruiseShipHome-section-header {
-          text-align: center;
-          margin-bottom: 3rem;
-        }
+/* Section Styles */
+.CruiseShipHome-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-        .CruiseShipHome-section-title {
-          font-size: 2.5rem;
-          font-weight: bold;
-          color: #1f2937;
-          margin-bottom: 1rem;
-        }
+.CruiseShipHome-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
 
-        .CruiseShipHome-section-subtitle {
-          font-size: 1.125rem;
-          color: #6b7280;
-        }
+.CruiseShipHome-section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
 
-        /* Destinations Section */
-        .CruiseShipHome-destinations {
-          padding: 6rem 0;
-          background: #f8fafc;
-        }
+.CruiseShipHome-section-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
 
-        .CruiseShipHome-destinations-grid {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          gap: 1.5rem;
-          height: 600px;
-        }
+/* Destinations Section */
+.CruiseShipHome-destinations {
+  padding: 6rem 0;
+  background: #f8fafc;
+}
 
-        .CruiseShipHome-destination-card {
-          position: relative;
-          border-radius: 1rem;
-          overflow: hidden;
-          cursor: pointer;
-          transition: transform 0.3s ease;
-        }
+.CruiseShipHome-destinations-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  height: 600px;
+}
 
-        .CruiseShipHome-destination-card:hover {
-          transform: scale(1.02);
-        }
+.CruiseShipHome-destination-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-        .CruiseShipHome-destination-large {
-          grid-row: span 2;
-        }
+.CruiseShipHome-destination-card:hover {
+  transform: scale(1.02);
+}
 
-        .CruiseShipHome-destination-image {
-          position: absolute;
-          inset: 0;
-          background-size: cover;
-          background-position: center;
-        }
+.CruiseShipHome-destination-large {
+  grid-row: span 2;
+}
 
-       .CruiseShipHome-caribbean {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/view-luxurious-cruise-ship.jpg');
+.CruiseShipHome-destination-image {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
 }
 
-
-        .CruiseShipHome-mediterranean {
-           background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/ray-harrington-Y2V0ph_3_qY-unsplash.jpg');
+.CruiseShipHome-caribbean {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/view-luxurious-cruise-ship.jpg");
   background-size: cover;
   background-position: center;
-        }
+}
 
-        .CruiseShipHome-alaska {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/images/view-luxurious-cruise-ship (1).jpg');
+.CruiseShipHome-mediterranean {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/ray-harrington-Y2V0ph_3_qY-unsplash.jpg");
   background-size: cover;
   background-position: center;
-        }
+}
 
-        .CruiseShipHome-destination-content {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: linear-gradient(transparent, rgba(0,0,0,0.8));
-          color: white;
-          padding: 2rem;
-        }
+.CruiseShipHome-alaska {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/view-luxurious-cruise-ship (1).jpg");
+  background-size: cover;
+  background-position: center;
+}
 
-        .CruiseShipHome-destination-content h3 {
-          font-size: 1.5rem;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-        }
+.CruiseShipHome-destination-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem;
+}
 
-        .CruiseShipHome-destination-content p {
-          opacity: 0.9;
-          margin-bottom: 0.5rem;
-        }
+.CruiseShipHome-destination-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
 
-        .CruiseShipHome-destination-price {
-          font-size: 1.25rem;
-          font-weight: bold;
-          color: #fbbf24;
-        }
+.CruiseShipHome-destination-content p {
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
 
-        /* Features Section */
-        .CruiseShipHome-features {
-          padding: 6rem 0;
-          background: white;
-        }
+.CruiseShipHome-destination-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fbbf24;
+}
 
-        .CruiseShipHome-features-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-        }
+/* Features Section */
+.CruiseShipHome-features {
+  padding: 6rem 0;
+  background: white;
+}
 
-        .CruiseShipHome-feature-card {
-          text-align: center;
-          padding: 2rem;
-          border-radius: 1rem;
-          background: #f8fafc;
-          transition: transform 0.3s ease;
-        }
+.CruiseShipHome-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
 
-        .CruiseShipHome-feature-card:hover {
-          transform: translateY(-5px);
-        }
+.CruiseShipHome-feature-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #f8fafc;
+  transition: transform 0.3s ease;
+}
 
-        .CruiseShipHome-feature-icon {
-          font-size: 3rem;
-          margin-bottom: 1rem;
-        }
+.CruiseShipHome-feature-card:hover {
+  transform: translateY(-5px);
+}
 
-        .CruiseShipHome-feature-card h3 {
-          font-size: 1.25rem;
-          font-weight: bold;
-          color: #1f2937;
-          margin-bottom: 1rem;
-        }
+.CruiseShipHome-feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
 
-        .CruiseShipHome-feature-card p {
-          color: #6b7280;
-          line-height: 1.6;
-        }
+.CruiseShipHome-feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
 
-        /* Testimonials Section */
-        .CruiseShipHome-testimonials {
-          padding: 6rem 0;
-          background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-        }
+.CruiseShipHome-feature-card p {
+  color: #6b7280;
+  line-height: 1.6;
+}
 
-        .CruiseShipHome-testimonials-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-        }
+/* Testimonials Section */
+.CruiseShipHome-testimonials {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
 
-        .CruiseShipHome-testimonial-card {
-          background: white;
-          padding: 2rem;
-          border-radius: 1rem;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease;
-        }
+.CruiseShipHome-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
 
-        .CruiseShipHome-testimonial-card:hover {
-          transform: translateY(-5px);
-        }
+.CruiseShipHome-testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
 
-        .CruiseShipHome-testimonial-stars {
-          display: flex;
-          gap: 0.25rem;
-          margin-bottom: 1rem;
-        }
+.CruiseShipHome-testimonial-card:hover {
+  transform: translateY(-5px);
+}
 
-        .CruiseShipHome-star-filled {
-          color: #fbbf24;
-          width: 20px;
-          height: 20px;
-          fill: currentColor;
-        }
+.CruiseShipHome-testimonial-stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
 
-        .CruiseShipHome-testimonial-card p {
-          color: #4b5563;
-          line-height: 1.6;
-          margin-bottom: 1.5rem;
-          font-style: italic;
-        }
+.CruiseShipHome-star-filled {
+  color: #fbbf24;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
 
-        .CruiseShipHome-testimonial-author {
-          font-weight: bold;
-          color: #1f2937;
-        }
+.CruiseShipHome-testimonial-card p {
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
 
-        /* Footer */
-        .CruiseShipHome-footer {
-          background: #0f172a;
-          color: white;
-          padding: 4rem 0 2rem;
-        }
+.CruiseShipHome-testimonial-author {
+  font-weight: bold;
+  color: #1f2937;
+}
 
-        .CruiseShipHome-footer-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
-        }
+/* Footer */
+.CruiseShipHome-footer {
+  background: #0f172a;
+  color: white;
+  padding: 4rem 0 2rem;
+}
 
-        .CruiseShipHome-footer-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-          margin-bottom: 2rem;
-        }
+.CruiseShipHome-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-        .CruiseShipHome-footer-section h4 {
-          color: #3b82f6;
-          margin-bottom: 1rem;
-          font-weight: bold;
-        }
+.CruiseShipHome-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
 
-        .CruiseShipHome-footer-section ul {
-          list-style: none;
-          padding: 0;
-        }
+.CruiseShipHome-footer-section h4 {
+  color: #3b82f6;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
 
-        .CruiseShipHome-footer-section li {
-          margin-bottom: 0.5rem;
-        }
+.CruiseShipHome-footer-section ul {
+  list-style: none;
+  padding: 0;
+}
 
-        .CruiseShipHome-footer-section a {
-          color: rgba(255, 255, 255, 0.7);
-          text-decoration: none;
-          transition: color 0.3s ease;
-        }
+.CruiseShipHome-footer-section li {
+  margin-bottom: 0.5rem;
+}
 
-        .CruiseShipHome-footer-section a:hover {
-          color: #3b82f6;
-        }
+.CruiseShipHome-footer-section a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-        .CruiseShipHome-footer-logo {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-weight: bold;
-          font-size: 1.25rem;
-          margin-bottom: 1rem;
-        }
+.CruiseShipHome-footer-section a:hover {
+  color: #3b82f6;
+}
 
-        .CruiseShipHome-footer-logo-icon {
-          width: 40px;
-          height: 40px;
-          border-radius: 40px;
-        }
+.CruiseShipHome-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
 
-        .CruiseShipHome-footer-section p {
-          color: rgba(255, 255, 255, 0.7);
-          line-height: 1.6;
-        }
+.CruiseShipHome-footer-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
 
-        .CruiseShipHome-social-links {
-          display: flex;
-          gap: 1rem;
-        }
+.CruiseShipHome-footer-section p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
 
-        .CruiseShipHome-social-link {
-          display: inline-block;
-          padding: 0.5rem 1rem;
-          background: rgba(59, 130, 246, 0.1);
-          border-radius: 0.5rem;
-          transition: background 0.3s ease;
-        }
+.CruiseShipHome-social-links {
+  display: flex;
+  gap: 1rem;
+}
 
-        .CruiseShipHome-social-link:hover {
-          background: rgba(59, 130, 246, 0.2);
-        }
+.CruiseShipHome-social-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
 
-        .CruiseShipHome-footer-bottom {
-          border-top: 1px solid rgba(148, 163, 184, 0.2);
-          padding-top: 2rem;
-          text-align: center;
-          color: rgba(255, 255, 255, 0.6);
-        }
+.CruiseShipHome-social-link:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
 
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-          .CruiseShipHome-nav-links,
-          .CruiseShipHome-auth-section {
-            display: none;
-          }
+.CruiseShipHome-footer-bottom {
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  padding-top: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
 
-          .CruiseShipHome-menu-toggle {
-            display: block;
-          }
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .CruiseShipHome-nav-links,
+  .CruiseShipHome-auth-section {
+    display: none;
+  }
 
-          .CruiseShipHome-mobile-menu {
-            display: block;
-          }
+  .CruiseShipHome-menu-toggle {
+    display: block;
+  }
 
-          .CruiseShipHome-nav-content {
-            padding: 1rem;
-          }
+  .CruiseShipHome-mobile-menu {
+    display: block;
+  }
 
-          .CruiseShipHome-hero-title {
-            font-size: 2.5rem;
-          }
+  .CruiseShipHome-nav-content {
+    padding: 1rem;
+  }
 
-          .CruiseShipHome-hero-subtitle {
-            font-size: 1.1rem;
-          }
+  .CruiseShipHome-hero-title {
+    font-size: 2.5rem;
+  }
 
-          .CruiseShipHome-hero-buttons {
-            flex-direction: column;
-            align-items: center;
-          }
+  .CruiseShipHome-hero-subtitle {
+    font-size: 1.1rem;
+  }
 
-          .CruiseShipHome-btn {
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
-          }
+  .CruiseShipHome-hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 
-          .CruiseShipHome-search-grid {
-            grid-template-columns: 1fr;
-            padding: 1.5rem;
-          }
+  .CruiseShipHome-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
 
-          .CruiseShipHome-destinations-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, 250px);
-            height: auto;
-          }
+  .CruiseShipHome-search-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
 
-          .CruiseShipHome-destination-large {
-            grid-row: span 1;
-          }
+  .CruiseShipHome-destinations-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 250px);
+    height: auto;
+  }
 
-          .CruiseShipHome-section-title {
-            font-size: 2rem;
-          }
+  .CruiseShipHome-destination-large {
+    grid-row: span 1;
+  }
 
-          .CruiseShipHome-section-container {
-            padding: 0 1rem;
-          }
+  .CruiseShipHome-section-title {
+    font-size: 2rem;
+  }
 
-          .CruiseShipHome-hero-content {
-            padding: 0 1rem;
-          }
-        }
+  .CruiseShipHome-section-container {
+    padding: 0 1rem;
+  }
 
-        @media (max-width: 480px) {
-          .CruiseShipHome-hero-title {
-            font-size: 2rem;
-          }
+  .CruiseShipHome-hero-content {
+    padding: 0 1rem;
+  }
+}
 
-          .CruiseShipHome-hero-subtitle {
-            font-size: 1rem;
-          }
+@media (max-width: 480px) {
+  .CruiseShipHome-hero-title {
+    font-size: 2rem;
+  }
 
-          .CruiseShipHome-search-grid {
-            padding: 1rem;
-          }
+  .CruiseShipHome-hero-subtitle {
+    font-size: 1rem;
+  }
 
-          .CruiseShipHome-search-field {
-            padding: 0.75rem;
-          }
+  .CruiseShipHome-search-grid {
+    padding: 1rem;
+  }
 
-          .CruiseShipHome-btn {
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-          }
+  .CruiseShipHome-search-field {
+    padding: 0.75rem;
+  }
 
-          .CruiseShipHome-destinations-grid {
-            grid-template-rows: repeat(3, 200px);
-          }
+  .CruiseShipHome-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
 
-          .CruiseShipHome-destination-content {
-            padding: 1.5rem;
-          }
+  .CruiseShipHome-destinations-grid {
+    grid-template-rows: repeat(3, 200px);
+  }
 
-          .CruiseShipHome-destination-content h3 {
-            font-size: 1.25rem;
-          }
+  .CruiseShipHome-destination-content {
+    padding: 1.5rem;
+  }
 
-          .CruiseShipHome-feature-card,
-          .CruiseShipHome-testimonial-card {
-            padding: 1.5rem;
-          }
+  .CruiseShipHome-destination-content h3 {
+    font-size: 1.25rem;
+  }
 
-          .CruiseShipHome-footer-container {
-            padding: 0 1rem;
-          }
+  .CruiseShipHome-feature-card,
+  .CruiseShipHome-testimonial-card {
+    padding: 1.5rem;
+  }
 
-          .CruiseShipHome-footer-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-        }
+  .CruiseShipHome-footer-container {
+    padding: 0 1rem;
+  }
 
-        @media (min-width: 1400px) {
-          .CruiseShipHome-hero-title {
-            font-size: 5rem;
-          }
+  .CruiseShipHome-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
 
-          .CruiseShipHome-hero-subtitle {
-            font-size: 1.5rem;
-          }
+@media (min-width: 1400px) {
+  .CruiseShipHome-hero-title {
+    font-size: 5rem;
+  }
 
-          .CruiseShipHome-section-title {
-            font-size: 3rem;
-          }
+  .CruiseShipHome-hero-subtitle {
+    font-size: 1.5rem;
+  }
 
-          .CruiseShipHome-destinations-grid {
-            height: 700px;
-          }
-        }
+  .CruiseShipHome-section-title {
+    font-size: 3rem;
+  }
+
+  .CruiseShipHome-destinations-grid {
+    height: 700px;
+  }
+}

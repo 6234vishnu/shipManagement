@@ -59,7 +59,7 @@
   margin-bottom: 10px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
-.ship-icon img{
+.ship-icon img {
   width: 45px;
   height: 45px;
   border-radius: 45px;
@@ -143,7 +143,9 @@
 }
 
 /* Buttons */
-.edit-btn, .save-btn, .cancel-btn {
+.edit-btn,
+.save-btn,
+.cancel-btn {
   padding: 12px 20px;
   border: 2px solid #2c3e50;
   border-radius: 25px;
@@ -310,15 +312,15 @@
     width: 95%;
     border-radius: 15px;
   }
-  
+
   .ship-header {
     height: 150px;
   }
-  
+
   .ship-icon {
     font-size: 3rem;
   }
-  
+
   .profile-header {
     flex-direction: column;
     gap: 20px;
@@ -326,38 +328,38 @@
     margin: -40px 20px 30px 20px;
     padding: 20px;
   }
-  
+
   .header-left {
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
-  
+
   .user-logo-container {
     width: 70px;
     height: 70px;
   }
-  
+
   .header-text h1 {
     font-size: 1.8rem;
   }
-  
+
   .profile-content {
     padding: 0 20px;
   }
-  
+
   .edit-btn {
     align-self: stretch;
     text-align: center;
     justify-content: center;
   }
-  
+
   .button-group {
     flex-direction: column;
     gap: 15px;
     margin: 30px 20px 30px 20px;
   }
-  
+
   .save-btn {
     margin-right: 0;
   }
@@ -369,68 +371,71 @@
     padding: 10px 0;
     align-items: flex-start;
   }
-  
+
   .profile-card {
     width: 98%;
     margin-top: 10px;
   }
-  
+
   .ship-header {
     height: 120px;
   }
-  
+
   .ship-icon {
     font-size: 2.5rem;
   }
-  
+
   .ship-placeholder span {
     font-size: 1rem;
   }
-  
+
   .profile-header {
     margin: -30px 15px 20px 15px;
     padding: 15px;
   }
-  
+
   .user-logo-container {
     width: 60px;
     height: 60px;
   }
-  
+
   .user-icon {
     font-size: 1.5rem;
   }
-  
+
   .header-text h1 {
     font-size: 1.6rem;
   }
-  
+
   .profile-subtitle {
     font-size: 0.9rem;
   }
-  
+
   .profile-content {
     padding: 0 15px;
   }
-  
+
   .field-group {
     margin-bottom: 20px;
   }
-  
+
   .field-group label {
     font-size: 0.95rem;
   }
-  
-  .field-value, .input-field {
+
+  .field-value,
+  .input-field {
     padding: 12px 15px;
     font-size: 0.95rem;
   }
-  
-  .edit-btn, .save-btn, .cancel-btn {
+
+  .edit-btn,
+  .save-btn,
+  .cancel-btn {
     padding: 12px 16px;
     font-size: 0.9rem;
   }
-  
+
   .button-group {
     margin: 25px 15px 25px 15px;
   }
@@ -442,39 +447,40 @@
     width: 100%;
     border-radius: 0;
   }
-  
+
   .ship-header {
     height: 100px;
   }
-  
+
   .ship-icon {
     font-size: 2rem;
   }
-  
+
   .profile-header {
     margin: -25px 10px 15px 10px;
     padding: 12px;
   }
-  
+
   .user-logo-container {
     width: 50px;
     height: 50px;
     border-width: 2px;
   }
-  
+
   .header-text h1 {
     font-size: 1.4rem;
   }
-  
+
   .profile-content {
     padding: 0 10px;
   }
-  
-  .field-value, .input-field {
+
+  .field-value,
+  .input-field {
     padding: 10px 12px;
     font-size: 0.9rem;
   }
-  
+
   .button-group {
     margin: 20px 10px 20px 10px;
   }

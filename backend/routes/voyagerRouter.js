@@ -22,6 +22,8 @@ import {
   BookingGym,
   getPartyHallList,
   BookingPartyHall,
+  getBeautySalonList,
+  bookBeautySalon,
 } from "../controllers/voyagerController/activitiesController.js";
 const voyagerRouter = express.Router();
 
@@ -51,5 +53,8 @@ voyagerRouter.post("/fitness-booking/:userId", BookingGym);
 
 voyagerRouter.get("/get-party-halls", getPartyHallList);
 voyagerRouter.post("/party-hall-booking/:userId", BookingPartyHall);
+
+voyagerRouter.get("/get-beauty-salons", getBeautySalonList);
+voyagerRouter.post("/beauty-salon-booking/:userId", bookBeautySalon);
 
 export default voyagerRouter;

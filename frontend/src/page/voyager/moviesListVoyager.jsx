@@ -9,22 +9,20 @@ const MoviesListUser = () => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorModal, setErrorModal] = useState(false);
-  const [successMessage,setSuccessMessage]=useState("")
-  const [successModal,setSuccessModal]=useState(false)
+  const [successMessage, setSuccessMessage] = useState("");
+  const [successModal, setSuccessModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [bookingModal, setBookingModal] = useState(false);
-  const voyagerId=localStorage.getItem("voyagerId")
+  const voyagerId = localStorage.getItem("voyagerId");
   const [formData, setFormData] = useState({
     movieName: "",
     totalSeats: "",
     showTime: "",
     showDate: "",
   });
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,22 +31,25 @@ const MoviesListUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  if(formData?.totalSeats>movies?.totalSlots){
-    setErrorMessage(`available seats are only ${movies?.totalSlots}`)
-    return setErrorModal(true)
-  }
+    if (formData?.totalSeats > movies?.totalSlots) {
+      setErrorMessage(`available seats are only ${movies?.totalSlots}`);
+      return setErrorModal(true);
+    }
     try {
-      const response = await api.post(`/voyager/add-New-Booking?voyagerId=${voyagerId}`,formData );
-      if(response.data.success){
-        setSuccessMessage('Movie booked successfully')
-       return setSuccessModal(true)
+      const response = await api.post(
+        `/voyager/add-New-Booking?voyagerId=${voyagerId}`,
+        formData
+      );
+      if (response.data.success) {
+        setSuccessMessage("Movie booked successfully");
+        return setSuccessModal(true);
       }
-      setErrorMessage(response.data.message)
-      return setErrorModal(true)
+      setErrorMessage(response.data.message);
+      return setErrorModal(true);
     } catch (error) {
       console.log(error, "error in ticket booking voyager side ");
       setErrorMessage(error?.response?.data?.message);
-      return setErrorModal(true)
+      return setErrorModal(true);
     } finally {
       setFormData({
         movieName: "",
@@ -168,9 +169,6 @@ const MoviesListUser = () => {
     }));
     setBookingModal(true);
   };
-
-
-
 
   return (
     <>
@@ -305,7 +303,6 @@ const MoviesListUser = () => {
               </div>
 
               <div className="movieModalFormGroup">
-              
                 <label htmlFor="seatCount">Number of Seats</label>
                 <select
                   id="seatCount"
@@ -315,10 +312,8 @@ const MoviesListUser = () => {
                   onChange={(e) => {
                     handleChange(e);
                     const seatCount = parseInt(e.target.value);
-   
                   }}
                 >
-                  
                   <option value="">Select number of seats</option>
                   {[...Array(10).keys()].map((i) => (
                     <option key={i + 1} value={i + 1}>
@@ -329,11 +324,7 @@ const MoviesListUser = () => {
               </div>
 
               <div className="movieModalActions">
-                <button
-                  type="submit"
-                  className="movieModalSubmit"
-                  
-                >
+                <button type="submit" className="movieModalSubmit">
                   Book Tickets
                 </button>
                 <button

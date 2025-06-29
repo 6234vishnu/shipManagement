@@ -114,6 +114,7 @@ const ManagerDashboard = () => {
             movies = [],
             fitness = [],
             partyHall = [],
+            beautySalon = [],
           } = response.data.items;
 
           const transformedMovies = movies.map((item) => ({
@@ -149,11 +150,26 @@ const ManagerDashboard = () => {
             amount: `$${item.amount || 0}`,
           }));
 
+          const transformedSalon = beautySalon.map((item) => ({
+            id: item._id,
+            userName: item.voyager?.name || "Unknown",
+            voyagerName: item.voyager?.voyagerName || "Unknown",
+            bookingType: "Beauty Salon",
+            orderDate: item.date?.split("T")[0] || "N/A",
+            status: item.status || "pending",
+            details: `${item.serviceType || "Service"} - ${
+              item.time || "Time"
+            }`,
+            amount: `$${item.price || 0}`,
+          }));
+
           const allBookings = [
             ...transformedMovies,
             ...transformedFitness,
             ...transformedParty,
+            ...transformedSalon,
           ];
+
           setBookings(allBookings);
         } else {
           setErrorMessage(response.data.message);
@@ -214,13 +230,20 @@ const ManagerDashboard = () => {
         return "💪";
       case "Party Hall":
         return "🎉";
+      case "Beauty Salon":
+        return "💇";
       default:
         return "📋";
     }
   };
 
   const uniqueVoyagers = [...new Set(bookings.map((b) => b.voyagerName))];
-  const bookingTypes = ["Movie Tickets", "Fitness Center", "Party Hall"];
+  const bookingTypes = [
+    "Movie Tickets",
+    "Fitness Center",
+    "Party Hall",
+    "Beauty Salon",
+  ];
 
   useEffect(() => {
     setCurrentPage(1);
@@ -292,10 +315,6 @@ const ManagerDashboard = () => {
             >
               <Filter size={18} />
               Filters
-            </button>
-            <button className="export-btn">
-              <Download size={18} />
-              Export
             </button>
           </div>
         </div>

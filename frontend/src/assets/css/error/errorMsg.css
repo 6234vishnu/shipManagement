@@ -24,15 +24,15 @@
   margin-bottom: 1rem;
   color: rgb(255, 0, 0);
 }
-.errorModal p{
+.errorModal p {
   color: rgb(243, 0, 0);
 }
 
 .errorModalLogo {
-    width: 99px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 40px;
+  width: 99px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 40px;
 }
 
 @keyframes fadeIn {
@@ -45,11 +45,11 @@
     transform: scale(1);
   }
 }
-@media (max-width:768px) {
-  .errorModalLogo{
+@media (max-width: 768px) {
+  .errorModalLogo {
     width: 50px;
   }
-  .errorModal{
+  .errorModal {
     width: 200px;
   }
 }

@@ -1,0 +1,427 @@
+/* Beauty Salon Booking Page Styles */
+.beautySalonBookingPageVoyager-container {
+  width: 99vw;
+  margin: 0 auto;
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.beautySalonBookingPageVoyager-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.beautySalonBookingPageVoyager-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.beautySalonBookingPageVoyager-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  margin: 0;
+}
+
+.beautySalonBookingPageVoyager-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Salon Selection Section */
+.beautySalonBookingPageVoyager-salon-section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.beautySalonBookingPageVoyager-salon-section h3 {
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1e293b;
+  padding-bottom: 8px;
+}
+
+.beautySalonBookingPageVoyager-salon-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.beautySalonBookingPageVoyager-salon-card {
+  display: flex;
+  align-items: center;
+  color: #1e293b;
+  gap: 16px;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.beautySalonBookingPageVoyager-salon-card:hover {
+  transform: scale(1.03);
+}
+
+.beautySalonBookingPageVoyager-salon-card.selected {
+  border-color: #1e293b;
+  background: #f3f4f6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+}
+
+.beautySalonBookingPageVoyager-salon-icon {
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #f3f4f6;
+  border-radius: 50%;
+}
+
+.beautySalonBookingPageVoyager-salon-card.selected
+  .beautySalonBookingPageVoyager-salon-icon {
+  background: #1e293b;
+  color: white;
+}
+
+.beautySalonBookingPageVoyager-salon-info {
+  flex: 1;
+}
+
+.beautySalonBookingPageVoyager-salon-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.beautySalonBookingPageVoyager-salon-price,
+.beautySalonBookingPageVoyager-salon-slots,
+.beautySalonBookingPageVoyager-salon-availability {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Booking Details Section */
+.beautySalonBookingPageVoyager-booking-section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px 13px rgba(18, 29, 60, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.beautySalonBookingPageVoyager-booking-section h3 {
+  color: #1f2937;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 8px;
+}
+
+/* Selected Salon Display */
+.beautySalonBookingPageVoyager-selected-salon {
+  background: linear-gradient(135deg, #1e293b 0%, #182b49 100%);
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.beautySalonBookingPageVoyager-selected-salon h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Time Slot (Service Type) Selection */
+.beautySalonBookingPageVoyager-timeslot-selection {
+  margin-bottom: 24px;
+}
+
+.beautySalonBookingPageVoyager-timeslot-selection label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.beautySalonBookingPageVoyager-timeslot-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.beautySalonBookingPageVoyager-timeslot-btn {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.beautySalonBookingPageVoyager-timeslot-btn:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.beautySalonBookingPageVoyager-timeslot-btn.active {
+  background: #1e293b;
+  border-color: #3b82f6;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Date Selection */
+.beautySalonBookingPageVoyager-date-selection {
+  margin-bottom: 24px;
+}
+
+.beautySalonBookingPageVoyager-date-selection label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.beautySalonBookingPageVoyager-date-input {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #374151;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.beautySalonBookingPageVoyager-date-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.beautySalonBookingPageVoyager-date-input:hover {
+  border-color: #cbd5e1;
+}
+
+/* Booking Summary */
+.beautySalonBookingPageVoyager-booking-summary {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.beautySalonBookingPageVoyager-booking-summary h4 {
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+.beautySalonBookingPageVoyager-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.beautySalonBookingPageVoyager-summary-item:last-child {
+  border-bottom: none;
+}
+
+.beautySalonBookingPageVoyager-summary-item span:first-child {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.beautySalonBookingPageVoyager-summary-item span:last-child {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Book Button */
+.beautySalonBookingPageVoyager-book-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #1e293b 0%, #152949 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.beautySalonBookingPageVoyager-book-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1e293b 0%, #22265c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+}
+
+.beautySalonBookingPageVoyager-book-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.beautySalonBookingPageVoyager-book-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .beautySalonBookingPageVoyager-container {
+    padding: 20px;
+  }
+
+  .beautySalonBookingPageVoyager-main {
+    gap: 20px;
+  }
+
+  .beautySalonBookingPageVoyager-salon-section,
+  .beautySalonBookingPageVoyager-booking-section {
+    padding: 20px;
+  }
+
+  .beautySalonBookingPageVoyager-title {
+    font-size: 28px;
+  }
+
+  .beautySalonBookingPageVoyager-timeslot-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .beautySalonBookingPageVoyager-container {
+    padding: 16px;
+  }
+
+  .beautySalonBookingPageVoyager-main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .beautySalonBookingPageVoyager-salon-section,
+  .beautySalonBookingPageVoyager-booking-section {
+    padding: 16px;
+  }
+
+  .beautySalonBookingPageVoyager-title {
+    font-size: 24px;
+  }
+
+  .beautySalonBookingPageVoyager-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .beautySalonBookingPageVoyager-container {
+    padding: 12px;
+  }
+
+  .beautySalonBookingPageVoyager-header {
+    margin-bottom: 24px;
+  }
+
+  .beautySalonBookingPageVoyager-title {
+    font-size: 22px;
+  }
+
+  .beautySalonBookingPageVoyager-subtitle {
+    font-size: 15px;
+  }
+
+  .beautySalonBookingPageVoyager-main {
+    gap: 12px;
+  }
+
+  .beautySalonBookingPageVoyager-salon-section,
+  .beautySalonBookingPageVoyager-booking-section {
+    padding: 12px;
+  }
+
+  .beautySalonBookingPageVoyager-salon-section h3,
+  .beautySalonBookingPageVoyager-booking-section h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .beautySalonBookingPageVoyager-timeslot-options {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .beautySalonBookingPageVoyager-timeslot-btn {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .beautySalonBookingPageVoyager-date-input {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .beautySalonBookingPageVoyager-booking-summary {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+
+  .beautySalonBookingPageVoyager-booking-summary h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .beautySalonBookingPageVoyager-summary-item {
+    padding: 4px 0;
+    font-size: 13px;
+  }
+
+  .beautySalonBookingPageVoyager-book-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}

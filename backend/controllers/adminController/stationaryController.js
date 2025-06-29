@@ -1,11 +1,9 @@
 import Item from "../../models/item.js";
 
 export const createStationaryListItem = async (req, res) => {
-
-  
   try {
-    const { name, price,quantity } = req.body;
-    if (!name || !price ||!quantity)
+    const { name, price, quantity } = req.body;
+    if (!name || !price || !quantity)
       return res.status(400).json({
         success: false,
         message: "fill all the feilds before submission",
@@ -59,12 +57,10 @@ export const getStationaryListItem = async (req, res) => {
 };
 
 export const editStationaryListItem = async (req, res) => {
-  
   try {
-
     const { itemId } = req.query;
-    const { name, price, available,quantity } = req.body;
-    if (!itemId || !name || !price||!quantity || available === undefined)
+    const { name, price, available, quantity } = req.body;
+    if (!itemId || !name || !price || !quantity || available === undefined)
       return res.status(400).json({
         success: false,
         message: "Fill all the fields before submission",
@@ -72,7 +68,7 @@ export const editStationaryListItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available,quantity } },
+      { $set: { name, price, available, quantity } },
       { new: true }
     );
     if (!findItem)
@@ -80,7 +76,6 @@ export const editStationaryListItem = async (req, res) => {
         success: false,
         message: "Couldint edit item try later",
       });
-    
 
     return res.status(200).json({
       success: true,

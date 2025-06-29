@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
-import "../../assets/css/admin/resortList.css";
+import "../../assets/css/admin/beautySalon.css";
 import Sidebar from "./sidebar";
 import api from "../../services/axiosInstance";
 import SuccessModal from "../../components/SuccessModal";
 import ErrorModal from "../../components/ErrorModal";
 
-function ResortList() {
+function BeautySalonList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [addItemModal, setAddItemModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -22,14 +22,14 @@ function ResortList() {
     name: "",
     price: "",
     available: "",
-    totalRooms: "",
+    totalSlots: "",
   });
 
   const fetchItems = async () => {
     try {
-      const response = await api.get("/admin/resort-getItems");
+      const response = await api.get("/admin/beautySalon-getItems");
       if (response.data.success) {
-        setItemList(response.data.ResortList);
+        setItemList(response.data.beautySalonList);
       } else {
         setErrorMessage(response.data.message);
         setErrorModal(true);
@@ -57,12 +57,12 @@ function ResortList() {
   const addNewItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/admin/resort-additem", formData);
+      const response = await api.post("/admin/beautySalon-additem", formData);
       if (response.data.success) {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "", available: "", totalRooms: "" });
+        setFormData({ name: "", price: "", available: "" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -77,7 +77,9 @@ function ResortList() {
   const handleDelete = async (_id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
-        const response = await api.delete(`/admin/resort-deleteitem/${_id}`);
+        const response = await api.delete(
+          `/admin/beautySalon-deleteitem/${_id}`
+        );
         if (response.data.success) {
           setSuccessMessage("Item deleted successfully");
           setSuccessModal(true);
@@ -101,7 +103,7 @@ function ResortList() {
       setFormData({
         name: itemToEdit.name || "",
         price: itemToEdit.price || "",
-        totalRooms: itemToEdit.totalRooms || "",
+        totalSlots: itemToEdit.totalSlots || "",
         available: itemToEdit.available ? "true" : "false",
       });
     }
@@ -113,7 +115,7 @@ function ResortList() {
     if (
       !formData.name.trim() &&
       !formData.price &&
-      !formData.totalRooms &&
+      !formData.totalSlots &&
       formData.available === ""
     ) {
       setErrorMessage("Please update at least one field.");
@@ -122,7 +124,7 @@ function ResortList() {
 
     try {
       const response = await api.patch(
-        `/admin/resort-edititem?itemId=${selectedId}`,
+        `/admin/beautySalon-edititem?itemId=${selectedId}`,
         formData
       );
 
@@ -130,7 +132,7 @@ function ResortList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "", totalRooms: "" });
+        setFormData({ name: "", price: "", available: "", totalSlots: "" });
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -147,7 +149,6 @@ function ResortList() {
         item.name?.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
-
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const paginatedItems = filteredItems.slice(
     (currentPage - 1) * itemsPerPage,
@@ -161,58 +162,62 @@ function ResortList() {
   return (
     <>
       <Sidebar />
-      <div className="resortListContainer">
-        <div className="resortListHeader">
-          <h1 className="resortListTitle">Resort Items Management</h1>
+      <div className="beautySalonListContainer">
+        <div className="beautySalonListHeader">
+          <h1 className="beautySalonListTitle">
+            Beauty Salon Services Management
+          </h1>
           <button
-            className="resortListAddButton"
+            className="beautySalonListAddButton"
             onClick={() => setAddItemModal(true)}
           >
-            <Plus size={20} /> Add New Resort
+            <Plus size={20} /> Add New Service
           </button>
         </div>
 
-        <div className="resortListFilters">
+        <div className="beautySalonListFilters">
           <input
             type="text"
-            placeholder="Search by resort name..."
-            className="resortListSearchInput"
+            placeholder="Search by service name..."
+            className="beautySalonListSearchInput"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        <div className="resortListTableContainer">
-          <table className="resortListTable">
-            <thead className="resortListTableHead">
+        <div className="beautySalonListTableContainer">
+          <table className="beautySalonListTable">
+            <thead className="beautySalonListTableHead">
               <tr>
-                <th className="resortListTableHeader">Resort Name</th>
-                <th className="resortListTableHeader">Status</th>
-                <th className="resortListTableHeader">Total Rooms</th>
-                <th className="resortListTableHeader">Price</th>
-                <th className="resortListTableHeader">Actions</th>
+                <th className="beautySalonListTableHeader">Service Name</th>
+                <th className="beautySalonListTableHeader">Status</th>
+                <th className="beautySalonListTableHeader">Total Slots</th>
+                <th className="beautySalonListTableHeader">Price</th>
+                <th className="beautySalonListTableHeader">Actions</th>
               </tr>
             </thead>
-            <tbody className="resortListTableBody">
+            <tbody className="beautySalonListTableBody">
               {paginatedItems.length > 0 ? (
                 paginatedItems.map((item) => (
                   <tr key={item._id}>
-                    <td className="resortListTableCell">{item.name}</td>
-                    <td className="resortListTableCell">
+                    <td className="beautySalonListTableCell">{item.name}</td>
+                    <td className="beautySalonListTableCell">
                       {item.available ? "Available" : "Unavailable"}
                     </td>
-                    <td className="resortListTableCell">{item.totalSlots}</td>
-                    <td className="resortListTableCell">₹{item.price}</td>
-                    <td className="resortListTableCell">
+                    <td className="beautySalonListTableCell">
+                      {item.totalSlots}
+                    </td>
+                    <td className="beautySalonListTableCell">₹{item.price}</td>
+                    <td className="beautySalonListTableCell">
                       <button
-                        className="resortListEditButton"
+                        className="beautySalonListEditButton"
                         onClick={() => settleSelectedId(item._id)}
                         title="Edit"
                       >
                         <Edit size={16} />
                       </button>
                       <button
-                        className="resortListDeleteButton"
+                        className="beautySalonListDeleteButton"
                         onClick={() => handleDelete(item._id)}
                         title="Delete"
                       >
@@ -223,14 +228,14 @@ function ResortList() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4">No resort items found</td>
+                  <td colSpan="5">No beauty salon services found</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
 
-        <div className="resortListPagination">
+        <div className="beautySalonListPagination">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
@@ -260,18 +265,18 @@ function ResortList() {
       {addItemModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
-            <h2>Add Resort</h2>
+            <h2>Add Beauty Salon Service</h2>
             <form onSubmit={addNewItem}>
               <input
                 name="name"
-                placeholder="Resort Name"
+                placeholder="Service Center Name"
                 value={formData.name}
                 onChange={handleItemFormChange}
               />
               <input
-                name="totalRooms"
-                placeholder="Total Rooms"
-                value={formData.totalRooms}
+                name="totalSlots"
+                placeholder="Total Slots"
+                value={formData.totalSlots}
                 onChange={handleItemFormChange}
               />
               <input
@@ -303,17 +308,17 @@ function ResortList() {
       {editModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
-            <h2>Edit Resort</h2>
+            <h2>Edit Beauty Salon Service</h2>
             <input
               name="name"
-              placeholder="Resort Name"
+              placeholder="Service Name"
               value={formData.name}
               onChange={handleItemFormChange}
             />
             <input
-              name="totalRooms"
-              placeholder="Total Rooms"
-              value={formData.totalRooms}
+              name="totalSlots"
+              placeholder="Total Slots"
+              value={formData.totalSlots}
               onChange={handleItemFormChange}
             />
             <input
@@ -358,4 +363,4 @@ function ResortList() {
   );
 }
 
-export default ResortList;
+export default BeautySalonList;

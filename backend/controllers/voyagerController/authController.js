@@ -55,12 +55,10 @@ export const voyagerLogin = async (req, res) => {
     const findUser = await Voyager.findOne({ email });
 
     if (!findUser)
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "couldint find User with this email",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "couldint find User with this email",
+      });
 
     const hashedPassword = await bcrypt.compare(password, findUser?.password);
 
@@ -82,13 +80,11 @@ export const voyagerLogin = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "Login successful",
-        voyagerId: findUser?._id,
-      });
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      voyagerId: findUser?._id,
+    });
   } catch (error) {
     console.log("error in voyagerLogin ", error);
 
@@ -177,14 +173,12 @@ export const enterdOtp = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "sign up successful",
-        token,
-        voyagerId: save?._id,
-      });
+    res.status(200).json({
+      success: true,
+      message: "sign up successful",
+      token,
+      voyagerId: save?._id,
+    });
   } catch (error) {
     console.log("error in enterdOtp voyager", error);
 
@@ -234,12 +228,10 @@ export const forgotPasswordGetOtp = async (req, res) => {
         .json({ success: false, message: "Please enter your email" });
     const findUser = await Voyager.findOne({ email });
     if (!findUser)
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Couldint find any user in this email",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Couldint find any user in this email",
+      });
 
     const otp = generateOTP();
     console.log("otp is: ", otp);
@@ -290,12 +282,10 @@ export const saveNewPassword = async (req, res) => {
     );
 
     if (!updatePassword)
-      return res
-        .status(500)
-        .json({
-          success: false,
-          message: "Couldint Update password try later",
-        });
+      return res.status(500).json({
+        success: false,
+        message: "Couldint Update password try later",
+      });
 
     const token = jwt.sign(
       { id: findUser._id, email: findUser.email },
@@ -310,13 +300,11 @@ export const saveNewPassword = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        voyagerId: findUser._id,
-        message: "Password successfully updated",
-      });
+    return res.status(200).json({
+      success: true,
+      voyagerId: findUser._id,
+      message: "Password successfully updated",
+    });
   } catch (error) {
     console.log("error in voyager saveNewPassword", error);
 
@@ -326,27 +314,37 @@ export const saveNewPassword = async (req, res) => {
   }
 };
 
-export const updateProfile= async (req, res) => {
+export const updateProfile = async (req, res) => {
   try {
     const { editData } = req.body;
 
     if (!editData || !editData._id) {
-      return res.status(400).json({ success: false, message: 'Invalid data or missing ID' });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid data or missing ID" });
     }
 
-    const updatedUser = await Voyager.findByIdAndUpdate(editData._id, {
-      name: editData.name,
-      email: editData.email,
-      phone: editData.phone,
-    }, { new: true });
+    const updatedUser = await Voyager.findByIdAndUpdate(
+      editData._id,
+      {
+        name: editData.name,
+        email: editData.email,
+        phone: editData.phone,
+      },
+      { new: true }
+    );
 
     if (!updatedUser) {
-      return res.status(404).json({ success: false, message: 'Voyager not found' });
+      return res
+        .status(404)
+        .json({ success: false, message: "Voyager not found" });
     }
 
     return res.status(200).json({ success: true, voyager: updatedUser });
   } catch (error) {
-    console.error('Error updating voyager profile:', error);
-    return res.status(500).json({ success: false, message: 'Internal server error' });
+    console.error("Error updating voyager profile:", error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
   }
-}
+};

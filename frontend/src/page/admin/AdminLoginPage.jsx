@@ -1,37 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { User, Lock } from 'lucide-react';
-import '../../assets/css/admin/adminLogin.css';
-import api from '../../services/axiosInstance';
-import { useNavigate } from 'react-router-dom';
-import SuccessModal from '../../components/SuccessModal';
-import ErrorModal from '../../components/ErrorModal';
+import React, { useEffect, useState } from "react";
+import { User, Lock } from "lucide-react";
+import "../../assets/css/admin/adminLogin.css";
+import api from "../../services/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import SuccessModal from "../../components/SuccessModal";
+import ErrorModal from "../../components/ErrorModal";
 
 const AdminLoginPage = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
 
-
   useEffect(() => {
-    const adminId = localStorage.getItem('adminId');
+    const adminId = localStorage.getItem("adminId");
     if (adminId) {
-      navigate('/admin-StaffsApproval');
+      navigate("/admin-StaffsApproval");
     }
   }, [navigate]);
 
-  
   useEffect(() => {
     if (successModal) {
       const timer = setTimeout(() => setSuccessModal(false), 3500);
       return () => clearTimeout(timer);
     }
   }, [successModal]);
-
 
   useEffect(() => {
     if (errorModal) {
@@ -44,23 +41,23 @@ const AdminLoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post('/admin/auth/login', {
+      const response = await api.post("/admin/auth/login", {
         data: { email, password },
       });
 
       if (response.data.success) {
-        localStorage.setItem('adminId', response.data.id);
+        localStorage.setItem("adminId", response.data.id);
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setTimeout(() => {
-          navigate('/admin-StaffsApproval');
+          navigate("/admin-StaffsApproval");
         }, 1500);
       } else {
-        setErrorMessage(response.data.message || 'Login failed');
+        setErrorMessage(response.data.message || "Login failed");
         setErrorModal(true);
       }
     } catch (error) {
-      setErrorMessage(error?.response?.data?.message || 'Something went wrong');
+      setErrorMessage(error?.response?.data?.message || "Something went wrong");
       setErrorModal(true);
     }
   };
@@ -82,7 +79,11 @@ const AdminLoginPage = () => {
                   <img
                     src="/images/1000_F_292453112_9QwoJWym05uAhpcULP0VziW5Mw1wDrPD.jpg"
                     alt="logo"
-                    style={{ width: '50px', height: '50px', borderRadius: '40px' }}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "40px",
+                    }}
                   />
                 </div>
               </div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   X,
-  Menu,
   Utensils,
   Clapperboard,
   Dumbbell,
@@ -10,6 +9,7 @@ import {
   PenTool,
   Phone,
   Home,
+  Scissors,
 } from "lucide-react";
 
 import "../../assets/css/admin/sidebar.css";
@@ -99,6 +99,12 @@ const VoyagerSidebar = () => {
       label: "Party Hall Booking",
       path: "/partyHallBookingPage",
       icon: <PartyPopper />,
+    },
+    {
+      id: "beauty Salon Booking",
+      label: "beauty Salon Booking",
+      path: "/beautySalonBookingPage",
+      icon: <Scissors />,
     },
     {
       id: "Resort Booking",

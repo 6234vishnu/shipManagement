@@ -1,9 +1,8 @@
 import Item from "../../models/item.js";
 
-
 export const createCateringItem = async (req, res) => {
   try {
-    const { name, price,quantity } = req.body;
+    const { name, price, quantity } = req.body;
     if (!name || !price)
       return res.status(400).json({
         success: false,
@@ -59,11 +58,9 @@ export const getCateringItem = async (req, res) => {
 };
 
 export const editCateringItem = async (req, res) => {
-  
   try {
-
     const { itemId } = req.query;
-    const { name, price, available,quantity } = req.body;
+    const { name, price, available, quantity } = req.body;
     if (!itemId || !name || !price || available === undefined)
       return res.status(400).json({
         success: false,
@@ -72,7 +69,7 @@ export const editCateringItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available,quantity } },
+      { $set: { name, price, available, quantity } },
       { new: true }
     );
     if (!findItem)
@@ -80,7 +77,6 @@ export const editCateringItem = async (req, res) => {
         success: false,
         message: "Couldint edit item try later",
       });
-    
 
     return res.status(200).json({
       success: true,

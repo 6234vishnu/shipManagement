@@ -17,15 +17,16 @@ export const CateringOrdersLists = async (req, res) => {
 };
 
 export const updateDeliveryStatus = async (req, res) => {
-   
-    
   try {
     const orderId = req.params.orderId;
 
-    const findCateringItem =await CateringOrders.findByIdAndUpdate(orderId, {
-      $set: { status: "Delivered" },
-    },
-    { new: true });
+    const findCateringItem = await CateringOrders.findByIdAndUpdate(
+      orderId,
+      {
+        $set: { status: "Delivered" },
+      },
+      { new: true }
+    );
     if (!findCateringItem)
       return res
         .status(400)

@@ -2,7 +2,7 @@
   max-width: 1473px;
   margin: 0 auto;
   padding: 24px;
-  background-color: #0F172A;
+  background-color: #0f172a;
   min-height: 100vh;
   width: 100vw;
   height: auto;
@@ -29,7 +29,7 @@
   align-items: center;
   gap: 8px;
   background-color: white;
-  color: #0F172A;
+  color: #0f172a;
   border: 2px solid white;
   padding: 12px 24px;
   border-radius: 8px;
@@ -40,7 +40,7 @@
 }
 
 .fitnessCenterAddButton:hover {
-  background-color: #002B45;
+  background-color: #002b45;
   color: white;
   transform: translateY(-1px);
 }
@@ -63,22 +63,22 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #002B45;
+  color: #002b45;
 }
 
 .fitnessCenterSearchInput {
   padding: 12px 12px 12px 44px;
-  border: 2px solid #002B45;
+  border: 2px solid #002b45;
   border-radius: 8px;
   font-size: 16px;
   background-color: white;
-  color: #002B45;
+  color: #002b45;
   transition: border-color 0.2s ease;
 }
 
 .fitnessCenterSearchInput:focus {
   outline: none;
-  border-color: #002B45;
+  border-color: #002b45;
   box-shadow: 0 0 0 3px rgba(0, 43, 69, 0.1);
 }
 
@@ -92,17 +92,17 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #002B45;
+  color: #002b45;
   z-index: 1;
 }
 
 .fitnessCenterFilterSelect {
   padding: 12px 12px 12px 44px;
-  border: 2px solid #002B45;
+  border: 2px solid #002b45;
   border-radius: 8px;
   font-size: 16px;
   background-color: white;
-  color: #002B45;
+  color: #002b45;
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23002B45' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
@@ -151,25 +151,25 @@
   padding: 16px;
   border-bottom: 1px solid rgba(0, 43, 69, 0.1);
   vertical-align: top;
-  color: #002B45;
+  color: #002b45;
   border: 5px solid #cecece;
   border-radius: 55px;
 }
 
 .fitnessCenterUsername {
   font-weight: 600;
-  color: #002B45;
+  color: #002b45;
 }
 
 .fitnessCenterItemName {
   font-weight: 500;
-  color: #002B45;
+  color: #002b45;
 }
 
 .fitnessCenterQuantity {
   display: inline-block;
   background-color: rgba(0, 43, 69, 0.1);
-  color: #002B45;
+  color: #002b45;
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 14px;
@@ -178,7 +178,7 @@
 
 .fitnessCenterPrice {
   font-weight: 600;
-  color: #002B45;
+  color: #002b45;
   font-size: 16px;
 }
 
@@ -196,13 +196,13 @@
 .fitnessCenterStatusInProgress,
 .fitnessCenterStatusCancelled {
   background-color: rgba(255, 255, 255, 0.9);
-  color: #002B45;
-  border: 1px solid #002B45;
+  color: #002b45;
+  border: 1px solid #002b45;
 }
 
 .fitnessCenterOrderDate {
   font-weight: 500;
-  color: #002B45;
+  color: #002b45;
   margin-bottom: 2px;
 }
 
@@ -230,23 +230,23 @@
 
 .fitnessCenterEditButton {
   background-color: rgba(255, 255, 255, 0.9);
-  color: #002B45;
-  border: 1px solid #002B45;
+  color: #002b45;
+  border: 1px solid #002b45;
 }
 
 .fitnessCenterEditButton:hover {
-  background-color: #002B45;
+  background-color: #002b45;
   color: white;
 }
 
 .fitnessCenterDeleteButton {
   background-color: rgba(255, 255, 255, 0.9);
-  color: #002B45;
-  border: 1px solid #002B45;
+  color: #002b45;
+  border: 1px solid #002b45;
 }
 
 .fitnessCenterDeleteButton:hover {
-  background-color: #002B45;
+  background-color: #002b45;
   color: white;
 }
 
@@ -302,7 +302,7 @@
   margin-bottom: 20px;
   text-align: center;
   font-size: 24px;
-  color: #002B45;
+  color: #002b45;
 }
 
 .customModal-close {
@@ -343,5 +343,5 @@
 
 .customModal-submit:hover {
   background-color: #ffffff;
-  color: #002B45;
+  color: #002b45;
 }

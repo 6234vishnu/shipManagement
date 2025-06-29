@@ -21,7 +21,7 @@ function MoviesList() {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    totalSlots:"",
+    totalSlots: "",
     available: "",
   });
 
@@ -35,7 +35,9 @@ function MoviesList() {
         setErrorModal(true);
       }
     } catch (error) {
-      setErrorMessage(error?.response?.data?.message || "Something went wrong.");
+      setErrorMessage(
+        error?.response?.data?.message || "Something went wrong."
+      );
       setErrorModal(true);
     }
   };
@@ -60,7 +62,7 @@ function MoviesList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "", available: "",totalSlots:"" });
+        setFormData({ name: "", price: "", available: "", totalSlots: "" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -85,7 +87,9 @@ function MoviesList() {
           setErrorModal(true);
         }
       } catch (error) {
-        setErrorMessage(error?.response?.data?.message || "Failed to delete item.");
+        setErrorMessage(
+          error?.response?.data?.message || "Failed to delete item."
+        );
         setErrorModal(true);
       }
     }
@@ -121,7 +125,7 @@ function MoviesList() {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "" ,totalSlots:""});
+        setFormData({ name: "", price: "", available: "", totalSlots: "" });
         fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -146,15 +150,16 @@ function MoviesList() {
     setCurrentPage(1);
   }, [searchTerm]);
 
- 
-
   return (
     <>
       <Sidebar />
       <div className="moviesContainer">
         <div className="moviesHeader">
           <h1 className="moviesTitle">Movies Center Items Management</h1>
-          <button className="moviesAddButton" onClick={()=>setAddItemModal(true)}>
+          <button
+            className="moviesAddButton"
+            onClick={() => setAddItemModal(true)}
+          >
             <Plus size={20} /> Add New Movie
           </button>
         </div>
@@ -185,14 +190,24 @@ function MoviesList() {
                 paginatedItems.map((item) => (
                   <tr key={item._id}>
                     <td className="moviesTableCell">{item.name}</td>
-                    <td className="moviesTableCell" >{item.available ? "Available" : "Unavailable"}</td>
+                    <td className="moviesTableCell">
+                      {item.available ? "Available" : "Unavailable"}
+                    </td>
                     <td className="moviesTableCell">{item.totalSlots}</td>
                     <td className="moviesTableCell">₹{item.price}</td>
                     <td className="moviesTableCell">
-                      <button className="moviesEditButton" onClick={() => settleSelectedId(item._id)} title="Edit">
+                      <button
+                        className="moviesEditButton"
+                        onClick={() => settleSelectedId(item._id)}
+                        title="Edit"
+                      >
                         <Edit size={16} />
                       </button>
-                      <button className="moviesDeleteButton" onClick={() => handleDelete(item._id)} title="Delete">
+                      <button
+                        className="moviesDeleteButton"
+                        onClick={() => handleDelete(item._id)}
+                        title="Delete"
+                      >
                         <Trash2 size={16} />
                       </button>
                     </td>
@@ -224,7 +239,9 @@ function MoviesList() {
             </button>
           ))}
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
           >
             Next
@@ -232,7 +249,6 @@ function MoviesList() {
         </div>
       </div>
 
-      
       {addItemModal && (
         <div className="modalBackdrop">
           <div className="modalContent">
@@ -267,13 +283,14 @@ function MoviesList() {
               </select>
               <div className="modalActions">
                 <button type="submit">Add</button>
-                <button type="button" onClick={() => setAddItemModal(false)}>Cancel</button>
+                <button type="button" onClick={() => setAddItemModal(false)}>
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
         </div>
       )}
-
 
       {editModal && (
         <div className="modalBackdrop">
@@ -314,20 +331,20 @@ function MoviesList() {
         </div>
       )}
 
-      {successModal&&(
+      {successModal && (
         <SuccessModal
-        visible={successModal}
-        message={successMessage}
-        onClose={() => setSuccessModal(false)}
-      />
+          visible={successModal}
+          message={successMessage}
+          onClose={() => setSuccessModal(false)}
+        />
       )}
-      
-      {errorModal&&(
+
+      {errorModal && (
         <ErrorModal
-        visible={errorModal}
-        message={errorMessage}
-        onClose={() => setErrorModal(false)}
-      />
+          visible={errorModal}
+          message={errorMessage}
+          onClose={() => setErrorModal(false)}
+        />
       )}
     </>
   );

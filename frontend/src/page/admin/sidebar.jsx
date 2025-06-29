@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Home,
-  Ticket,
-  X,
-  Menu,
-  Book,
-} from "lucide-react";
+import { Home, Ticket, X, Menu, Book } from "lucide-react";
 import "../../assets/css/admin/sidebar.css";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/axiosInstance";
@@ -20,14 +14,14 @@ const Sidebar = () => {
   const adminId = localStorage.getItem("adminId");
 
   useEffect(() => {
-  if (!message) return;
+    if (!message) return;
 
-  const timer = setTimeout(() => {
-    setMessage("");
-  }, 3500);
+    const timer = setTimeout(() => {
+      setMessage("");
+    }, 3500);
 
-  return () => clearTimeout(timer);
-}, [message]);
+    return () => clearTimeout(timer);
+  }, [message]);
 
   useEffect(() => {
     if (!adminId) {
@@ -42,7 +36,7 @@ const Sidebar = () => {
         );
         if (response.data.success) {
           localStorage.setItem("adminId", response.data.admin?._id);
-        return  setAdminName(response.data.admin?.name);
+          return setAdminName(response.data.admin?.name);
         } else {
           setMessage(response.data.message);
         }
@@ -93,6 +87,12 @@ const Sidebar = () => {
       id: "Party Hall List",
       label: "Party Hall List",
       path: "/admin-partyHall",
+      icon: <Ticket />,
+    },
+    {
+      id: "Beauty Salon List",
+      label: "Beauty Salon List",
+      path: "admin-BeautySalon",
       icon: <Ticket />,
     },
     {
@@ -170,7 +170,6 @@ const Sidebar = () => {
           </ul>
 
           <div className="adminNavUserSection">
-            
             <div className="adminNavUserInfo">
               <span className="adminNavUserName">{adminName}</span>
               <span className="adminNavUserRole">Admin</span>

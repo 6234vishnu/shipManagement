@@ -19,13 +19,13 @@ const FitnessCenterListAdmin = () => {
   const itemsPerPage = 5;
   const [itemList, setItemList] = useState([]);
   const [formData, setFormData] = useState({
-  name: "",
-  price: "",
-  available: "",
-  totalSlots: "",
-  equipment: [],   
-});
-const [equipmentInput, setEquipmentInput] = useState("");
+    name: "",
+    price: "",
+    available: "",
+    totalSlots: "",
+    equipment: [],
+  });
+  const [equipmentInput, setEquipmentInput] = useState("");
 
   const fetchItems = async () => {
     try {
@@ -49,23 +49,22 @@ const [equipmentInput, setEquipmentInput] = useState("");
   }, []);
 
   const handleAddEquipment = () => {
-  const trimmed = equipmentInput.trim();
-  if (trimmed && !formData.equipment.includes(trimmed)) {
+    const trimmed = equipmentInput.trim();
+    if (trimmed && !formData.equipment.includes(trimmed)) {
+      setFormData((prev) => ({
+        ...prev,
+        equipment: [...prev.equipment, trimmed],
+      }));
+      setEquipmentInput("");
+    }
+  };
+
+  const handleRemoveEquipment = (itemToRemove) => {
     setFormData((prev) => ({
       ...prev,
-      equipment: [...prev.equipment, trimmed],
+      equipment: prev.equipment.filter((item) => item !== itemToRemove),
     }));
-    setEquipmentInput("");
-  }
-};
-
-const handleRemoveEquipment = (itemToRemove) => {
-  setFormData((prev) => ({
-    ...prev,
-    equipment: prev.equipment.filter((item) => item !== itemToRemove),
-  }));
-};
-
+  };
 
   const handleItemFormChange = (e) => {
     const { name, value } = e.target;
@@ -83,7 +82,7 @@ const handleRemoveEquipment = (itemToRemove) => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setAddItemModal(false);
-        setFormData({ name: "", price: "",totalSlots:"" });
+        setFormData({ name: "", price: "", totalSlots: "" });
         return fetchItems();
       } else {
         setErrorMessage(response.data.message);
@@ -98,7 +97,9 @@ const handleRemoveEquipment = (itemToRemove) => {
   const handleDelete = async (_id) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       try {
-        const response = await api.delete(`/admin/fitnessCenter-deleteitem/${_id}`);
+        const response = await api.delete(
+          `/admin/fitnessCenter-deleteitem/${_id}`
+        );
         if (response.data.success) {
           setSuccessMessage("Item deleted successfully");
           setSuccessModal(true);
@@ -146,7 +147,7 @@ const handleRemoveEquipment = (itemToRemove) => {
         setSuccessMessage(response.data.message);
         setSuccessModal(true);
         setEditModal(false);
-        setFormData({ name: "", price: "", available: "",totalSlots:"" });
+        setFormData({ name: "", price: "", available: "", totalSlots: "" });
         setTimeout(() => {
           fetchItems();
         }, 3500);
@@ -178,7 +179,9 @@ const handleRemoveEquipment = (itemToRemove) => {
       <Sidebar />
       <div className="fitnessCenterContainer">
         <div className="fitnessCenterHeader">
-          <h1 className="fitnessCenterTitle">Fitness Center Items Management</h1>
+          <h1 className="fitnessCenterTitle">
+            Fitness Center Items Management
+          </h1>
           <button
             className="fitnessCenterAddButton"
             onClick={() => setAddItemModal(true)}
@@ -217,9 +220,11 @@ const handleRemoveEquipment = (itemToRemove) => {
                     <td className="fitnessCenterTableCell">
                       {item.available ? "Available" : "Unavailable"}
                     </td>
-                    <td className="fitnessCenterTableCell">{item.totalSlots}</td>
+                    <td className="fitnessCenterTableCell">
+                      {item.totalSlots}
+                    </td>
                     <td className="fitnessCenterTableCell">₹{item.price}</td>
-                    
+
                     <td className="fitnessCenterTableCell">
                       <button
                         onClick={() => settleSelectedId(item._id)}
@@ -256,17 +261,19 @@ const handleRemoveEquipment = (itemToRemove) => {
             Prev
           </button>
 
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-            <button
-              key={pageNum}
-              onClick={() => setCurrentPage(pageNum)}
-              className={`paginationButton ${
-                currentPage === pageNum ? "activePage" : ""
-              }`}
-            >
-              {pageNum}
-            </button>
-          ))}
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+            (pageNum) => (
+              <button
+                key={pageNum}
+                onClick={() => setCurrentPage(pageNum)}
+                className={`paginationButton ${
+                  currentPage === pageNum ? "activePage" : ""
+                }`}
+              >
+                {pageNum}
+              </button>
+            )
+          )}
 
           <button
             onClick={() =>
@@ -279,7 +286,8 @@ const handleRemoveEquipment = (itemToRemove) => {
           </button>
 
           <span style={{ marginLeft: "1rem" }}>
-            Showing {paginatedItems.length} of {filteredItems.length} matching items
+            Showing {paginatedItems.length} of {filteredItems.length} matching
+            items
           </span>
         </div>
       </div>
@@ -321,32 +329,41 @@ const handleRemoveEquipment = (itemToRemove) => {
               />
 
               <div className="customModal-equipment">
-  <input
-    type="text"
-    placeholder="Add Equipment"
-    value={equipmentInput}
-    onChange={(e) => setEquipmentInput(e.target.value)}
-    className="customModal-input"
-/>
-  <button type="button" onClick={handleAddEquipment} className="customModal-addEqpBtn">
-    Add Equipment
-  </button>
+                <input
+                  type="text"
+                  placeholder="Add Equipment"
+                  value={equipmentInput}
+                  onChange={(e) => setEquipmentInput(e.target.value)}
+                  className="customModal-input"
+                />
+                <button
+                  type="button"
+                  onClick={handleAddEquipment}
+                  className="customModal-addEqpBtn"
+                >
+                  Add Equipment
+                </button>
 
-  <ul className="equipment-list">
-    {formData.equipment.map((eqp, index) => (
-      <li key={index} className="equipment-item" style={{color:"black"}}>
-        {eqp}
-        <button style={{marginLeft:'5px',marginTop:"5px"}}
-          type="button"
-          onClick={() => handleRemoveEquipment(eqp)}
-          className="equipment-remove-btn"
-        >
-          ×
-        </button>
-      </li>
-    ))}
-  </ul>
-</div>
+                <ul className="equipment-list">
+                  {formData.equipment.map((eqp, index) => (
+                    <li
+                      key={index}
+                      className="equipment-item"
+                      style={{ color: "black" }}
+                    >
+                      {eqp}
+                      <button
+                        style={{ marginLeft: "5px", marginTop: "5px" }}
+                        type="button"
+                        onClick={() => handleRemoveEquipment(eqp)}
+                        className="equipment-remove-btn"
+                      >
+                        ×
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <button type="submit" className="customModal-submit">
                 Submit
               </button>

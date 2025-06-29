@@ -50,8 +50,7 @@ function StaffSignUp() {
       const response = await api.post("/staff/auth/signUp", formData);
       if (response.data.success) {
         setOtpFromBackend(response.data.otp);
-       return  setOtpModal(true);
-      
+        return setOtpModal(true);
       } else {
         setErrorMessage(response.data.message);
         return setModalOpen(true);
@@ -103,13 +102,14 @@ function StaffSignUp() {
     try {
       const res = await api.post(`/staff/auth/verifyOtp`, { formData, code });
       if (res.data.success) {
-        setSuccessMessage('Staff registered successfully. Awaiting admin approval.');
+        setSuccessMessage(
+          "Staff registered successfully. Awaiting admin approval."
+        );
         setOtpModal(false);
         setSuccessModalOpen(true);
-      return  setTimeout(()=>{
+        return setTimeout(() => {
           window.location.reload();
-        },3500)
-        
+        }, 3500);
       }
       setErrorMessage(res.data.message);
       setModalOpen(true);
@@ -182,7 +182,12 @@ function StaffSignUp() {
             />
 
             <select
-            style={{color:"black",backgroundColor:"rgba(255, 255, 255, 0.9)",padding:"12px",borderRadius:"5px"}}
+              style={{
+                color: "black",
+                backgroundColor: "rgba(255, 255, 255, 0.9)",
+                padding: "12px",
+                borderRadius: "5px",
+              }}
               name="role"
               required
               value={formData.role || ""}

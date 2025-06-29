@@ -2,8 +2,8 @@ import Item from "../../models/item.js";
 
 export const createfitnessCenterItem = async (req, res) => {
   try {
-    const { name, price,totalSlots,equipment } = req.body;
-    if (!name || !price ||!totalSlots||!equipment)
+    const { name, price, totalSlots, equipment } = req.body;
+    if (!name || !price || !totalSlots || !equipment)
       return res.status(400).json({
         success: false,
         message: "fill all the feilds before submission",
@@ -59,12 +59,10 @@ export const getfitnessCenterItem = async (req, res) => {
 };
 
 export const editfitnessCenterItem = async (req, res) => {
-  
   try {
-
     const { itemId } = req.query;
-    const { name, price, available,totalSlots } = req.body;
-    if (!itemId || !name || !price||!totalSlots || available === undefined)
+    const { name, price, available, totalSlots } = req.body;
+    if (!itemId || !name || !price || !totalSlots || available === undefined)
       return res.status(400).json({
         success: false,
         message: "Fill all the fields before submission",
@@ -72,7 +70,7 @@ export const editfitnessCenterItem = async (req, res) => {
 
     const findItem = await Item.findByIdAndUpdate(
       itemId,
-      { $set: { name, price, available,totalSlots } },
+      { $set: { name, price, available, totalSlots } },
       { new: true }
     );
     if (!findItem)
@@ -80,7 +78,6 @@ export const editfitnessCenterItem = async (req, res) => {
         success: false,
         message: "Couldint edit item try later",
       });
-    
 
     return res.status(200).json({
       success: true,
